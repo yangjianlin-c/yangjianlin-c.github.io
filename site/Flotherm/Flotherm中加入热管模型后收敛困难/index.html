@@ -1,0 +1,2892 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="文档">
+      
+      
+      
+        <meta name="author" content="Colin Yang">
+      
+      
+        <link rel="canonical" href="http://www.mekesim.com/doc/Flotherm/Flotherm%E4%B8%AD%E5%8A%A0%E5%85%A5%E7%83%AD%E7%AE%A1%E6%A8%A1%E5%9E%8B%E5%90%8E%E6%94%B6%E6%95%9B%E5%9B%B0%E9%9A%BE/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>Flotherm中加入热管模型后收敛困难 - 米克网</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-40504642-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#flotherm" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="米克网" class="md-header__button md-logo" aria-label="米克网" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            米克网
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Flotherm中加入热管模型后收敛困难
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Mekesim Documents
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Arduino/" class="md-tabs__link">
+        Arduino
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ESP32/02%EF%BC%9A%E4%B8%80%E6%96%87%E5%85%A8%E8%A7%A3%EF%BC%9A%E5%88%A9%E7%94%A8%E8%B0%B7%E6%AD%8C%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6Tensorflow%E8%AF%86%E5%88%AB%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E5%9B%BE%E7%89%87%EF%BC%88%E5%88%9D%E5%AD%A6%E8%80%85%E7%AF%87%EF%BC%89/" class="md-tabs__link">
+        ESP32
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Bn%20and%20Sn/" class="md-tabs__link md-tabs__link--active">
+        Flotherm
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Flotherm%20XT/Flotherm%20XT%20EDA%20Bridge/" class="md-tabs__link">
+        Flotherm XT
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Products/MK2101/" class="md-tabs__link">
+        Products
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ml5/01%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="md-tabs__link">
+        Ml5
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="米克网" class="md-nav__button md-logo" aria-label="米克网" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    米克网
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Mekesim Documents
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Arduino
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Arduino" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Arduino
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20%E8%B6%85%E5%A3%B0%E6%B3%A2%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        超声波传感器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Car-basic/" class="md-nav__link">
+        Arduino控制小车
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/I2C%20Sanner/" class="md-nav__link">
+        I2C Sanner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/L298N/" class="md-nav__link">
+        L298N
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          ESP32
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ESP32" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          ESP32
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/02%EF%BC%9A%E4%B8%80%E6%96%87%E5%85%A8%E8%A7%A3%EF%BC%9A%E5%88%A9%E7%94%A8%E8%B0%B7%E6%AD%8C%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6Tensorflow%E8%AF%86%E5%88%AB%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E5%9B%BE%E7%89%87%EF%BC%88%E5%88%9D%E5%AD%A6%E8%80%85%E7%AF%87%EF%BC%89/" class="md-nav__link">
+        02：一文全解：利用谷歌深度学习框架Tensorflow识别手写数字图片（初学者篇）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/10%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8BESP32%20Arduino/" class="md-nav__link">
+        10分钟上手ESP32 Arduino
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/AD/" class="md-nav__link">
+        ESP32 AD输入
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ADXL345%E5%8A%A0%E9%80%9F%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        总览
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Ansys%20Fail%20to%20Open/" class="md-nav__link">
+        ANSYS过段时间出现License错误的解决办法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Arduino%20%E4%BD%BF%E7%94%A8Thermal%20Coupler/" class="md-nav__link">
+        Arduino 使用Thermal Coupler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Arduino/" class="md-nav__link">
+        Arduino
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/CDMA%20Demostration/" class="md-nav__link">
+        CDMA code spreading demostrate with Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Centos%20Python3/" class="md-nav__link">
+        Centos安装Python3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Doherty%20Amplifier/" class="md-nav__link">
+        Doherty Amplifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP-EYE/" class="md-nav__link">
+        ESP EYE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP-NOW/" class="md-nav__link">
+        ESP NOW
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20CAM%20Face/" class="md-nav__link">
+        ESP32 CAM Face
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20Connect%20Wifi/" class="md-nav__link">
+        ESP32 连接Wifi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20GPIO/" class="md-nav__link">
+        ESP32 Arduino GPIO 使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20MQTT/" class="md-nav__link">
+        ESP32 使用MQTT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20use%20MAX31855/" class="md-nav__link">
+        ESP32 温度测量仪
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        ESP32 功能介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        ESP32 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        ESP32 测试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%E4%BC%91%E7%9C%A0/" class="md-nav__link">
+        ESP32睡眠
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%E4%BD%BF%E7%94%A8%E5%8F%8C%E6%A0%B8FreeRTOS%E5%92%8CArduino%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+        ESP32使用双核FreeRTOS和Arduino环境
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ETS300753%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        ETS 300753 解读
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/FFT/" class="md-nav__link">
+        FFT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/FOTA/" class="md-nav__link">
+        FOTA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Facenet%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        FaceNet 使用实例介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Gat%20Data%20from%20Picture%20Curve/" class="md-nav__link">
+        Get Data from Picture Curve
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/How%20to%20Add%20High%20Quality%20Matlab%20Graphics%20in%20Latex/" class="md-nav__link">
+        How to Add High Quality Matlab Graphics in Latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Hugo%20on%20VPS%20with%20Git/" class="md-nav__link">
+        Hugo on VPS with Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Inlation%20Mesh/" class="md-nav__link">
+        在局部网格上设置通胀有什么好处？
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Insert%20Matlab%20Figure%20into%20Latex/" class="md-nav__link">
+        Insert Matlab Figure into Latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Interesting%20Things/" class="md-nav__link">
+        Interesting DIY Things
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/LED%E6%95%A3%E7%83%AD%E6%8A%80%E6%9C%AF%E6%96%B0%E5%8A%A8%E5%90%91/" class="md-nav__link">
+        LED散热技术新动向
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/MAX31855/" class="md-nav__link">
+        MAX31855开发板使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/MPU6050%E5%8A%A0%E9%80%9F%E5%BA%A6%E8%AE%A1%20%E9%99%80%E8%9E%BA%E4%BB%AA%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        MPU6050加速度计 陀螺仪传感器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/OFDM/" class="md-nav__link">
+        OFDM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/PA%20%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        PA模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Polar%E7%BC%96%E7%A0%81/" class="md-nav__link">
+        Polar编码
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/PowerPAD%20Packages/" class="md-nav__link">
+        PowerPAD Packages
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Proe%20Layer/" class="md-nav__link">
+        Tips about using Layer in Creo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/QFN/" class="md-nav__link">
+        QFN Package
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Quality%20Basic%20Terms/" class="md-nav__link">
+        Quality Basic Terms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Sverchok%E4%B8%AD%E7%9A%84Bloom%20Spheres/" class="md-nav__link">
+        Sverchok中的Bloom Spheres
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/TIM/" class="md-nav__link">
+        固态界面材料热特性测量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Tensorflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="md-nav__link">
+        Tensorflow学习笔记1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Thermal%20Impedance/" class="md-nav__link">
+        Thermal Impedance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Use%20flogate_cl%20Command%20convert%20xml%20to%20pdml/" class="md-nav__link">
+        Use flogate_cl Command convert xml to pdml
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/VL6180X%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+        VL6180X测距
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/VS-code/" class="md-nav__link">
+        VS Code and PlatformIO IDE for ESP32 and ESP8266 Arudino platform  code introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/edgeimpulse/" class="md-nav__link">
+        Edgeimpulse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/esp32%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+        Esp32开发环境
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/face_recognition%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        face_recognition windows 安装使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/flask_socketio_echarts/" class="md-nav__link">
+        Flask socketio echarts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/git%20proxy/" class="md-nav__link">
+        Github Desktop 设置代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/hello-world/" class="md-nav__link">
+        Hello World
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/icepak%20tips/" class="md-nav__link">
+        Icepak Tips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/iphone/" class="md-nav__link">
+        iPhone 4 热分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/latextools/" class="md-nav__link">
+        Latextools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/matplotlib_Chinese/" class="md-nav__link">
+        python matplotlib 支持中文标题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/meke%E6%9C%9F%E5%88%8A/" class="md-nav__link">
+        风扇设计与选型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/mkdoc%20github/" class="md-nav__link">
+        Mkdoc github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/rasp_pi_installation/" class="md-nav__link">
+        Rasp pi installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/shadowsocks_pi/" class="md-nav__link">
+        在树莓派上安装 shadowsocks 客户端
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/wemos/" class="md-nav__link">
+        Wemos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E4%BF%A1%E9%81%93%E7%BC%96%E7%A0%81%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" class="md-nav__link">
+        信道编码的前世今生
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%8A%A8%E7%89%A9%E7%8E%8B%E5%9B%BD%E5%BC%80%E5%A4%A7%E4%BC%9A/" class="md-nav__link">
+        动物王国开大会
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+        卡尔曼滤波
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%9B%BA%E6%80%81%E7%95%8C%E9%9D%A2%E6%9D%90%E6%96%99%E7%83%AD%E7%89%B9%E6%80%A7%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        固态界面材料热特性测量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%9B%BE%E8%A1%A8highcharts%E8%81%94%E5%90%88jquery%20ajax%20%E5%90%8E%E7%AB%AF%E5%8F%96%E6%95%B0%E6%8D%AE%E5%89%8D%E7%AB%AF%E5%9B%BE%E8%A1%A8%E6%B8%B2%E6%9F%93/" class="md-nav__link">
+        图表highcharts联合jquery ajax 后端取数据前端图表渲染
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" class="md-nav__link">
+        工具合集
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%BE%A1%20Air%202%20%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        御 Air 2 新手教程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        数字调制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E6%A0%91%E8%8E%93%E6%B4%BE%20Google%20Assistant/" class="md-nav__link">
+        树莓派 Google Assistant
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E6%A0%91%E8%8E%93%E6%B4%BEAI%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        树莓派AI工具
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E6%B8%A9%E7%AE%B1%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        无线控制温箱
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E7%83%AD%E5%8A%9B%E5%AD%A6%E5%90%8D%E8%AF%8D/" class="md-nav__link">
+        热力学名词
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E7%94%B5%E8%A7%A3%E8%B4%A8%E7%94%B5%E5%AE%B9%E5%A4%B1%E6%95%88/" class="md-nav__link">
+        Tips about using Layer in Creo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E7%AC%A6%E5%8F%B7%E9%97%B4%E5%B9%B2%E6%89%B0%E4%B8%8E%E5%BE%AA%E7%8E%AF%E5%89%8D%E7%BC%80/" class="md-nav__link">
+        符号间干扰(ISI)与循环前缀(CP)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E7%BA%A2%E5%A4%96%E7%83%AD%E5%83%8F%E4%BB%AA%E5%8F%91%E5%B0%84%E7%8E%87%E7%A1%AE%E5%AE%9A%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        红外热像仪发射率确定方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E8%88%9E%E5%8F%B0%E5%89%A7%E8%8D%B7%E5%8F%B6%E5%9C%86%E5%9C%86%E8%84%9A%E6%9C%AC/" class="md-nav__link">
+        舞台剧荷叶圆圆脚本
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        无线通信基础之：调制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E9%95%BF%E5%B9%B3%E4%B9%8B%E6%88%98/" class="md-nav__link">
+        长平之战
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_83" type="checkbox" id="__nav_3_83" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_83">
+          Sensor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Sensor" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_83">
+          <span class="md-nav__icon md-icon"></span>
+          Sensor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/sensor/sensor%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+        Sensor滤波
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/sensor/%E6%8C%89%E9%94%AE%E6%B6%88%E6%8A%96/" class="md-nav__link">
+        按键消抖
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_84" type="checkbox" id="__nav_3_84" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_84">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_84">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/tools/01abc/" class="md-nav__link">
+        01abc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Flotherm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Flotherm" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Flotherm
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bn%20and%20Sn/" class="md-nav__link">
+        Bn and Sn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Fan/" class="md-nav__link">
+        关于风扇
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FloSCRIPT%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        FloSCRIPT使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FloScript/" class="md-nav__link">
+        FloScript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Floterm-PCB-Vias-%E6%A8%A1%E6%8B%9F/" class="md-nav__link">
+        Floterm PCB Vias 模拟
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Flotherm%20Tips/" class="md-nav__link">
+        Flotherm Tips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Flotherm%20batch%20mode/" class="md-nav__link">
+        批处理模式运行Flotherm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Flotherm%20%E6%A8%A1%E6%8B%9F%E6%95%A3%E7%83%AD%E5%99%A8%E7%9A%84%E5%BB%BA%E8%AE%AE/" class="md-nav__link">
+        Flotherm 模拟散热器的建议
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Flotherm中加入热管模型后收敛困难
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Flotherm中加入热管模型后收敛困难
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#flotherm" class="md-nav__link">
+    Flotherm中加入热管模型后收敛困难。
+  </a>
+  
+    <nav class="md-nav" aria-label="Flotherm中加入热管模型后收敛困难。">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collapsed-object" class="md-nav__link">
+    Collapsed object辐射
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-domain" class="md-nav__link">
+    Open Domain
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    求解
+  </a>
+  
+    <nav class="md-nav" aria-label="求解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    细节
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-set-solar-radiation-in-flotherm" class="md-nav__link">
+    How to Set Solar Radiation in FloTHERM
+  </a>
+  
+    <nav class="md-nav" aria-label="How to Set Solar Radiation in FloTHERM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    SUMMARY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#details" class="md-nav__link">
+    DETAILS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-set-thermal-radiation" class="md-nav__link">
+    How to set thermal radiation?
+  </a>
+  
+    <nav class="md-nav" aria-label="How to set thermal radiation?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    SUMMARY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#details_1" class="md-nav__link">
+    DETAILS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modeling-thermal-vias-in-flotherm-using-floeda-bridge" class="md-nav__link">
+    Modeling Thermal Vias in FloTHERM using FloEDA Bridge
+  </a>
+  
+    <nav class="md-nav" aria-label="Modeling Thermal Vias in FloTHERM using FloEDA Bridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary_2" class="md-nav__link">
+    SUMMARY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#details_2" class="md-nav__link">
+    DETAILS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Flotherm%E4%B8%AD%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB/" class="md-nav__link">
+        Flotherm中的坐标系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Flotherm%E6%9D%82%E9%A1%B9/" class="md-nav__link">
+        Flotherm杂项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Flotherm%E8%BE%90%E5%B0%84/" class="md-nav__link">
+        Flotherm中加入热管模型后收敛困难
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TIM%E5%BB%BA%E6%A8%A1/" class="md-nav__link">
+        TIM建模
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solar/" class="md-nav__link">
+        FloTHERM中模拟太阳辐射
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BD%BF%E7%94%A8JEDEC%E7%83%AD%E5%BA%A6%E9%87%8F%E8%AE%A1%E7%AE%97%E8%8A%AF%E7%89%87%E6%B8%A9%E5%BA%A6%E6%97%A0%E9%99%84%E5%8A%A0%E6%95%A3%E7%83%AD%E5%99%A8/" class="md-nav__link">
+        使用JEDEC热度量计算芯片温度（无附加散热器）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B1%E8%BD%AD%E4%BC%A0%E7%83%AD/" class="md-nav__link">
+        共轭传热
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BA%E4%BD%93%E5%86%85%E9%83%A8%E7%83%AD%E6%B5%81%E5%9B%BE/" class="md-nav__link">
+        01 固体内部热流图
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Flotherm XT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Flotherm XT" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Flotherm XT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm%20XT/Flotherm%20XT%20EDA%20Bridge/" class="md-nav__link">
+        Flotherm XT EDA Bridge
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Products
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Products" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Products
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Products/MK2101/" class="md-nav__link">
+        MK2101
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Ml5
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ml5" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ml5
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/01%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        01图像分类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/02%E4%BA%BA%E4%BD%93%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB/" class="md-nav__link">
+        02人体动作识别
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/03%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        03小程序
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#flotherm" class="md-nav__link">
+    Flotherm中加入热管模型后收敛困难。
+  </a>
+  
+    <nav class="md-nav" aria-label="Flotherm中加入热管模型后收敛困难。">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collapsed-object" class="md-nav__link">
+    Collapsed object辐射
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-domain" class="md-nav__link">
+    Open Domain
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    求解
+  </a>
+  
+    <nav class="md-nav" aria-label="求解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    细节
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-set-solar-radiation-in-flotherm" class="md-nav__link">
+    How to Set Solar Radiation in FloTHERM
+  </a>
+  
+    <nav class="md-nav" aria-label="How to Set Solar Radiation in FloTHERM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    SUMMARY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#details" class="md-nav__link">
+    DETAILS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-set-thermal-radiation" class="md-nav__link">
+    How to set thermal radiation?
+  </a>
+  
+    <nav class="md-nav" aria-label="How to set thermal radiation?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    SUMMARY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#details_1" class="md-nav__link">
+    DETAILS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modeling-thermal-vias-in-flotherm-using-floeda-bridge" class="md-nav__link">
+    Modeling Thermal Vias in FloTHERM using FloEDA Bridge
+  </a>
+  
+    <nav class="md-nav" aria-label="Modeling Thermal Vias in FloTHERM using FloEDA Bridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary_2" class="md-nav__link">
+    SUMMARY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#details_2" class="md-nav__link">
+    DETAILS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io/edit/main/docs/Flotherm/Flotherm中加入热管模型后收敛困难.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <p>## Flotherm中加入热管模型后收敛困难。</p>
+<p>热管具有非常高的有效导热率。因此，当涉及使用温度变量收敛时，可能产生问题。</p>
+<p>为避免这些问题，建议用户：</p>
+<p>使用双精度求解器（double precision solver “求解器控制”选项卡）</p>
+<p>使用“共轭残差”选项（conjugate residual “求解器控制”选项卡）</p>
+<p>将温度的错误时间步长增加~x20（在“求解器控制”选项卡下）</p>
+<p>使用环境变量FLOMAXITFORTEMP</p>
+<p>定义新的环境变量FLOMAXITFORTEMP并将其设置为等于任何值</p>
+<p>### Collapsed object辐射</p>
+<p>Radiation is calculated based on the temperature difference between objects.
+  Therefore for the software to compute these temperature differences it must
+  know the temperatures of the objects partaking in the Radiative exchange. In
+  fixed temperature cuboids (collapsed or uncollapsed) the temperature of the
+  object is explicitly set. Therefore these objects partake in Radiation but can
+  only pass heat to other objects cooler than themselves. They cannot become
+  warmer or cooler because their temperature is fixed by you. Objects set to
+  have a fixed heatflow give out energy to the neighbouring grid cells but do
+  not have a temperature calculated within them. Therefore there is insufficient
+  data for the software to compute its radiation calculation and therefore they
+  will not partake in the radiative exchange. Collapsed objects can only take
+  part in the radiation calculation if they are set to be fixed temperature. If
+  set to be conducting they cannot take part in the radiation calculation
+  because they don't have grid-cells within them to store the temperature data.</p>
+<p>Note: These objects will all act as obstructions to radiation, inhibitting the
+  view factor between other radiating objects.</p>
+<p>### Open Domain</p>
+<p>运行辐射模型时，开放边界如何影响辐射传输？是否计算出交换因子？什么是辐射温度？</p>
+<ul>
+<li>
+<p>All radiating geometry inside the domain will radiate towards “infinity
+  outside the domain”, the domain boundaries.</p>
+</li>
+<li>
+<p>Therefore exchanges factor are calculated.</p>
+</li>
+<li>
+<p>Domain boundaries are ideally “black”.</p>
+</li>
+<li>
+<p>Radiation is always a two-way process. Hence, if the radiation temperature
+  of the domain boundary is higher than the body temperatures inside there will
+  be a positive net radiation heat flow into the domain and heat will be added.
+  If the radiation temperature is lower than the body temperatures heat will be
+  extracted from the system.</p>
+</li>
+<li>
+<p>The temperature used to calculate the radiation of each domain boundary is
+  set in the Project Manager in</p>
+</li>
+</ul>
+<p>o   [Model Setup] – Default Radiant Temperature</p>
+<ul>
+<li>
+<p>Ambient Attributes may be used to overwrite the above settings with
+  Radiation Temperature other than the Default Radiant Temperature. You may use
+  different Ambient Attributes for different sides and hence different Radiation
+  Temperatures on different sides of the domain.</p>
+</li>
+<li>
+<p>Domain boundaries which are set to “Symmetry” are adiabatic. To prevent
+  violation of the energy conservation, one side will be opened to radiation
+  transfer (but only for radiation transfer!) automatically. In this case there
+  will be a warning displayed in the Message Window.</p>
+</li>
+<li>
+<p>域内的所有辐射几何体都将向“域外无限域”（域边界）辐射。</p>
+</li>
+<li>
+<p>因此计算交换因子。</p>
+</li>
+<li>
+<p>域边界理想地是“黑色”。</p>
+</li>
+<li>
+<p>辐射始终是一个双向过程。因此，如果畴边界的辐射温度高于体内的体温，则将有正的净辐射热流进入区域并且将加热。如果辐射温度低于体温，则将从系统中提取热量。</p>
+</li>
+<li>
+<p>用于计算每个域边界辐射的温度在项目中设置[Model Setup] – Default Radiant Temperature</p>
+</li>
+<li>
+<p>环境属性可用于使用除默认辐射温度之外的辐射温度覆盖上述设置。您可以针对不同侧面使用不同的环境属性，从而在域的不同侧面上使用不同的辐射温度。</p>
+</li>
+<li>
+<p>设置为“对称”的域边界是绝热的。为了防止违反节能措施，一方将自动开放辐射传输（但仅用于辐射传输！）。在这种情况下，消息窗口中将显示警告。</p>
+</li>
+</ul>
+<p>## 求解</p>
+<p>Insufficient Memory &lt; Exchange Factor Calculation performed abnormal exit &gt;</p>
+<p>The total radiating faces is above the limit.</p>
+<p>The number of radiating faces is limitating to 120000 radiating faces by
+  default. If the number of radiating surfaces exceeds this value, an exception
+  is thrown and the EFG aborted.</p>
+<p>To increase the number of radiating faces using Environment variable, you can
+  set</p>
+<p>System environment variable: EFGFACELIMIT </p>
+<p>System environment value: Number</p>
+<p>When the calculation is done, the number of radiating faces can be found on
+  the first line of the following file: BaseSolution\Exchange\facelist (Open
+  with Wordpad)</p>
+<h2 id="flotherm">Flotherm中加入热管模型后收敛困难。</h2>
+<p>热管具有非常高的有效导热率。因此，当涉及使用温度变量收敛时，可能产生问题。</p>
+<p>为避免这些问题，建议用户：</p>
+<p>使用双精度求解器（double precision solver “求解器控制”选项卡）
+使用“共轭残差”选项（conjugate residual “求解器控制”选项卡）</p>
+<p>将温度的错误时间步长增加~x20（在“求解器控制”选项卡下）</p>
+<p>使用环境变量FLOMAXITFORTEMP
+定义新的环境变量FLOMAXITFORTEMP并将其设置为等于任何值</p>
+<h3 id="collapsed-object">Collapsed object辐射</h3>
+<p>Radiation is calculated based on the temperature difference between objects. Therefore for the software to compute these temperature differences it must know the temperatures of the objects partaking in the Radiative exchange. In fixed temperature cuboids (collapsed or uncollapsed) the temperature of the object is explicitly set. Therefore these objects partake in Radiation but can only pass heat to other objects cooler than themselves. They cannot become warmer or cooler because their temperature is fixed by you. Objects set to have a fixed heatflow give out energy to the neighbouring grid cells but do not have a temperature calculated within them. Therefore there is insufficient data for the software to compute its radiation calculation and therefore they will not partake in the radiative exchange. Collapsed objects can only take part in the radiation calculation if they are set to be fixed temperature. If set to be conducting they cannot take part in the radiation calculation because they don't have grid-cells within them to store the temperature data.</p>
+<p>Note: These objects will all act as obstructions to radiation, inhibitting the view factor between other radiating objects.</p>
+<h3 id="open-domain">Open Domain</h3>
+<p>运行辐射模型时，开放边界如何影响辐射传输？是否计算出交换因子？什么是辐射温度？</p>
+<ul>
+<li>All radiating geometry inside the domain will radiate towards “infinity outside the domain”, the domain boundaries.</li>
+<li>Therefore exchanges factor are calculated.</li>
+<li>Domain boundaries are ideally “black”.</li>
+<li>Radiation is always a two-way process. Hence, if the radiation temperature of the domain boundary is higher than the body temperatures inside there will be a positive net radiation heat flow into the domain and heat will be added. If the radiation temperature is lower than the body temperatures heat will be extracted from the system.</li>
+<li>The temperature used to calculate the radiation of each domain boundary is set in the Project Manager in</li>
+</ul>
+<p>o   [Model Setup] – Default Radiant Temperature</p>
+<ul>
+<li>Ambient Attributes may be used to overwrite the above settings with Radiation Temperature other than the Default Radiant Temperature. You may use different Ambient Attributes for different sides and hence different Radiation Temperatures on different sides of the domain.</li>
+<li>
+<p>Domain boundaries which are set to “Symmetry” are adiabatic. To prevent violation of the energy conservation, one side will be opened to radiation transfer (but only for radiation transfer!) automatically. In this case there will be a warning displayed in the Message Window.</p>
+</li>
+<li>
+<p>域内的所有辐射几何体都将向“域外无限域”（域边界）辐射。</p>
+</li>
+<li>因此计算交换因子。</li>
+<li>域边界理想地是“黑色”。</li>
+<li>辐射始终是一个双向过程。因此，如果畴边界的辐射温度高于体内的体温，则将有正的净辐射热流进入区域并且将加热。如果辐射温度低于体温，则将从系统中提取热量。</li>
+<li>
+<p>用于计算每个域边界辐射的温度在项目中设置[Model Setup] – Default Radiant Temperature</p>
+</li>
+<li>
+<p>环境属性可用于使用除默认辐射温度之外的辐射温度覆盖上述设置。您可以针对不同侧面使用不同的环境属性，从而在域的不同侧面上使用不同的辐射温度。</p>
+</li>
+<li>设置为“对称”的域边界是绝热的。为了防止违反节能措施，一方将自动开放辐射传输（但仅用于辐射传输！）。在这种情况下，消息窗口中将显示警告。</li>
+</ul>
+<h2 id="_1">求解</h2>
+<p>Insufficient Memory &lt; Exchange Factor Calculation performed abnormal exit &gt;
+The total radiating faces is above the limit.</p>
+<p>The number of radiating faces is limitating to 120000 radiating faces by default. If the number of radiating surfaces exceeds this value, an exception is thrown and the EFG aborted.</p>
+<p>To increase the number of radiating faces using Environment variable, you can set</p>
+<p>System environment variable: EFGFACELIMIT 
+System environment value: Number</p>
+<p>When the calculation is done, the number of radiating faces can be found on the first line of the following file: BaseSolution\Exchange\facelist (Open with Wordpad)</p>
+<h3 id="_2">细节</h3>
+<p>进行更改（例如调整模型中的对象大小或移动对象）需要很长时间才能更新FloTHERM。</p>
+<p>具有高网格单元数的较大模型可能需要几秒钟来重新计算网格。</p>
+<p>仅当网格信息以下列任何一种形式显示时，才会重新计算网格：</p>
+<ul>
+<li>当绘图板中显示网格时</li>
+<li>显示“网格摘要”对话框时</li>
+<li>显示“系统网格”属性表时</li>
+<li>
+<p>显示解除键的摘要列时</p>
+</li>
+<li>
+<p>When the grid is shown in the Drawing Board</p>
+</li>
+<li>When the Grid Summary dialog is displayed</li>
+<li>When the System Grid property sheet is displayed</li>
+<li>When the de-keypointed summary column is displayed</li>
+</ul>
+<p>如果您想在不重新计算网格的情况下进行多项更改，请确保上述任何显示都不是活动的。</p>
+<h1 id="how-to-set-solar-radiation-in-flotherm">How to Set Solar Radiation in FloTHERM</h1>
+<p>Updated October 09, 2018</p>
+<hr />
+<h2 id="summary">SUMMARY</h2>
+<p>This KB article seeks to address questions such as: </p>
+<p>How do I set solar radiation in FloTHERM?</p>
+<p>What angle value should be entered under 'Model Orientation From North'? </p>
+<p>How do I define a solar load? </p>
+<p>Do I need to provide a solar reflectivity and emissivity for my surface attributes? </p>
+<hr />
+<h2 id="details">DETAILS</h2>
+<p>To include solar radiation in a FloTHERM model, toggle on 'Solar Radiation' under the Model Set Up tab. It is important to turn on thermal radiation as well; otherwise, the model will appear too hot. </p>
+<p>Select 'Click to Edit' to open the Solar Configuration Window. </p>
+<p><img alt="img" src="assets/solar and thermal radiation.png" /></p>
+<p>'Model Orientation From North' is the first setting that needs to be defined. This allows the user to identify where North is in the corresponding project. </p>
+<p><img alt="img" src="assets/modelorientationfromnorth.png" /></p>
+<p>If the gravity is set to -Y direction for the project, then the X or Z axis will be used to define the model's orientation. If North lined up with the Z axis for example, set the 'Angle Measured From' to 'Z Axis' and leave the default angle of 0 deg. If North doesn't lie along an axis, use the angle to define this location from either the X or Z axis. </p>
+<p><img alt="img" src="assets/angle_measured_from.png" /><img alt="img" src="assets/z_axis_north.png" /></p>
+<p>The next section of the Solar Configuration Window defines solar position using latitude, date, and solar time. For this example, the latitude will be set to 30.25 degrees for Austin, Texas. Additionally, the date will be set to November 20th, 2018 with a mean solar time (clock time) of 07:00:00. These settings are used to calculate the azimuth angle and solar altitude.</p>
+<p>Note: The mean solar time may not be the same as local time. The user may want to find a website or program that converts local time to mean solar time for accurate analysis. </p>
+<p><img alt="img" src="assets/solar position.png" /></p>
+<p>Note: The solar time is a 24- hour clock, so 4PM would look like 16:00:00. Keep in mind that Command Center scenarios can be used to look at solar radiation over various times, such as throughout the day.</p>
+<p>If solar intensity/load data is available, this can be defined using the solar intensity option for 'Solar Calculation Type.' Notice this value is applied at the calculated location (Azimuth Angle and Solar Altitude).  </p>
+<p><img alt="img" src="assets/solar intensity.png" /></p>
+<p>As an alternative, FloTHERM can calculate a solar intensity if the 'Solar Calculation Type' is set to cloudiness. This calculated value is based on the entered latitude, date, and solar time. A 'cloudiness' of 0 is clear skies, and this value can be adjusted to capture the expected cloud coverage, up to a value of 1. Therefore, the calculated solar intensity is reduced by the defined cloudiness. </p>
+<p>As shown below, the calculated solar intensity with zero cloudiness is about 100W/m^2.</p>
+<p><img alt="img" src="assets/0_cloudiness.png" /></p>
+<p>If the cloudiness is set to 0.3, the calculated solar intensity is reduced by 30%, to about 70W/m^2. </p>
+<p><img alt="img" src="assets/0.3_cloudiness.png" /></p>
+<p>Notice for either case, the solar vector is displayed in yellow in the upper right hand corner of the Visual Editor.</p>
+<p><img alt="img" src="assets/solarvector.png" /></p>
+<p>There are a couple attributes that need to be applied in the model prior to solving. </p>
+<p>-material attribute</p>
+<p>-surface attribute</p>
+<p>-radiation attribute </p>
+<p>Make sure components have an associated material attribute so they can conduct heat. Additionally, apply a surface attribute to define a solar reflectivity and emissivity.</p>
+<p>Solar reflectivity only applies when solar radiation is turned on. This determines how much of the solar load is being applied to the system. If an object has a solar reflectivity of 0.5 then only 50% of the solar load for that object is applied. The reflected solar radiation is removed from the system. Solar radiation is like applying a collapsed source SmartPart to parts in your model. </p>
+<p>Setting an emissivity comes in for regular radiation, which again, should be turned on whenever there is solar radiation being modelled. The emissivity encompasses surface finishes and roughness of a part. This value will determine how much the object will radiate; the lower the emissivity, the less radiative heat transfer. </p>
+<p><img alt="img" src="assets/surface attribute.png" /></p>
+<p>Note: Color, Shininess, and Brightness are settings for changing only the visual representation of the model.</p>
+<p>Lastly, a radiation attribute needs to be applied to object surfaces as necessary to be included in the thermal radiation calculation.</p>
+<h1 id="how-to-set-thermal-radiation">How to set thermal radiation?</h1>
+<p>Updated May 01, 2013</p>
+<hr />
+<h2 id="summary_1">SUMMARY</h2>
+<p>Which settings need to be activated to calculate Thermal Radiation in FloTHERM or FloVENT ?</p>
+<hr />
+<h2 id="details_1">DETAILS</h2>
+<p>There are projects settings and surface settings. Here is a list of all settings needed to perform a thermal radiation calculation.</p>
+<p>FloVENT or FloTHERM doesn’t  use a direct view factors calculation. The software uses a ray tracing method to send rays in every direction (<strong>*diffuse</strong><em> thermal radiation). It’s a surface to surface method with </em><em>*no interaction of fluid</em>** in between.</p>
+<p>To consider thermal radiation inside FloVENT or FloTHERM, you need to activate following settings:</p>
+<ol>
+<li>
+<p>[Model/Modeling] and activate “<strong>Radiation On</strong>”</p>
+</li>
+<li>
+<p>Use 3D cuboids (non-collapsed)</p>
+</li>
+<li>
+<p>Or 2D cuboids if you tick on “Activate Plate Conduction”</p>
+</li>
+<li>
+<p>Specify an emissivity for each [</p>
+</li>
+</ol>
+<p>Surface</p>
+<p>] attribut (high for paint surfaces. ex 0.8 to 0.9 as it depends on surface roughness. And low for non-paint polished plate).</p>
+<ol>
+<li>
+<p>The [Surface] attribute can be attached to any [Material] attribute.</p>
+</li>
+<li>
+<p>Specify [<strong>Radiation</strong>] attribute (to define the pixel size for the radiation discretization). On each pixel, FloVENT or FloTHERM will consider a uniform temperature for ray tracing method. This pixel is at least the size of the cells, but the pixel can be and will often be wider than the local cell size.</p>
+</li>
+<li>
+<p>“Single Radiating” : create a single pixel on the surface.</p>
+<ol>
+<li>Define “Single Radiating” for small parts of the models or low temperature gradient on the surface of this part.</li>
+</ol>
+</li>
+<li>“Subdivided radiating”: create multiple pixel on the surfaces based on your criteria.<ol>
+<li>Define “Subdivided radiating” for big surface or when the temperature gradients are high on the surface of this part.</li>
+</ol>
+</li>
+</ol>
+<h1 id="modeling-thermal-vias-in-flotherm-using-floeda-bridge">Modeling Thermal Vias in FloTHERM using FloEDA Bridge</h1>
+<p>Updated July 14, 2016</p>
+<hr />
+<h2 id="summary_2">SUMMARY</h2>
+<p>What is a good way to represent thermal vias in FloTHERM? How to create such a representation easily?</p>
+<hr />
+<h2 id="details_2">DETAILS</h2>
+<p>Modeling each thermal via discretely leads to lot of grid hence it is recommended to model them as a lumped cuboid with orthotropic conductivity. This can be done fairly easily using FloEDA Bridge.</p>
+<p>Thermal vias help to provide a good conductive path from the component into the PCB. In other words it increase the thermal conductivity of the PCB locally under the powered component.</p>
+<p>If the board details are brought into FloTHERM via FloEDA.Bridge then thermal vias can be added as a daughter of a component in the tree. Below are the default values for diamter, plating thickness of an individual vis and pitch for via pattern. The use can choose to have a filling material ( like Solder within the via) or leave to None.</p>
+<p><img alt="img" src="assets/vias.JPG" /></p>
+<p>Once the board is transferred into FloTHERM, thermal vias come in as a lumped cuboid with an orthotropic conductivity. In this particular case kz = 7.03 W/(mK) and kx,y = 0.339 W/(mK)
+<img alt="img" src="assets/board.JPG" /></p>
+<p>Even when not modeling the board in detail users can use the above steps to estimate the orthtropic conductivity of a lumped cuboid representing the thermal via pattern.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../Flotherm%20%E6%A8%A1%E6%8B%9F%E6%95%A3%E7%83%AD%E5%99%A8%E7%9A%84%E5%BB%BA%E8%AE%AE/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Flotherm 模拟散热器的建议" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Flotherm 模拟散热器的建议
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Flotherm%E4%B8%AD%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB/" class="md-footer__link md-footer__link--next" aria-label="下一页: Flotherm中的坐标系" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Flotherm中的坐标系
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020-2021 mekesim.com <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">浙ICP备10045952号-5</a>
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2501 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="文档">
+      
+      
+      
+        <meta name="author" content="Colin Yang">
+      
+      
+        <link rel="canonical" href="http://www.mekesim.com/doc/ESP32/%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>数字调制 - 米克网</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-40504642-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="米克网" class="md-header__button md-logo" aria-label="米克网" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            米克网
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              数字调制
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Mekesim Documents
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Arduino/" class="md-tabs__link">
+        Arduino
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../02%EF%BC%9A%E4%B8%80%E6%96%87%E5%85%A8%E8%A7%A3%EF%BC%9A%E5%88%A9%E7%94%A8%E8%B0%B7%E6%AD%8C%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6Tensorflow%E8%AF%86%E5%88%AB%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E5%9B%BE%E7%89%87%EF%BC%88%E5%88%9D%E5%AD%A6%E8%80%85%E7%AF%87%EF%BC%89/" class="md-tabs__link md-tabs__link--active">
+        ESP32
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Flotherm/Bn%20and%20Sn/" class="md-tabs__link">
+        Flotherm
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Flotherm%20XT/Flotherm%20XT%20EDA%20Bridge/" class="md-tabs__link">
+        Flotherm XT
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Products/MK2101/" class="md-tabs__link">
+        Products
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ml5/01%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="md-tabs__link">
+        Ml5
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="米克网" class="md-nav__button md-logo" aria-label="米克网" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    米克网
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Mekesim Documents
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Arduino
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Arduino" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Arduino
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20%E8%B6%85%E5%A3%B0%E6%B3%A2%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        超声波传感器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Car-basic/" class="md-nav__link">
+        Arduino控制小车
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/I2C%20Sanner/" class="md-nav__link">
+        I2C Sanner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/L298N/" class="md-nav__link">
+        L298N
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          ESP32
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ESP32" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          ESP32
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02%EF%BC%9A%E4%B8%80%E6%96%87%E5%85%A8%E8%A7%A3%EF%BC%9A%E5%88%A9%E7%94%A8%E8%B0%B7%E6%AD%8C%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6Tensorflow%E8%AF%86%E5%88%AB%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E5%9B%BE%E7%89%87%EF%BC%88%E5%88%9D%E5%AD%A6%E8%80%85%E7%AF%87%EF%BC%89/" class="md-nav__link">
+        02：一文全解：利用谷歌深度学习框架Tensorflow识别手写数字图片（初学者篇）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8BESP32%20Arduino/" class="md-nav__link">
+        10分钟上手ESP32 Arduino
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AD/" class="md-nav__link">
+        ESP32 AD输入
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADXL345%E5%8A%A0%E9%80%9F%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        总览
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Ansys%20Fail%20to%20Open/" class="md-nav__link">
+        ANSYS过段时间出现License错误的解决办法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arduino%20%E4%BD%BF%E7%94%A8Thermal%20Coupler/" class="md-nav__link">
+        Arduino 使用Thermal Coupler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arduino/" class="md-nav__link">
+        Arduino
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CDMA%20Demostration/" class="md-nav__link">
+        CDMA code spreading demostrate with Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Centos%20Python3/" class="md-nav__link">
+        Centos安装Python3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Doherty%20Amplifier/" class="md-nav__link">
+        Doherty Amplifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP-EYE/" class="md-nav__link">
+        ESP EYE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP-NOW/" class="md-nav__link">
+        ESP NOW
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20CAM%20Face/" class="md-nav__link">
+        ESP32 CAM Face
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20Connect%20Wifi/" class="md-nav__link">
+        ESP32 连接Wifi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20GPIO/" class="md-nav__link">
+        ESP32 Arduino GPIO 使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20MQTT/" class="md-nav__link">
+        ESP32 使用MQTT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20use%20MAX31855/" class="md-nav__link">
+        ESP32 温度测量仪
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        ESP32 功能介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        ESP32 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        ESP32 测试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%E4%BC%91%E7%9C%A0/" class="md-nav__link">
+        ESP32睡眠
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%E4%BD%BF%E7%94%A8%E5%8F%8C%E6%A0%B8FreeRTOS%E5%92%8CArduino%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+        ESP32使用双核FreeRTOS和Arduino环境
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ETS300753%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        ETS 300753 解读
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FFT/" class="md-nav__link">
+        FFT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FOTA/" class="md-nav__link">
+        FOTA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Facenet%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        FaceNet 使用实例介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Gat%20Data%20from%20Picture%20Curve/" class="md-nav__link">
+        Get Data from Picture Curve
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../How%20to%20Add%20High%20Quality%20Matlab%20Graphics%20in%20Latex/" class="md-nav__link">
+        How to Add High Quality Matlab Graphics in Latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hugo%20on%20VPS%20with%20Git/" class="md-nav__link">
+        Hugo on VPS with Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Inlation%20Mesh/" class="md-nav__link">
+        在局部网格上设置通胀有什么好处？
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Insert%20Matlab%20Figure%20into%20Latex/" class="md-nav__link">
+        Insert Matlab Figure into Latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Interesting%20Things/" class="md-nav__link">
+        Interesting DIY Things
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LED%E6%95%A3%E7%83%AD%E6%8A%80%E6%9C%AF%E6%96%B0%E5%8A%A8%E5%90%91/" class="md-nav__link">
+        LED散热技术新动向
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MAX31855/" class="md-nav__link">
+        MAX31855开发板使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MPU6050%E5%8A%A0%E9%80%9F%E5%BA%A6%E8%AE%A1%20%E9%99%80%E8%9E%BA%E4%BB%AA%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        MPU6050加速度计 陀螺仪传感器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OFDM/" class="md-nav__link">
+        OFDM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PA%20%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        PA模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Polar%E7%BC%96%E7%A0%81/" class="md-nav__link">
+        Polar编码
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PowerPAD%20Packages/" class="md-nav__link">
+        PowerPAD Packages
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Proe%20Layer/" class="md-nav__link">
+        Tips about using Layer in Creo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QFN/" class="md-nav__link">
+        QFN Package
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Quality%20Basic%20Terms/" class="md-nav__link">
+        Quality Basic Terms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sverchok%E4%B8%AD%E7%9A%84Bloom%20Spheres/" class="md-nav__link">
+        Sverchok中的Bloom Spheres
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TIM/" class="md-nav__link">
+        固态界面材料热特性测量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tensorflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="md-nav__link">
+        Tensorflow学习笔记1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Thermal%20Impedance/" class="md-nav__link">
+        Thermal Impedance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Use%20flogate_cl%20Command%20convert%20xml%20to%20pdml/" class="md-nav__link">
+        Use flogate_cl Command convert xml to pdml
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VL6180X%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+        VL6180X测距
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VS-code/" class="md-nav__link">
+        VS Code and PlatformIO IDE for ESP32 and ESP8266 Arudino platform  code introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edgeimpulse/" class="md-nav__link">
+        Edgeimpulse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../esp32%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+        Esp32开发环境
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../face_recognition%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        face_recognition windows 安装使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flask_socketio_echarts/" class="md-nav__link">
+        Flask socketio echarts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git%20proxy/" class="md-nav__link">
+        Github Desktop 设置代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hello-world/" class="md-nav__link">
+        Hello World
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../icepak%20tips/" class="md-nav__link">
+        Icepak Tips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iphone/" class="md-nav__link">
+        iPhone 4 热分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../latextools/" class="md-nav__link">
+        Latextools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib_Chinese/" class="md-nav__link">
+        python matplotlib 支持中文标题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meke%E6%9C%9F%E5%88%8A/" class="md-nav__link">
+        风扇设计与选型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdoc%20github/" class="md-nav__link">
+        Mkdoc github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rasp_pi_installation/" class="md-nav__link">
+        Rasp pi installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shadowsocks_pi/" class="md-nav__link">
+        在树莓派上安装 shadowsocks 客户端
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wemos/" class="md-nav__link">
+        Wemos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BF%A1%E9%81%93%E7%BC%96%E7%A0%81%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" class="md-nav__link">
+        信道编码的前世今生
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8A%A8%E7%89%A9%E7%8E%8B%E5%9B%BD%E5%BC%80%E5%A4%A7%E4%BC%9A/" class="md-nav__link">
+        动物王国开大会
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+        卡尔曼滤波
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BA%E6%80%81%E7%95%8C%E9%9D%A2%E6%9D%90%E6%96%99%E7%83%AD%E7%89%B9%E6%80%A7%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        固态界面材料热特性测量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E8%A1%A8highcharts%E8%81%94%E5%90%88jquery%20ajax%20%E5%90%8E%E7%AB%AF%E5%8F%96%E6%95%B0%E6%8D%AE%E5%89%8D%E7%AB%AF%E5%9B%BE%E8%A1%A8%E6%B8%B2%E6%9F%93/" class="md-nav__link">
+        图表highcharts联合jquery ajax 后端取数据前端图表渲染
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" class="md-nav__link">
+        工具合集
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%BE%A1%20Air%202%20%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        御 Air 2 新手教程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          数字调制
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        数字调制
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    简单的二进制调制 - 一次一个位！
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A0%91%E8%8E%93%E6%B4%BE%20Google%20Assistant/" class="md-nav__link">
+        树莓派 Google Assistant
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A0%91%E8%8E%93%E6%B4%BEAI%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        树莓派AI工具
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B8%A9%E7%AE%B1%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        无线控制温箱
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%83%AD%E5%8A%9B%E5%AD%A6%E5%90%8D%E8%AF%8D/" class="md-nav__link">
+        热力学名词
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%94%B5%E8%A7%A3%E8%B4%A8%E7%94%B5%E5%AE%B9%E5%A4%B1%E6%95%88/" class="md-nav__link">
+        Tips about using Layer in Creo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%A6%E5%8F%B7%E9%97%B4%E5%B9%B2%E6%89%B0%E4%B8%8E%E5%BE%AA%E7%8E%AF%E5%89%8D%E7%BC%80/" class="md-nav__link">
+        符号间干扰(ISI)与循环前缀(CP)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BA%A2%E5%A4%96%E7%83%AD%E5%83%8F%E4%BB%AA%E5%8F%91%E5%B0%84%E7%8E%87%E7%A1%AE%E5%AE%9A%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        红外热像仪发射率确定方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%88%9E%E5%8F%B0%E5%89%A7%E8%8D%B7%E5%8F%B6%E5%9C%86%E5%9C%86%E8%84%9A%E6%9C%AC/" class="md-nav__link">
+        舞台剧荷叶圆圆脚本
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        无线通信基础之：调制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%95%BF%E5%B9%B3%E4%B9%8B%E6%88%98/" class="md-nav__link">
+        长平之战
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_83" type="checkbox" id="__nav_3_83" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_83">
+          Sensor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Sensor" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_83">
+          <span class="md-nav__icon md-icon"></span>
+          Sensor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor/sensor%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+        Sensor滤波
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor/%E6%8C%89%E9%94%AE%E6%B6%88%E6%8A%96/" class="md-nav__link">
+        按键消抖
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_84" type="checkbox" id="__nav_3_84" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_84">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_84">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools/01abc/" class="md-nav__link">
+        01abc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Flotherm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Flotherm" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Flotherm
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Bn%20and%20Sn/" class="md-nav__link">
+        Bn and Sn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Fan/" class="md-nav__link">
+        关于风扇
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/FloSCRIPT%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        FloSCRIPT使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/FloScript/" class="md-nav__link">
+        FloScript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Floterm-PCB-Vias-%E6%A8%A1%E6%8B%9F/" class="md-nav__link">
+        Floterm PCB Vias 模拟
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20Tips/" class="md-nav__link">
+        Flotherm Tips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20batch%20mode/" class="md-nav__link">
+        批处理模式运行Flotherm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20%E6%A8%A1%E6%8B%9F%E6%95%A3%E7%83%AD%E5%99%A8%E7%9A%84%E5%BB%BA%E8%AE%AE/" class="md-nav__link">
+        Flotherm 模拟散热器的建议
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E4%B8%AD%E5%8A%A0%E5%85%A5%E7%83%AD%E7%AE%A1%E6%A8%A1%E5%9E%8B%E5%90%8E%E6%94%B6%E6%95%9B%E5%9B%B0%E9%9A%BE/" class="md-nav__link">
+        Flotherm中加入热管模型后收敛困难
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E4%B8%AD%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB/" class="md-nav__link">
+        Flotherm中的坐标系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E6%9D%82%E9%A1%B9/" class="md-nav__link">
+        Flotherm杂项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E8%BE%90%E5%B0%84/" class="md-nav__link">
+        Flotherm中加入热管模型后收敛困难
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/TIM%E5%BB%BA%E6%A8%A1/" class="md-nav__link">
+        TIM建模
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/solar/" class="md-nav__link">
+        FloTHERM中模拟太阳辐射
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E4%BD%BF%E7%94%A8JEDEC%E7%83%AD%E5%BA%A6%E9%87%8F%E8%AE%A1%E7%AE%97%E8%8A%AF%E7%89%87%E6%B8%A9%E5%BA%A6%E6%97%A0%E9%99%84%E5%8A%A0%E6%95%A3%E7%83%AD%E5%99%A8/" class="md-nav__link">
+        使用JEDEC热度量计算芯片温度（无附加散热器）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E5%85%B1%E8%BD%AD%E4%BC%A0%E7%83%AD/" class="md-nav__link">
+        共轭传热
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E5%9B%BA%E4%BD%93%E5%86%85%E9%83%A8%E7%83%AD%E6%B5%81%E5%9B%BE/" class="md-nav__link">
+        01 固体内部热流图
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Flotherm XT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Flotherm XT" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Flotherm XT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm%20XT/Flotherm%20XT%20EDA%20Bridge/" class="md-nav__link">
+        Flotherm XT EDA Bridge
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Products
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Products" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Products
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Products/MK2101/" class="md-nav__link">
+        MK2101
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Ml5
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ml5" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ml5
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/01%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        01图像分类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/02%E4%BA%BA%E4%BD%93%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB/" class="md-nav__link">
+        02人体动作识别
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/03%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        03小程序
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    简单的二进制调制 - 一次一个位！
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io/edit/main/docs/ESP32/数字调制.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">数字调制</h1>
+<p>本讲座将介绍如何通过调制载波波形来以数字形式传输信息。数字调制方法与模拟传输相比具有多个优点，使高级信号处理成为可能（如纠错编码，加密和多样性）。</p>
+<p>常用的窄带数字调制有：</p>
+<ul>
+<li>二进制相移键控（BPSK）</li>
+<li>BPSK与脉冲整形</li>
+<li>BPSK在移动蜂窝信道中的误码率</li>
+<li>正交相移键控（QPSK）</li>
+<li>QAM（PDF幻灯片实施）</li>
+<li>连续相移键控</li>
+<li>G-MSK，例如在GSM中应用</li>
+<li>其他方法是</li>
+<li>多载波传输，特别是OFDM和多载波CDMA</li>
+<li>直接序列CDMA</li>
+</ul>
+<p>多径衰落 Multipath Fading
+多径传播 Multipath propagation
+Inter Symbol Interference (ISI)</p>
+<p>虽然这个过程被称为<em>数字调制</em>（DM），但它通常涉及某种形式的AM和/或FM或PM。因此，数字调制应被视为描述AM / FM / PM可用于以信息的“比特”模式传送信息的方式。原则上，可以使用相同形式的调制器或解调器，因为当使用AM / FM / PM发送“模拟”模式时。信息的数字表示的使用意味着我们现在必须处理有限的一组定义的信号幅度或相位或频率，而不是在模拟表示中出现的平滑变量值。 </p>
+<h2 id="-">简单的二进制调制 - 一次一个位！</h2>
+<p>数字调制的最简单的形式通过打开和关闭电路，表示一系列逻辑“1”和“0”。因此，它通常被称为<em>开关键控</em>（OOK）。</p>
+<p>（Key翻译为键控，这个术语可以追溯到“莫尔斯电码”的时代，当时使用称为Key“钥匙”的开关手动打开和关闭传输）。</p>
+<p>例如图1所示。在这里，通过使载波“关闭”（即，将其幅度减小到零）来表示“0”，并且通过使载波“开启”（即载波幅度<span class="arithmatex">\(A\)</span>）来表示“1” 。 
+<img alt="fig1.gif  -  29Kb" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/fig1.gif" /> 
+实际上，我们将传输的信号分成一系列定时的“块”，并用它们依次指示每个比特。因此，图1所示的例子显示了如果我们使用这种简单的开/关二进制方法发送一系列位“01011010”我们可能会得到什么。在每个时间块中使用的信号模式被称为<em>符号，</em>并且表示通过适当地打开或关闭信号来传达的一些信息。 </p>
+<p>图2放大了上述信号模式的一部分，所以我们可以更清楚地看到一些细节。我们可以看到，当它不是零时，每个符号都包含一个整数（在本例中为4）所选载频的周期。因此，如果我们使用例如10MHz的载波频率，那么在这个例子中，每个符号将具有<span class="arithmatex">\(4/10^7 = 0.4\mu s\)</span>的持续时间。</p>
+<p>每个符号的长度被称为<strong>有效符号宽度</strong>，<span class="arithmatex">\(T_s\)</span>。在连续符号之间我们也可具有短的“间隔”期间称为<strong>保护间隔</strong>，<span class="arithmatex">\(T_G\)</span>，这更清楚地从下一个分隔一个码元</p>
+<p><img alt="fig2.gif  -  24Kb" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/fig2.gif" /> 
+我们可以用代数术语来表示波形包含信号的开/关调制
+$$
+S{t}=a\sin(2\pi f t +\varphi)
+$$
+当<span class="arithmatex">\(a=A, \varphi=0\)</span>时发送的是“1” ，<span class="arithmatex">\(a=0, \varphi=0\)</span>时发送的是“0”。
+<img alt="fig3.gif  -  29Kb" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/fig3.gif" /> 
+开/关调制的一个简单的替代方法是在每个符号周期内具有载波功率的突发，但改变载波的相位以区分“1”和“0”。图19.3给出了一个例子。这种方法被称为<em>二进制相移键控</em>（BPSK）调制，并且通常优选简单的开/关方法。我们可以用两种不同的方式来表示。我们可以<strong>或者</strong>说是一个“0”，我们现在已经<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page1/Exp8.gif" />和“1”，我们有<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page1/Exp9.gif" />，<strong>或者</strong>我们可以说，一个“0”我们<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page1/Exp10.gif" />和“1”，我们有<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page1/Exp11.gif" />。即我们可以把调制看作是载体的倒置，或者是相位的变化。出于后面应该清楚的原因，将此视为载体阶段的变化是方便的。 起初，看起来奇怪的是更喜欢这种更复杂的调制方法。简单的开/关调制可以通过像包络检测器这样的廉价电路来容易地解调，但是为了解调BPSK，我们要求接收机检测信号相位的变化，而不是振幅。偏好的原因可以通过考虑我们传递信息模式需要多少力量来理解。 </p>
+<p>当信号被接收并提供给解调器时，所希望的信号将总是伴有一些随机噪声。因此，我们需要“0”信号与“1”信号之间的差异足够大，以便在噪声之上可识别。考虑到这一点，我们可以使用图19.4所示的类型图。 </p>
+<p><img alt="fig4.gif  -  11Kb" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/fig4.gif" /> </p>
+<p>图19.4左边的图显示了我们如何表示用来表示给定信息块的符号的幅度和相位。我们可以绘制载波的幅度，<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp1.gif" />相位<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp2.gif" />，以图形上的一个点表示一个符号。图19.4右边的曲线表示噪声对接收的影响。如果噪声的典型水平<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp3.gif" />由此表示，那么我们可以<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp4.gif" />在预期/传输位置周围绘制一个半径的圆。这表示由于噪声“移动”而导致接收符号可能出现的图上的区域。（请注意，实际随机噪声的影响比这里描述的要复杂得多。） </p>
+<p>现在我们可以用这种方法来画出图19.5所示的例子。19.5的左图显示了开/关调制的例子。我们可以看到，我们必须确保<span class="arithmatex">\(A&gt;2n\)</span>保持两个“噪音圈”的重叠，并避免接收时错误地解释符号。对于开/关调制来说，这意味着一种符号的幅度为零，另一种符号的幅度为<span class="arithmatex">\(A\)</span>) </p>
+<p><img alt="fig5.gif  -  13Kb" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/fig5.gif" /> </p>
+<p>然而，对于双相调制，我们可以使用与'1'相同幅度的'0'符号幅度。这在图19.5的右图中进行了说明。在这里我们可以看到，我们可以保持符号之间的相同的距离与符号幅度<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp7.gif" />和<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp8.gif" />。即BPSK只需要OOK所需的符号（信号）幅度的一半来避免结果被噪声干扰。 </p>
+<p>现在，对于具有大致相等数量的“0”和“1”的比特序列，开/关调制将具有幅度<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp9.gif" />，因此功率与<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp10.gif" />时间的一半成正比，幅度和功率为零的一半。因此，开/关调制的时间平均功率将与成比例<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp11.gif" />。而在双相调制中，每个符号的功率与之成正比<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp12.gif" />。即它需要一个平均的权力<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp13.gif" />。这意味着这两个系统可以传输相同级别的信号，但双相系统平均只需要一半的功率。这也意味着我们不必确保发射器和电路能够处理与开/关系统需要发送“1”一样高的峰值功率。 </p>
+<p>由于上述原因，双相调制比开/关调制功率更高。（这也意味着，如果我们使用与开关调制相同的功率，BPSK将提供更高水平的噪声保护）。缺点是我们需要更复杂的接收器来识别接收的相位信号。 </p>
+<p><strong>一次超过一个</strong>考虑到我们可以调制载波相位，现在我们可以考虑使用更复杂的调制形式，允许系统为不同的符号使用两个以上的可能载波相位 - 也可以选择多个载波振幅。 </p>
+<p>图19.6显示了使用<em>正交相移键控</em> （QPSK）调制。这与BPSK的相似之处在于所有符号具有相同的幅度，但是在这种情况下，我们有四个载波相位可供选择。由于我们现在有四个可能的符号，我们可以使用它们来表示每个符号多个位。实际上，我们现在可以一次传送多个位。每个可能的QPSK符号可以被“标记”并用来表示两个比特。 </p>
+<p><img alt="fig6.gif  -  30Kb" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/fig6.gif" /> </p>
+<p>看一下图19.6所示的QPSK的例子，我们可以看到四个不同的符号模式可以被隔开一个幅度<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp14.gif" />，但是由于我们现在正在以二维的方式进行这样的处理，所以载波的实际幅度将是相同的<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp15.gif" />。载波相位可以是四个值中的任何一个<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp16.gif" />。 </p>
+<p>另一种描述这种方式的方法是在表单中定义信号 </p>
+<p><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Num17.gif" /><img alt="方程" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Eqn17.gif" /> </p>
+<p>并说我们可以根据下面的表格来表示每个符号的比特对。 </p>
+<p>'00''01''10''11'<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp18.gif" /><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp19.gif" /><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp20.gif" /><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp21.gif" /><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp22.gif" /><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp23.gif" /><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp24.gif" /><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp25.gif" /><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp26.gif" /><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp27.gif" /></p>
+<p>需要注意的是QPSK提供每周两次的是BPSK提供符号信息，但它需要的信号幅度，<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp28.gif" />以从增加<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp29.gif" />至<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp30.gif" />。这意味着对于相同的<em>符号率</em>，QPSK的载波功率必须是BPSK的两倍。因此，我们必须提供双倍的权力，为信息能力的翻倍付出代价。 </p>
+<p>在发现我们可以使用一个符号来一次传送多个位的情况下，我们可以通过选择振幅和相位来扩展它。一个常见的例子是<em>正交幅度调制</em>（QAM）。这有不同的形式，一个典型的例子将被称为“16QAM”或“64QAM”，其中数字表示有多少个不同的符号可用。图19.7显示了一个例子。请注意，通常将以这种方式显示的符号阵列描述为符号值的<em>星座图</em>。 </p>
+<p><img alt="21Kb" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/fig7.gif" /> </p>
+<p>为了简单起见，我们可以考虑符号位置的“方形”阵列，所以我们可以预期这些符号的数量是整数的平方 - 即具有多个符号1,2,4,9 <img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp31.gif" />或16等，在星座。 </p>
+<p>图19.7中的例子是16QAM，因此有<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp32.gif" />4 <img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp33.gif" />4 = 16个符号。对于这样的阵列，离中心最远的位置（即，需要最大符号幅度的符号）的幅度将是<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp34.gif" />。传输这些最高幅度符号所需的载波功率将是 </p>
+<p><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Num35.gif" /><img alt="方程" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Eqn35.gif" /> </p>
+<p>其中，何时<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp36.gif" />相当大将近似于 </p>
+<p><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Num37.gif" /><img alt="方程" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Eqn37.gif" /> </p>
+<p>然而每符号的比特数，<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp38.gif" />与符号的数量而变化，<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp39.gif" />根据 </p>
+<p><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Num40.gif" /><img alt="方程" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Eqn40.gif" /> </p>
+<p>因此，我们可以预期，所要求的峰值载波功率将（大致）倾向于随着每个符号的位数而变化 </p>
+<p><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Num41.gif" /><img alt="方程" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Eqn41.gif" /> </p>
+<p>由于这个原因，QAM所需的峰值功率趋于急剧上升，因为我们希望每个符号传送更多的比特。因此，在实践中，我们可能会避免选择太高的价值<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp42.gif" />，因此<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page2/Exp43.gif" />。 </p>
+<p>为了能够每个符号间隔传送多个比特，我们可以决定使用多个“并行”的载波频率。实际上，使用多个同时传输，每个传输提供适度的信息速率，其结合提供更高的数据速率。以这种方式一起使用的一组调制载波被称为</p>
+<p>集合（Ensemble）</p>
+<p>。如果我们这样做，就会有一个巧妙的把戏，可以使这个方法特别有效。为了理解这一点，我们考虑一个典型符号的频谱。为了便于举例，我们可以在选择的符号间隔期间选择32个载波周期。如果我们只在符号间隔期间记录信号并计算出它的功率频谱，结果将如图19.8中的实线（蓝线）所示。 </p>
+<p><img alt="fig8.gif  -  24Kb" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/fig8.gif" /> </p>
+<p>现在，如果我们要求连续正弦曲线的频谱在很长时间（即基本无限）的时间间隔内延伸，那么频谱在适当的频率下将只有一个非零分量。从</p>
+<p>信息理论中，</p>
+<p>我们可以预期，将观察到的波形限制在一个有限的时间间隔内</p>
+<p>，会导致频谱扩大。结果是一个正弦平方，如图19.8所示。该频谱在该区间的32个周期的预期（载波）频率处具有峰值。但是要注意的是，在其他频率上也有零或零，对应于间隔为</p>
+<p>32的整数周期数。这种行为来自于</p>
+<p>正交函数</p>
+<p>。除了注意在这种情况下有用的具体结果之外，我们不会在这里讨论这个数学主题的细节。 </p>
+<p>考虑两种可能的具有不同载波频率的正弦波形， </p>
+<p><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page3/Num3.gif" /><img alt="方程" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page3/Eqn3.gif" /> </p>
+<p>在哪里</p>
+<p>，</p>
+<p>是整数。它可以从数学上，如果</p>
+<p>再 </p>
+<p><img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page3/Num7.gif" /><img alt="方程" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page3/Eqn7.gif" /> </p>
+<p>这是如此，无论我们可以选择的阶段</p>
+<p>，和</p>
+<p>。 </p>
+<p>实际结果如图19.8所示，它叠加了可能的载波频率的两个不同选择的功率谱，每个选择在所选符号间隔中具有整数个周期。断开的（红色）线显示符号的频谱，其载波频率为每个符号持续时间34个周期。可以看出，在除了34的符号周期期间，在所有频率上具有整数个周期的零。 </p>
+<p>如果我们现在同时使用两个载波作为并行QAM流，我们在我们的接收机/解调器中发现设计用于测量信号幅度和相位在一个频率上，</p>
+<p>，将不会受到另一个承运人的存在的影响，</p>
+<p>因为这在此不产生任何贡献</p>
+<p>。这个结果是非常重要的。这意味着我们可以选择同时传输一系列载波，并用它们自己的比特（信息）模式来调制它们中的每一个。通过选择一组</p>
+<p>正交</p>
+<p>载波频率，我们可以防止它们互相干扰，从而恢复它们携带的所有信息。我们必须遵守的要求是，我们选择一个有限的符号持续时间，</p>
+<p>然后选择所有的载波频率，这样它们在这个时间周期内有不同的整数个周期。 </p>
+<p>这个能力意味着我们可以传输100个载波，并且调制它们在给定时间内发送比发送一个调制载波多100倍的比特。这种技术被称为</p>
+<p>正交频分复用</p>
+<p>（OFDM）。更为常见的是，您将会看到这种被称为COFDM或</p>
+<p>编码的正交频分复用（Coded Orthogonal Frequency Division Multiplexing）</p>
+<p>，这是指系统在实践中被修改和使用的方式。COFDM是目前在英国用于“数字”电视和声音广播的基本调制和通信方法。 </p>
+<p><strong>多路径</strong></p>
+<p>无线电通信中的一个常见问题是<em>多路径</em>。如名称所示，这是信号可能通过多条路径从发射机传输到接收机的情况。例如，我们可以从发射机到接收机之间获得一条直线的信号路径，而通过山丘或高层建筑的反射可以获得另一条信号路径。当这些路径具有不同的长度时，它们对接收到的结果的贡献将以不同的传播延迟到达。这种情况如下面的图19.9所示。请注意，在实践中，可能会有许多这样的路径，以各种时间延迟和幅度给出贡献。为了简单起见，我们只考虑一个拖延的贡献。 
+<img alt="图9  -  27Kb" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/fig9.gif" /> 
+从图19.9可以看出，通过“反射”路径增加延迟贡献有两个结果。这些符号已经被扩展，现在有一个“尾巴”，由于反射的贡献在直接符号结束后的短时间内持续到达。接收到的结果的有效幅度和相位的变化量取决于路径之间的时间差。
+两条路径的长度我们可以调用<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page3/Exp14.gif" />（直接）和<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page3/Exp15.gif" />（间接）。这使我们能够定义它们的相对到达之间的时间延迟 
+<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page3/Num16.gif" /><img alt="方程" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page3/Eqn16.gif" /> 
+<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page3/Exp17.gif" />光的速度 在哪里？ 
+以上显示了<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page3/Exp18.gif" />在有用符号周期之间有一个保护间隔的原因<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page3/Exp19.gif" />。假设我们已经安排了，<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page3/Exp20.gif" />那么每个符号的延迟版本将在序列中的下一个符号开始到达之前完成。这防止了给定符号传输的模式影响我们在下一个符号周期中看到的内容。当一个符号模式干扰或者无意中改变我们希望发送给另一个模式的模式时，这被称为<em>符号间干扰</em>（ISI）。一般来说，我们希望避免ISI，因为这可能会使接收机难以正确解调符号。 
+因此，保护间隔的选择值对于避免数据丢失或多路径引起的错误非常重要。我们希望为此选择一个<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page3/Exp21.gif" />足够大的值，以避免反射超过<img alt="img" src="https://www.st-andrews.ac.uk/~www_pa/Scots_Guide/RadCom/part19/Images/page3/Exp22.gif" />- 或者至少我们希望确保任何迟到的反射将具有如此低的振幅以至于几乎没有影响以下符号模式的幅度和相位。 
+长保护间隔可以避免一个符号明显影响下一个符号，但多路径仍然可以改变接收到的符号的幅度和相位。为了帮助解决这个问题，我们可以插入一个所谓的<em>试点符号</em>或<em>参考符号</em>的规则模式**进入传输的流。这些还允许发射机通知接收机什么相位/幅度对应于给定的符号。实际上，这些导频或参考符号可以“校准”接收机，并有助于纠正多径效应。 </p>
+<p><strong>概要</strong></p>
+<p>您现在应该了解如何使用数字调制以一组预定义<em>符号的</em>形式传输“比特”流的信息。每个符号可以传送的比特数取决于所选调制方案中可用的不同符号的数量，就其明显的幅度和相位而言。还应该清楚的是，这些差别足以在可能存在的噪声上区分开来，并且所需的功率随着我们想要每个符号更多的比特而增加。您现在也应该明白，我们可以使用<em>正交</em>载波集来提供可以被调制和检测的“并行”流，而不会相互干扰，从而提高了信息传输的总速率。 </p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../%E5%BE%A1%20Air%202%20%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 御 Air 2 新手教程" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              御 Air 2 新手教程
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../%E6%A0%91%E8%8E%93%E6%B4%BE%20Google%20Assistant/" class="md-footer__link md-footer__link--next" aria-label="下一页: 树莓派 Google Assistant" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              树莓派 Google Assistant
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020-2021 mekesim.com <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">浙ICP备10045952号-5</a>
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

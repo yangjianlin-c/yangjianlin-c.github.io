@@ -6,13 +6,13 @@ Flotherm软件中有全局坐标系，而每个器件又有自己的坐标系，
 
 在Edit -- User Preferences （`F11`）面板中可以设置是否显示全局坐标系和对象的局部坐标系。
 
-![image-20211214140012411](assets/image-20211214140012411.png)
+![image-20211214140012411](http://cdn.mekesim.com/assets/image-20211214140012411.png)
 
 ## 对象Location属性面板中的坐标
 
 对象Location属性面板中的坐标为全局坐标。如下图，Cuboid对象的局部坐标和全局坐标系不一致，但是在Position和Size中的数值是按照全局坐标系来的。
 
-![image-20211214140325324](assets/image-20211214140325324.png)
+![image-20211214140325324](http://cdn.mekesim.com/assets/image-20211214140325324.png)
 
 !!! warning 注意
 
@@ -27,13 +27,13 @@ Assembly和其中对象的的坐标系关系比较麻烦，有两种方式定义
 
 这里建议还是以软件的默认选项Absolute Coordinates设置。如果采用相对坐标系，一层层Assembly套嵌下去，最后对象的位置可能令人发狂。
 
-![image-20211214213327120](assets/image-20211214213327120.png)
+![image-20211214213327120](http://cdn.mekesim.com/assets/image-20211214213327120.png)
 
 ## 对象网格约束的坐标系
 
 在对象的网格约束中，是按照对象的局部坐标系来定义的。如下图，给对象的Z0网格约束选项设置为Minimum Number为2，结果可以看到它是将局部坐标系的Z向划分成了两个网格。
 
-![image-20211214140813791](assets/image-20211214140813791.png)
+![image-20211214140813791](http://cdn.mekesim.com/assets/image-20211214140813791.png)
 
 ## 材料属性中的坐标系
 
@@ -45,4 +45,4 @@ Assembly和其中对象的的坐标系关系比较麻烦，有两种方式定义
 
 快捷键 `i` 可以查看对象的汇总信息，这里可以检查对象的各顶点是否有网格。如下图，提示对象的 X High和Z Low 方向上没有网格。结合下图可以看到，这里提示信息使用的是全局坐标系。
 
-![image-20211214142129886](assets/image-20211214142129886.png)
+![image-20211214142129886](http://cdn.mekesim.com/assets/image-20211214142129886.png)

@@ -1,0 +1,2860 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="文档">
+      
+      
+      
+        <meta name="author" content="Colin Yang">
+      
+      
+        <link rel="canonical" href="http://www.mekesim.com/doc/ESP32/VS-code/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>VS Code and PlatformIO IDE for ESP32 and ESP8266 Arudino platform code introduction - 米克网</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-40504642-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vs-code-and-platformio-ide-for-esp32-and-esp8266-arudino-platform-code-introduction" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="米克网" class="md-header__button md-logo" aria-label="米克网" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            米克网
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              VS Code and PlatformIO IDE for ESP32 and ESP8266 Arudino platform  code introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Mekesim Documents
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Arduino/" class="md-tabs__link">
+        Arduino
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../02%EF%BC%9A%E4%B8%80%E6%96%87%E5%85%A8%E8%A7%A3%EF%BC%9A%E5%88%A9%E7%94%A8%E8%B0%B7%E6%AD%8C%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6Tensorflow%E8%AF%86%E5%88%AB%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E5%9B%BE%E7%89%87%EF%BC%88%E5%88%9D%E5%AD%A6%E8%80%85%E7%AF%87%EF%BC%89/" class="md-tabs__link md-tabs__link--active">
+        ESP32
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Flotherm/Bn%20and%20Sn/" class="md-tabs__link">
+        Flotherm
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Flotherm%20XT/Flotherm%20XT%20EDA%20Bridge/" class="md-tabs__link">
+        Flotherm XT
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Products/MK2101/" class="md-tabs__link">
+        Products
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ml5/01%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="md-tabs__link">
+        Ml5
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="米克网" class="md-nav__button md-logo" aria-label="米克网" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    米克网
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Mekesim Documents
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Arduino
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Arduino" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Arduino
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20%E8%B6%85%E5%A3%B0%E6%B3%A2%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        超声波传感器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Car-basic/" class="md-nav__link">
+        Arduino控制小车
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/I2C%20Sanner/" class="md-nav__link">
+        I2C Sanner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/L298N/" class="md-nav__link">
+        L298N
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          ESP32
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ESP32" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          ESP32
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02%EF%BC%9A%E4%B8%80%E6%96%87%E5%85%A8%E8%A7%A3%EF%BC%9A%E5%88%A9%E7%94%A8%E8%B0%B7%E6%AD%8C%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6Tensorflow%E8%AF%86%E5%88%AB%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E5%9B%BE%E7%89%87%EF%BC%88%E5%88%9D%E5%AD%A6%E8%80%85%E7%AF%87%EF%BC%89/" class="md-nav__link">
+        02：一文全解：利用谷歌深度学习框架Tensorflow识别手写数字图片（初学者篇）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8BESP32%20Arduino/" class="md-nav__link">
+        10分钟上手ESP32 Arduino
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AD/" class="md-nav__link">
+        ESP32 AD输入
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADXL345%E5%8A%A0%E9%80%9F%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        总览
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Ansys%20Fail%20to%20Open/" class="md-nav__link">
+        ANSYS过段时间出现License错误的解决办法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arduino%20%E4%BD%BF%E7%94%A8Thermal%20Coupler/" class="md-nav__link">
+        Arduino 使用Thermal Coupler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arduino/" class="md-nav__link">
+        Arduino
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CDMA%20Demostration/" class="md-nav__link">
+        CDMA code spreading demostrate with Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Centos%20Python3/" class="md-nav__link">
+        Centos安装Python3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Doherty%20Amplifier/" class="md-nav__link">
+        Doherty Amplifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP-EYE/" class="md-nav__link">
+        ESP EYE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP-NOW/" class="md-nav__link">
+        ESP NOW
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20CAM%20Face/" class="md-nav__link">
+        ESP32 CAM Face
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20Connect%20Wifi/" class="md-nav__link">
+        ESP32 连接Wifi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20GPIO/" class="md-nav__link">
+        ESP32 Arduino GPIO 使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20MQTT/" class="md-nav__link">
+        ESP32 使用MQTT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20use%20MAX31855/" class="md-nav__link">
+        ESP32 温度测量仪
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        ESP32 功能介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        ESP32 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        ESP32 测试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%E4%BC%91%E7%9C%A0/" class="md-nav__link">
+        ESP32睡眠
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%E4%BD%BF%E7%94%A8%E5%8F%8C%E6%A0%B8FreeRTOS%E5%92%8CArduino%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+        ESP32使用双核FreeRTOS和Arduino环境
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ETS300753%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        ETS 300753 解读
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FFT/" class="md-nav__link">
+        FFT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FOTA/" class="md-nav__link">
+        FOTA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Facenet%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        FaceNet 使用实例介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Gat%20Data%20from%20Picture%20Curve/" class="md-nav__link">
+        Get Data from Picture Curve
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../How%20to%20Add%20High%20Quality%20Matlab%20Graphics%20in%20Latex/" class="md-nav__link">
+        How to Add High Quality Matlab Graphics in Latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hugo%20on%20VPS%20with%20Git/" class="md-nav__link">
+        Hugo on VPS with Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Inlation%20Mesh/" class="md-nav__link">
+        在局部网格上设置通胀有什么好处？
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Insert%20Matlab%20Figure%20into%20Latex/" class="md-nav__link">
+        Insert Matlab Figure into Latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Interesting%20Things/" class="md-nav__link">
+        Interesting DIY Things
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LED%E6%95%A3%E7%83%AD%E6%8A%80%E6%9C%AF%E6%96%B0%E5%8A%A8%E5%90%91/" class="md-nav__link">
+        LED散热技术新动向
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MAX31855/" class="md-nav__link">
+        MAX31855开发板使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MPU6050%E5%8A%A0%E9%80%9F%E5%BA%A6%E8%AE%A1%20%E9%99%80%E8%9E%BA%E4%BB%AA%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        MPU6050加速度计 陀螺仪传感器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OFDM/" class="md-nav__link">
+        OFDM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PA%20%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        PA模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Polar%E7%BC%96%E7%A0%81/" class="md-nav__link">
+        Polar编码
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PowerPAD%20Packages/" class="md-nav__link">
+        PowerPAD Packages
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Proe%20Layer/" class="md-nav__link">
+        Tips about using Layer in Creo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QFN/" class="md-nav__link">
+        QFN Package
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Quality%20Basic%20Terms/" class="md-nav__link">
+        Quality Basic Terms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sverchok%E4%B8%AD%E7%9A%84Bloom%20Spheres/" class="md-nav__link">
+        Sverchok中的Bloom Spheres
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TIM/" class="md-nav__link">
+        固态界面材料热特性测量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tensorflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="md-nav__link">
+        Tensorflow学习笔记1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Thermal%20Impedance/" class="md-nav__link">
+        Thermal Impedance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Use%20flogate_cl%20Command%20convert%20xml%20to%20pdml/" class="md-nav__link">
+        Use flogate_cl Command convert xml to pdml
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VL6180X%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+        VL6180X测距
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          VS Code and PlatformIO IDE for ESP32 and ESP8266 Arudino platform  code introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        VS Code and PlatformIO IDE for ESP32 and ESP8266 Arudino platform  code introduction
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-vs-code" class="md-nav__link">
+    Installing VS Code
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing VS Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-python-on-windows" class="md-nav__link">
+    Installing Python on Windows
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-platformio-ide-extension-on-vs-code" class="md-nav__link">
+    Installing PlatformIO IDE Extension on VS Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs-code-quick-interface-overview" class="md-nav__link">
+    VS Code Quick Interface Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platformio-ide-overview" class="md-nav__link">
+    PlatformIO IDE Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="PlatformIO IDE Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-project" class="md-nav__link">
+    Create a New Project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#platformioini-file" class="md-nav__link">
+    platformio.ini file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src-folder" class="md-nav__link">
+    src folder
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploading-code-using-platformio-ide-esp32esp8266" class="md-nav__link">
+    Uploading Code using PlatformIO IDE: ESP32/ESP8266
+  </a>
+  
+    <nav class="md-nav" aria-label="Uploading Code using PlatformIO IDE: ESP32/ESP8266">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detect-com-port" class="md-nav__link">
+    Detect COM Port
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-the-serial-monitor-baud-rate-platformio-ide" class="md-nav__link">
+    Changing the Serial Monitor Baud Rate – PlatformIO IDE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-esp32esp8266-libraries-on-platformio-ide" class="md-nav__link">
+    Installing ESP32/ESP8266 Libraries on PlatformIO IDE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-a-project-folder" class="md-nav__link">
+    Open a Project Folder
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs-code-color-themes" class="md-nav__link">
+    VS Code Color Themes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shortcuts-list" class="md-nav__link">
+    Shortcuts’ List
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    Wrapping Up
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edgeimpulse/" class="md-nav__link">
+        Edgeimpulse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../esp32%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+        Esp32开发环境
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../face_recognition%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        face_recognition windows 安装使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flask_socketio_echarts/" class="md-nav__link">
+        Flask socketio echarts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git%20proxy/" class="md-nav__link">
+        Github Desktop 设置代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hello-world/" class="md-nav__link">
+        Hello World
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../icepak%20tips/" class="md-nav__link">
+        Icepak Tips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iphone/" class="md-nav__link">
+        iPhone 4 热分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../latextools/" class="md-nav__link">
+        Latextools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib_Chinese/" class="md-nav__link">
+        python matplotlib 支持中文标题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meke%E6%9C%9F%E5%88%8A/" class="md-nav__link">
+        风扇设计与选型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdoc%20github/" class="md-nav__link">
+        Mkdoc github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rasp_pi_installation/" class="md-nav__link">
+        Rasp pi installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shadowsocks_pi/" class="md-nav__link">
+        在树莓派上安装 shadowsocks 客户端
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wemos/" class="md-nav__link">
+        Wemos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BF%A1%E9%81%93%E7%BC%96%E7%A0%81%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" class="md-nav__link">
+        信道编码的前世今生
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8A%A8%E7%89%A9%E7%8E%8B%E5%9B%BD%E5%BC%80%E5%A4%A7%E4%BC%9A/" class="md-nav__link">
+        动物王国开大会
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+        卡尔曼滤波
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BA%E6%80%81%E7%95%8C%E9%9D%A2%E6%9D%90%E6%96%99%E7%83%AD%E7%89%B9%E6%80%A7%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        固态界面材料热特性测量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E8%A1%A8highcharts%E8%81%94%E5%90%88jquery%20ajax%20%E5%90%8E%E7%AB%AF%E5%8F%96%E6%95%B0%E6%8D%AE%E5%89%8D%E7%AB%AF%E5%9B%BE%E8%A1%A8%E6%B8%B2%E6%9F%93/" class="md-nav__link">
+        图表highcharts联合jquery ajax 后端取数据前端图表渲染
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" class="md-nav__link">
+        工具合集
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%BE%A1%20Air%202%20%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        御 Air 2 新手教程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        数字调制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A0%91%E8%8E%93%E6%B4%BE%20Google%20Assistant/" class="md-nav__link">
+        树莓派 Google Assistant
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A0%91%E8%8E%93%E6%B4%BEAI%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        树莓派AI工具
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B8%A9%E7%AE%B1%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        无线控制温箱
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%83%AD%E5%8A%9B%E5%AD%A6%E5%90%8D%E8%AF%8D/" class="md-nav__link">
+        热力学名词
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%94%B5%E8%A7%A3%E8%B4%A8%E7%94%B5%E5%AE%B9%E5%A4%B1%E6%95%88/" class="md-nav__link">
+        Tips about using Layer in Creo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%A6%E5%8F%B7%E9%97%B4%E5%B9%B2%E6%89%B0%E4%B8%8E%E5%BE%AA%E7%8E%AF%E5%89%8D%E7%BC%80/" class="md-nav__link">
+        符号间干扰(ISI)与循环前缀(CP)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BA%A2%E5%A4%96%E7%83%AD%E5%83%8F%E4%BB%AA%E5%8F%91%E5%B0%84%E7%8E%87%E7%A1%AE%E5%AE%9A%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        红外热像仪发射率确定方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%88%9E%E5%8F%B0%E5%89%A7%E8%8D%B7%E5%8F%B6%E5%9C%86%E5%9C%86%E8%84%9A%E6%9C%AC/" class="md-nav__link">
+        舞台剧荷叶圆圆脚本
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        无线通信基础之：调制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%95%BF%E5%B9%B3%E4%B9%8B%E6%88%98/" class="md-nav__link">
+        长平之战
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_83" type="checkbox" id="__nav_3_83" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_83">
+          Sensor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Sensor" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_83">
+          <span class="md-nav__icon md-icon"></span>
+          Sensor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor/sensor%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+        Sensor滤波
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor/%E6%8C%89%E9%94%AE%E6%B6%88%E6%8A%96/" class="md-nav__link">
+        按键消抖
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_84" type="checkbox" id="__nav_3_84" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_84">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_84">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools/01abc/" class="md-nav__link">
+        01abc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Flotherm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Flotherm" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Flotherm
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Bn%20and%20Sn/" class="md-nav__link">
+        Bn and Sn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Fan/" class="md-nav__link">
+        关于风扇
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/FloSCRIPT%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        FloSCRIPT使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/FloScript/" class="md-nav__link">
+        FloScript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Floterm-PCB-Vias-%E6%A8%A1%E6%8B%9F/" class="md-nav__link">
+        Floterm PCB Vias 模拟
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20Tips/" class="md-nav__link">
+        Flotherm Tips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20batch%20mode/" class="md-nav__link">
+        批处理模式运行Flotherm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20%E6%A8%A1%E6%8B%9F%E6%95%A3%E7%83%AD%E5%99%A8%E7%9A%84%E5%BB%BA%E8%AE%AE/" class="md-nav__link">
+        Flotherm 模拟散热器的建议
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E4%B8%AD%E5%8A%A0%E5%85%A5%E7%83%AD%E7%AE%A1%E6%A8%A1%E5%9E%8B%E5%90%8E%E6%94%B6%E6%95%9B%E5%9B%B0%E9%9A%BE/" class="md-nav__link">
+        Flotherm中加入热管模型后收敛困难
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E4%B8%AD%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB/" class="md-nav__link">
+        Flotherm中的坐标系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E6%9D%82%E9%A1%B9/" class="md-nav__link">
+        Flotherm杂项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E8%BE%90%E5%B0%84/" class="md-nav__link">
+        Flotherm中加入热管模型后收敛困难
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/TIM%E5%BB%BA%E6%A8%A1/" class="md-nav__link">
+        TIM建模
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/solar/" class="md-nav__link">
+        FloTHERM中模拟太阳辐射
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E4%BD%BF%E7%94%A8JEDEC%E7%83%AD%E5%BA%A6%E9%87%8F%E8%AE%A1%E7%AE%97%E8%8A%AF%E7%89%87%E6%B8%A9%E5%BA%A6%E6%97%A0%E9%99%84%E5%8A%A0%E6%95%A3%E7%83%AD%E5%99%A8/" class="md-nav__link">
+        使用JEDEC热度量计算芯片温度（无附加散热器）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E5%85%B1%E8%BD%AD%E4%BC%A0%E7%83%AD/" class="md-nav__link">
+        共轭传热
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E5%9B%BA%E4%BD%93%E5%86%85%E9%83%A8%E7%83%AD%E6%B5%81%E5%9B%BE/" class="md-nav__link">
+        01 固体内部热流图
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Flotherm XT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Flotherm XT" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Flotherm XT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm%20XT/Flotherm%20XT%20EDA%20Bridge/" class="md-nav__link">
+        Flotherm XT EDA Bridge
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Products
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Products" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Products
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Products/MK2101/" class="md-nav__link">
+        MK2101
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Ml5
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ml5" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ml5
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/01%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        01图像分类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/02%E4%BA%BA%E4%BD%93%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB/" class="md-nav__link">
+        02人体动作识别
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/03%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        03小程序
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-vs-code" class="md-nav__link">
+    Installing VS Code
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing VS Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-python-on-windows" class="md-nav__link">
+    Installing Python on Windows
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-platformio-ide-extension-on-vs-code" class="md-nav__link">
+    Installing PlatformIO IDE Extension on VS Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs-code-quick-interface-overview" class="md-nav__link">
+    VS Code Quick Interface Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platformio-ide-overview" class="md-nav__link">
+    PlatformIO IDE Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="PlatformIO IDE Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-project" class="md-nav__link">
+    Create a New Project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#platformioini-file" class="md-nav__link">
+    platformio.ini file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src-folder" class="md-nav__link">
+    src folder
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploading-code-using-platformio-ide-esp32esp8266" class="md-nav__link">
+    Uploading Code using PlatformIO IDE: ESP32/ESP8266
+  </a>
+  
+    <nav class="md-nav" aria-label="Uploading Code using PlatformIO IDE: ESP32/ESP8266">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detect-com-port" class="md-nav__link">
+    Detect COM Port
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-the-serial-monitor-baud-rate-platformio-ide" class="md-nav__link">
+    Changing the Serial Monitor Baud Rate – PlatformIO IDE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-esp32esp8266-libraries-on-platformio-ide" class="md-nav__link">
+    Installing ESP32/ESP8266 Libraries on PlatformIO IDE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-a-project-folder" class="md-nav__link">
+    Open a Project Folder
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs-code-color-themes" class="md-nav__link">
+    VS Code Color Themes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shortcuts-list" class="md-nav__link">
+    Shortcuts’ List
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    Wrapping Up
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io/edit/main/docs/ESP32/VS-code.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="vs-code-and-platformio-ide-for-esp32-and-esp8266-arudino-platform-code-introduction">VS Code and PlatformIO IDE for ESP32 and ESP8266 Arudino platform  code introduction</h1>
+<p>In this article, we will introduce how to program the ESP32 and ESP8266 boards using VS Code with PlatformIO IDE.</p>
+<p><img alt="Getting Started with VS Code and PlatformIO IDE for ESP32 and NodeMCU ESP8266 boards: Windows, Mac OS X, Linux Ubuntu" src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/Getting-Started-Visual-Studio-VS-Code-PlatformIO-IDE-ESP32-ESP8266-NodeMCU-Windows-Mac-OS-X-Linux-Ubuntu.jpg?resize=828%2C466&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>The Arduino IDE works great for small applications. However, for advanced projects with more than 200 lines of code, multiple files, and other advanced features like auto completion and error checking, VS Code with the PlatformIO IDE extension is the best alternative.</p>
+<p>In this tutorial, we’ll cover the following topics:</p>
+<ul>
+<li>Installing VS Code (Visual Studio Code):</li>
+<li>Installing PlatformIO IDE Extension on VS Code</li>
+<li>Visual Studio Quick Interface Overview</li>
+<li>PlatformIO IDE Overview</li>
+<li>Uploading Code using PlatformIO IDE: ESP32/ESP8266</li>
+<li>Changing the Serial Monitor Baud Rate – PlatformIO IDE</li>
+<li>Installing Libraries on PlatformIO IDE</li>
+</ul>
+<h2 id="installing-vs-code">Installing VS Code</h2>
+<p>Go to <a href="https://code.visualstudio.com/">Visual Studio Code</a> and download the stable build for your operating system (Windows).</p>
+<p><img alt="" src="C:\Project\Website\docs\docs\esp32\images\2021-06-05-10-17-00-image.png" /></p>
+<p>Click on the installation wizard to start the installation and follow all the steps to complete the installation.</p>
+<p>Make sure click <code>Add to PATH</code> option, and click <strong>Next</strong>. </p>
+<p><img alt="Microsoft Visual Studio Code VS Code Installation wizard step 2" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/3-Install-VS-Code.png?resize=598%2C464&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>Then follow the wizard complete the installation.</p>
+<p>Open VS Code and you’ll be greeted by a Welcome tab with the released notes of the newest version.</p>
+<p><img alt="Microsoft Visual Studio Code VS Code Installation wizard welcome screen on a Windows PC" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/VS-Code-Welcome-Screen.png?resize=828%2C617&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>That’s it. Visual Studio Code was successfully installed.</p>
+<h3 id="installing-python-on-windows">Installing Python on Windows</h3>
+<p>To program the ESP32 and ESP8266 boards with PlatformIO IDE you need Python 3.5 or higher installed in your computer. We’re using Python 3.8.5.</p>
+<p>Go to <a href="https://python.org/download">python.org/download</a> and download Python 3.8.5 or a newest version.</p>
+<p>Open the downloaded file to start the Python installation wizard.</p>
+<p>The following window shows up.</p>
+<p><img alt="Installing Python 3.8.5 on a Windows PC and Add to Path" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/Install-Python-Add-to-path.png?resize=666%2C410&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p><strong>IMPORTANT: Make sure you check the option Add Python 3.8 to PATH.</strong> Then, you can click on the <strong>Install Now</strong> button.</p>
+<p>When the installation is successful you’ll get the following message.</p>
+<p><img alt="Python Installation successful on Windows PC" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/Python-Installation-successful.png?resize=666%2C410&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>You can click the <strong>Close</strong> button.</p>
+<h2 id="installing-platformio-ide-extension-on-vs-code">Installing PlatformIO IDE Extension on VS Code</h2>
+<p>It is possible to program the <a href="https://randomnerdtutorials.com/projects-esp32/">ESP32</a> and <a href="https://randomnerdtutorials.com/projects-esp8266/">ESP8266</a> boards using VS Code with the PlatformIO IDE extension. Follow the next steps to install the PlatformIO IDE extension.</p>
+<p>Open VS Code:</p>
+<ol>
+<li>Click on the <strong>Extensions</strong> icon or press <strong>Ctrl</strong>+<strong>Shift</strong>+<strong>X</strong> to open the <strong>Extensions</strong> tab</li>
+<li>Search for “<strong>PlatformIO IDE</strong>”</li>
+<li>Select the first option</li>
+<li>Finally, click the <strong>Install</strong> button (Note: the installation may take a few minutes)</li>
+</ol>
+<p><img alt="Install PlatformIO IDE Extension on VS Code" src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/Install-Platformio-Extension-VS-Code.png?resize=828%2C457&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>After installing, make sure that PlatformIO IDE extension is enabled as shown below.</p>
+<p><img alt="PlatformIO IDE Extension Enabled on VS Code" src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/Platformioextension-enabled.png?resize=828%2C247&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>After that, the PlatformIO icon should show up on the left sidebar as well as an <strong>Home</strong> icon that redirects you to PlatformIO home.</p>
+<p><img alt="PlatformIO Extension Installed Successfully" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-extension-installed-successfully.png?resize=828%2C533&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>That’s it, PlatformIO IDE extension was successfully added to VS Code.</p>
+<p>If you don’t see the <strong>PIO</strong> icon and the quick tools at the bottom, you may need to restart VS code for the changes to take effect.</p>
+<p>Either way, we recommend restarting VS Code before proceeding.</p>
+<h2 id="vs-code-quick-interface-overview">VS Code Quick Interface Overview</h2>
+<p>Open VS Code. The following print screen shows the meaning of each icon on the left sidebar and its shortcuts:</p>
+<p><img alt="VS Code Visual Studio Application Interface Overview" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/VS-Code-Interface-Overview.png?resize=828%2C457&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<ul>
+<li>File explorer</li>
+<li>Search across files</li>
+<li>Source code management (using gist)</li>
+<li>Launch and debug your code</li>
+<li>Manage extensions</li>
+</ul>
+<p>Additionally, you can press <strong>Ctrl</strong>+<strong>Shift</strong>+<strong>P</strong> or go to <strong>View</strong> &gt; <strong>Command Palette…</strong> to show all the available commands. If you’re searching for a command and you don’t know where it is or its shortcut, you just need to go to the Command Palette and search for it.</p>
+<p>At the bottom, there’s a blue bar with PlatformIO commands.</p>
+<p><img alt="PlatformIO IDE extension Quick Tools Icons" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-Quick-Tools-Icons.png?resize=183%2C20&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>Here’s the what icon does from left to right:</p>
+<ul>
+<li>PlatformIO Home</li>
+<li>Build/Compile</li>
+<li>Upload</li>
+<li>Clean</li>
+<li>Serial Monitor</li>
+<li>New Terminal</li>
+</ul>
+<p>If you hover your mouse over the icons, it will show what each icon does.</p>
+<p>Alternatively, you can also click on the PIO icon to see all the PlatformIO tasks. </p>
+<p><img alt="PlatformIO IDE extension Tasks menu" src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-Tasks.png?resize=820%2C501&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>If the tasks don’t show up on your IDE when you click the icon, you may need to click on the three dot icon at the top and enable PlatformIO tasks as shown below.</p>
+<p><img alt="Enable PlatformIO IDE extension tasks" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/Enable-PlatformIO-Tasks.png?resize=828%2C508&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<h2 id="platformio-ide-overview">PlatformIO IDE Overview</h2>
+<p>For you to get an overview on how PlatformIO works on VS code, we’ll show you how to create, save and upload a “Blinking LED” sketch to your ESP32 or ESP8266 board.</p>
+<h3 id="create-a-new-project">Create a New Project</h3>
+<p>On VS Code, click on the PlartfomIO <strong>Home</strong> icon. Click on <strong>+ New Project</strong> to start a new project.</p>
+<p><img alt="Create New Project PlatformIO VS Code" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-Create-New-Project.png?resize=828%2C356&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>Give your project a name (for example <em>Blink_LED</em>) and select the board you’re using. In our case, we’re using the <a href="https://makeradvisor.com/tools/esp32-dev-board-wi-fi-bluetooth/">DOIT ESP32 DEVKIT V1</a>. The Framework should be “<strong>Arduino</strong>” to use the Arduino core.</p>
+<p>You can choose the default location to save your project or a custom location.</p>
+<p>The default location is in this path <em>Documents</em> &gt;<em>PlatformIO</em> &gt;<em>Projects</em>. For this test, you can use the default location. Finally, click “Finish”.</p>
+<p><img alt="PlatformIO with VS Code Create New ESP32 Project" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-Create-New-Project-ESP32.png?resize=598%2C470&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>For this example, we’ll be using the <a href="https://makeradvisor.com/tools/esp32-dev-board-wi-fi-bluetooth/">DOIT ESP32 DEVKIT board</a>. If you are using an <a href="https://makeradvisor.com/tools/esp32-dev-board-wi-fi-bluetooth/">ESP8266 NodeMCU board</a> the process is very similar, you just need to select your ESP8266 board:</p>
+<p><img alt="PlatformIO IDE extension with VS Code Create New ESP8266 Project" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-Create-New-Project-ESP8266.png?resize=602%2C472&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>The Blink_LED project should be accessible from the Explorer tab.</p>
+<p><img alt="PlatformIO IDE Extension Project Folder Structure" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatfomIO-project-created-folder-structure.png?resize=828%2C338&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>VS Code and PlatformIO have a folder structure that is different from the standard <em>.ino</em> project. If you click on the Explorer tab, you’ll see all the files it created under your project folder. It may seem a lot of files to work with. But, don’t worry, usually you’ll just need to deal with one or two of those files.</p>
+<p><strong>Warning:</strong> you shouldn’t delete, modify or move the folders and the <em>platformio.ini</em> file. Otherwise, you will no longer be able to compile your project using PlatformIO.</p>
+<h3 id="platformioini-file">platformio.ini file</h3>
+<p>The <em>platformio.ini</em> file is the PlatformIO Configuration File for your project. It shows the platform, board, and framework for your project. You can also add other configurations like libraries to be included, upload options, changing the Serial Monitor baud rate and other configurations.</p>
+<p><img alt="PlatformIO IDE extension Configuration File for ESP32" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-Config-init-file-ESP32.png?resize=820%2C330&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<ul>
+<li><strong>platform</strong>: which corresponds to the SoC used by the board.</li>
+<li><strong>board</strong>: the development board you’re using.</li>
+<li><strong>framework</strong>: the software environment that will run the project code.</li>
+</ul>
+<p>With the ESP32 and ESP8266, if you want to use a baud rate of 115200 in your Serial Monitor, you just need to add the following line to your <em>platformio.ini</em> file.</p>
+<div class="highlight"><pre><span></span><code><span class="n">monitor_speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">115200</span><span class="w"></span>
+</code></pre></div>
+<p>After that, make sure you save the changes made to the file by pressing <strong>Ctrl</strong>+<strong>S</strong>.</p>
+<p>In this file, you can also include the identifier of libraries you’ll use in your project using the lib_deps directive, as we’ll see later.</p>
+<h3 id="src-folder">src folder</h3>
+<p>The <em>src</em> folder is your working folder. Under the <em>src</em> folder, there’s a <em>main.cpp</em> file. That’s where you write your code. Click on that file. The structure of an Arduino program should open with the setup() and loop() functions.</p>
+<p><img alt="PlatformIO IDE extension main.cpp file under src folder" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-scr-folder-main-file.png?resize=828%2C286&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>In PlatformIO, all your Arduino sketches should start with the #include <Arduino.h>.</p>
+<h2 id="uploading-code-using-platformio-ide-esp32esp8266">Uploading Code using PlatformIO IDE: ESP32/ESP8266</h2>
+<p>Copy the following code to your <em>main.cpp</em> file. </p>
+<div class="highlight"><pre><span></span><code><span class="cm">/*********  Rui Santos  Complete project details at https://RandomNerdTutorials.com/vs-code-platformio-ide-esp32-esp8266-arduino/*********/</span><span class="w"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define LED 2</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// put your setup code here, to run once:</span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// put your main code here, to run repeatedly:</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;LED is on&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;LED is off&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>This code blinks the on-board LED every second. It works with the ESP32 and ESP8266 boards (both have the on-board LED connected to GPIO 2). </p>
+<p>We recommend that you copy this code manually, so that you see the autocompletion and other interesting features of the IDE in action. Additionally, if you have a syntax error somewhere in your program, it will underline it in red even before compiling.</p>
+<p>After that, press <strong>Ctrl</strong>+<strong>S</strong> or go to <strong>File</strong> &gt; <strong>Save</strong> to save the file.</p>
+<p>Now, you can click on the Upload icon to compile and upload the code. Alternatively, you can go to the PIO Project Tasks menu and select <strong>Upload</strong>.</p>
+<p><img alt="Upload Code ESP32 board PlatformIO VS Code Visual Studio" src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/Upload-Code-ESP32-PlatformIO-VS-Code.png?resize=828%2C379&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>If the code is successfully uploaded, you should get the following message.</p>
+<p><img alt="Upload Code to ESP32 PlatformIO VS Code Success" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/Upload-Code-ESP32-PlatformIO-VS-Code-Success.png?resize=828%2C595&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>After uploading the code, the ESP32 or ESP8266 should be blinking its on-board LED every second.</p>
+<p><img alt="ESP32 board Built in LED turned on HIGH" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/04/ESP32-board-Built_in-LED-turned-on-HIGH.jpg?resize=750%2C422&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>Now, click on the Serial Monitor icon and you should see it printing the current LED state.</p>
+<p><img alt="PlatformIO IDE VS Code Visual Studio Serial Monitor ESP32 board" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/Platformio-VS-Code-Serial-Monitor-ESP32.png?resize=828%2C428&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p><strong>Note:</strong> if you don’t see the Terminal window, go to the menu Terminal &gt; New Terminal.</p>
+<h3 id="detect-com-port">Detect COM Port</h3>
+<p>PlatformIO will automatically detect the port your board is connected to. To check the connected devices you can go to the <strong>PIO Home</strong> and click the <strong>Devices</strong> icon.</p>
+<p><img alt="PlatformIO IDE extension VS Code Visual Studio Connected Devices COM Port Serial" src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-VS-Code-Devices-COM-port.png?resize=828%2C550&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<p>If when trying to upload code you get the following error: “F<em>ailed to connect to ESP32: Timed out waiting for packet header</em>” it usually means that your board is not in flashing mode when you’re uploading the code. </p>
+<p>When this happens you need to press the ESP32 on-board BOOT button when you start seeing a lot of dots in the debugging window.</p>
+<p>If you don’t want to have to press the BOOT button every time you upload new code, you can follow this guide: <a href="https://randomnerdtutorials.com/solved-failed-to-connect-to-esp32-timed-out-waiting-for-packet-header/">[SOLVED] Failed to connect to ESP32: Timed out waiting for packet header.</a></p>
+<h2 id="changing-the-serial-monitor-baud-rate-platformio-ide">Changing the Serial Monitor Baud Rate – PlatformIO IDE</h2>
+<p>The default baud rate used by PlatformIO is 9600. However, it is possible to set up a different value as mentioned previously. On the File Explorer, under your project folder, open the <em>platformio.ini</em> file and add the following line:</p>
+<div class="highlight"><pre><span></span><code><span class="n">monitor_speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">baud_rate</span><span class="w"></span>
+</code></pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">monitor_speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">115200</span><span class="w"></span>
+</code></pre></div>
+<p><img alt="PlatformIO IDE extesion Change Serial Monitor Baud Rate 115200" src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-change-serial-monitor-baud-rate.png?resize=828%2C323&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>After that, save that file.</p>
+<h2 id="installing-esp32esp8266-libraries-on-platformio-ide">Installing ESP32/ESP8266 Libraries on PlatformIO IDE</h2>
+<p>Follow the next procedure if you need to install libraries in PlatformIO IDE.</p>
+<p>Click the <strong>Home</strong> icon to go to PlatformIO Home. Click on the <strong>Libraries</strong> icon on the left side bar.</p>
+<p>Search for the library you want to install. For example <em>Adafruit_BME280</em>.</p>
+<p><a href="https://www.mediavine.com/"><img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAAAUCAMAAAA0oWYGAAAANlBMVEUAAACkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT0RuBeAAAAEXRSTlMAECAwQFBgcHuEj5+vv8/f7w0rGDcAAANcSURBVEjHzZbLlsMoDEQLMMYBPaj//9lZCDt2Oj1nZtesHCKbS0klwLFnACh9SwDQWkaM1Cj4I2OSDUAjtQAw8gUAyD6V9e9AcgA7SW6AktQEJPeMKQCaqqpKBoDDVNX2c1JVVW0k1PUsvRUAQLOIA4BNVVUK0FRUKwBsomIdaajoyEhdRaUAQFfRkZC6yjm0wUmyBSQTlAH9YgLMAQySJHcAyUiS/ZokSc6Mdv3wUXC+1AOyne/3a/IgSUH2kCa+ewBISnKW9c8agkmSc0G+ApIFOoFEeUN2ANtcUbHeN8i1nb7iznVJWa8bAAhJ1kCZZYXMbQV7RnpCxq9SSZKWZGHIBIQbLh5NpyZvSJ8+fVpaW/TYA7cH5NrZLME2CwLOErKR9BOSCiRZkEaSM8YIJblvS5SAHGjcPXyzIM9FbpBHziWXkhe9lLL7Eu0GeYreVlgD6krNByRf4YkTctZccsklLyUXJBekAJOyfSxS/Am5X+5rj4KY2w0yGTktdMoeBd+X3tnu6SZZcFdylru7b0qOpSTKtgI6yemkoMbDBemiotpPyHFV236DrCR186AakWZb5fOpJA39nm4TUbEd35Uctx7VSfqYtHSQIj+MY+kOOT4hB8kODaV3kiz59PJDSZ8kj3aH5Anzm5IPyNmMswp5/F/I7CQbDpKewrS1Lis/lRyNqzB+Qv4nJbkP0ia93iF9iIgej3RrNJcLcilTYhqD5OgkJX0qqauz3NM9RMT2S8n6r0pyjyYj2X43zgBQZzTOC1JJej/GOtgqSc7w+IeSM+X5hJz5q3F+VzI+cKS7cY6Ucsr5akE575M3/76Ajc+ufzZpz/hRk+Xsw+8WlFJKKYfTyJYXZP8FMuLqA3KamZnbFoaYFgTz1sxfd0i2q5jjfvVQ0q9GfKXbYwFdbx1L0bR9h2zhn8jIx7HI/ddjMVlk+3WMdWotaSu+KYnI14dxOKOk2deyCfMTUmITe1wJvlwwWG+QM46AdcF4G+p0VBh1poCc9wtGwepRzDjLM8Z1WkRgjtK+QzYz84piZg1J3XyPyTXcCup6VjnWVc3NfMfuZlavGavAy8183Y+yuLkWpOHmmgFkdXPJSOLvFWRZs68LSAkD/pkr+XuUPg8AqDozgPya/W8B/gPQAm/tWHkI8wAAAABJRU5ErkJggg==" /></a></p>
+<p><img alt="PlatformIO IDE extension VS Code Visual Studio Search for BME280 Library" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-VS-Code-Search-BME280-library.png?resize=828%2C550&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>Click on the library you want to include in your project. Then, click <strong>Add to Project</strong>.</p>
+<p><img alt="PlatformIO with VS Code Add Library to Project" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-add-library-to-project.png?resize=745%2C243&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>Select the project were you want to use the library.</p>
+<p><img alt="PlatformIO with VS Code Add Library to Project Choose Project" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-VS-Code-Add-Library-to-Project-Choose-Project.png?resize=701%2C419&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>This will add the library identifier using the lid_deps directive on the <em>platformio.ini</em> file. If you open your project’s <em>platformio.ini</em> file, it should look as shown in the following image.</p>
+<p><img alt="Add Library Identifier to Configuration File PlatformIO" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PIO-Configuration-File-Add-Library.png?resize=828%2C385&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>Alternatively, on the library window, if you select the <strong>Installation</strong> tab and scroll a bit, you’ll see the identifier for the library. You can choose any of those identifiers depending on the options you want to use. The library identifiers are highlighted in red.</p>
+<p><img alt="PlatformIO IDE Extension Library Registry menu" src="https://i1.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-Library-registry.png?resize=828%2C646&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>Then, go to the <em>platformio.ini</em> file of your project and paste the library identifier into that file, like this:</p>
+<div class="highlight"><pre><span></span><code>lib_deps = adafruit/Adafruit BME280 Library@^2.1.0
+</code></pre></div>
+<p>If you need multiple libraries, you can separate their name by a coma or put them on different lines. For example:</p>
+<div class="highlight"><pre><span></span><code>lib_deps =
+  arduino-libraries/Arduino_JSON @ 0.1.0
+  adafruit/Adafruit BME280 Library @ ^2.1.0
+  adafruit/Adafruit Unified Sensor @ ^1.1.4
+</code></pre></div>
+<p>PlatformIO has a built-in powerful Library Manager, that allows you to specify custom dependencies per project in the Project Configuration File <em>platformio.ini</em> using lib_deps. This will tell PlatformIO to automatically download the library and all its dependencies when you save the configuration file or when you compile your project.</p>
+<h2 id="open-a-project-folder">Open a Project Folder</h2>
+<p>To open an existing project folder on PlatformIO, open VS Code, go to PlatformIO Home and click on <strong>Open Project</strong>. Navigate through the files and select your project folder.</p>
+<p><img alt="VS Code with PlatformIO Open Project Folder" src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/PlatformIO-open-project-folder.png?resize=828%2C419&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<p>PlatformIO will open all the files within the project folder.</p>
+<h2 id="vs-code-color-themes">VS Code Color Themes</h2>
+<p>VS Code lets you choose between different color themes. Go to the <strong>Manage</strong> icon and select <strong>Color Theme</strong>. You can then select from several different light and dark themes.</p>
+<p><img alt="VS Code Visual Studio Change Color Themes Dark Light" src="https://i2.wp.com/randomnerdtutorials.com/wp-content/uploads/2020/09/VS-Code-Change-Color-Theme.png?resize=318%2C429&amp;quality=100&amp;strip=all&amp;ssl=1" /></p>
+<h2 id="shortcuts-list">Shortcuts’ List</h2>
+<p>For a complete list of VS Code shortcuts for Windows, Mac OS X or Linux, check the next link:</p>
+<ul>
+<li><a href="https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference">VS Code Keyboard Shortcuts Reference</a>.</li>
+</ul>
+<h2 id="wrapping-up">Wrapping Up</h2>
+<p>In this tutorial you’ve learned how to install and prepare Visual Studio Code to work with the ESP32 and ESP8266 boards. VS Code with the PlatformIO IDE extension is a great alternative to the classical Arduino IDE, especially when you’re working on more advanced sketches for larger applications.</p>
+<p>Here’s some of the advantages of using VS Code with PlatformIO IDE over Arduino IDE: </p>
+<ul>
+<li>It detects the COM port your board is connected to automatically; </li>
+<li>VS Code IntelliSense: Auto-Complete. IntelliSense code completion tries to guess what you want to write, displaying the different possibilities and provides insight into the parameters that a function may expect;</li>
+<li>Error Highlights: VS Code + PIO underlines errors in your code before compiling;</li>
+<li>Multiple open tabs: you can have several code tabs open at once;</li>
+<li>You can hide certain parts of the code;</li>
+<li>Advanced code navigation;</li>
+<li>And much more…</li>
+</ul>
+<p>If you’re looking for a more advanced IDE to write your applications for the ESP32 and ESP8266 boards, VS Code with the PlatformIO IDE extension is a great option.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../VL6180X%E6%B5%8B%E8%B7%9D/" class="md-footer__link md-footer__link--prev" aria-label="上一页: VL6180X测距" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              VL6180X测距
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../edgeimpulse/" class="md-footer__link md-footer__link--next" aria-label="下一页: Edgeimpulse" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Edgeimpulse
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020-2021 mekesim.com <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">浙ICP备10045952号-5</a>
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
