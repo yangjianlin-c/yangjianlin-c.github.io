@@ -8,18 +8,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Build Docs    
-        - uses: actions/checkout@v2
-        - uses: actions/setup-python@v2
-          with:
-            python-version: 3.x
-        - run: pip install mkdocs-material
-        - run: mkdocs gh-deploy --force
-
-      - name: Deploy to Server
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
         with:
+          python-version: 3.x
+      - run: pip install mkdocs-material
+      - run: mkdocs gh-deploy --force
+
+      - uses: appleboy/ssh-action@master
+        with:
+          hosts: ${{secrets.hostId}}
           secretId: ${{secrets.secretId}}
           secretKey: ${{secrets.secretKey}}
-          # envId: ${{secrets.envId}}
-        -run: cd /www/wwwroot/Flask_CMS/doc
-        -run: git pull origin gh-pages
+          script: |
+            cd /www/wwwroot/Flask_CMS/doc
+            git pull origin gh-pages
