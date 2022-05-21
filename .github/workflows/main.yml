@@ -1,4 +1,4 @@
-name: ci 
+name: deploy to tencent cloud
 on:
   push:
     branches: 
@@ -14,3 +14,12 @@ jobs:
           python-version: 3.x
       - run: pip install mkdocs-material
       - run: mkdocs gh-deploy --force
+
+      - name: Deploy to Server
+        uses: TencentCloudBase/cloudbase-action@v2.0.1
+        with:
+          secretId: ${{secrets.secretId}}
+          secretKey: ${{secrets.secretKey}}
+          # envId: ${{secrets.envId}}
+      -run: cd /www/wwwroot/Flask_CMS/doc
+      -run: git pull origin gh-pages
