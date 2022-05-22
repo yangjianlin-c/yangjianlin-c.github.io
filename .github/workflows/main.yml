@@ -17,7 +17,7 @@ jobs:
 
       - uses: appleboy/ssh-action@master
         env:
-          host: ${{ secrets.HOST }}
+          host: 81.68.94.171
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
