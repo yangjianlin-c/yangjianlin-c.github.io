@@ -17,9 +17,9 @@ jobs:
 
       - uses: appleboy/ssh-action@master
         with:
-          hosts: ${{secrets.hostId}}
-          secretId: ${{secrets.secretId}}
-          secretKey: ${{secrets.secretKey}}
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
           script: |
             cd /www/wwwroot/Flask_CMS/doc
             git pull origin gh-pages
