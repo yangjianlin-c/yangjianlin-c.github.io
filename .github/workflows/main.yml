@@ -15,11 +15,11 @@ jobs:
       - run: pip install mkdocs-material
       - run: mkdocs gh-deploy --force
 
-      - uses: appleboy/ssh-action@master
-        env:
-          host: 81.68.94.171
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: |
+      - uses: fifsky/ssh-action@master
+        with:
+          command: |
             cd /www/wwwroot/Flask_CMS/doc
             git pull origin gh-pages
+          host: 81.68.94.171
+          user: ${{ secrets.USERNAME }}
+          pass: ${{ secrets.PASSWORD }}            
