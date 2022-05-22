@@ -16,7 +16,7 @@ jobs:
       - run: mkdocs gh-deploy --force
 
       - uses: appleboy/ssh-action@master
-        with:
+        env:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
