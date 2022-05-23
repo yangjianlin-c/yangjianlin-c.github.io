@@ -25,5 +25,6 @@ jobs:
           key: ${{ secrets.KEY }}
           script: |
             cd /www/wwwroot/Flask_CMS/doc
+            git reset --hard origin/gh-pages
             git pull
     needs: deploy
