@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: deploy to tencent cloud
 on:
   push:
     branches: 
@@ -8,19 +8,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: build mkdocs site
-        uses: actions/checkout@v2
-        uses: actions/setup-python@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
         with:
           python-version: 3.x
-        run: pip install mkdocs-material
-        run: mkdocs gh-deploy --force
+      - run: pip install mkdocs-material
+      - run: mkdocs gh-deploy --force
 
-      - name: Update Tencent cloud
-        uses: appleboy/ssh-action@master
+      - uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
+          host: ${{ secrets.HOST }}       
           username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
           key: ${{ secrets.KEY }}
           script: |
             cd /www/wwwroot/Flask_CMS/doc
