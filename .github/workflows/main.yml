@@ -15,17 +15,3 @@ jobs:
       - run: pip install mkdocs-material
       - run: mkdocs gh-deploy --force
   
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}       
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          script: |
-            cd /www/wwwroot/Flask_CMS/doc
-            git fetch --all
-            git reset --hard origin/gh-pages
-            git pull
-    needs: deploy
