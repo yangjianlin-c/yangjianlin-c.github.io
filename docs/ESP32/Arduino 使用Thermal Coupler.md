@@ -1,14 +1,5 @@
-+++
-date = "2017-06-22"
-image = "pcbpic.jpg"
-description = ""
-categories = ["Arduino", "Learning"]
-title = "Arduino使用thermal coupler测量温度"
-slug = "Arduino thermal coupler"
-tags = ["AI"]
-+++
 
-# MX6675
+## MX6675 模块
 
 [MX6675规格书](http://datasheets.maximintegrated.com/en/ds/MAX6675.pdf)
 
