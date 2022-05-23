@@ -1,6 +1,6 @@
-# ESP32 Arduino GPIO 使用
+本文以ESP32 WROOM 模块为例介绍ESP32 GPIO的使用。
 
-WROOM 为例，模块引脚命名，及功能如下图。
+WROOM模块引脚命名，及功能如下图。
 
 ![](https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/08/esp32-pinout-chip-ESP-WROOM-32.png)
 

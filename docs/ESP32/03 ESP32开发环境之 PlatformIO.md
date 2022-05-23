@@ -1,30 +1,3 @@
-## ESP32 开发板
-
-我购买的开发图片如下
-
-![ESP32 DEVKITV1](assets/ESP32 DEVKITV1.jpg)
-
-背面标识ESP32 DEVKITV1
-
-原理图链接
-
-https://github.com/Nicholas3388/LuaNode
-
-配置
-
-| **Microcontroller** | ESP32                                                        |
-| ------------------- | ------------------------------------------------------------ |
-| **Frequency**       | 240MHz                                                       |
-| **Flash**           | 4MB                                                          |
-| **RAM**             | 320KB                                                        |
-| **Vendor**          | DOIT |
-
-开发板引脚
-
-![ESP32-DOIT-DEVKIT-V1-Board-Pinout-30-GPIOs](assets/ESP32-DOIT-DEVKIT-V1-Board-Pinout-30-GPIOs.png)
-
-## 搭建开发环境
-
 本文主要介绍使用VSCODE的 platformIO插件进行ESP32开发。
 
 ## 软件安装
@@ -154,7 +127,3 @@ void loop() {
   
 }
 ```
-
-## 参考文档
-
-https://juejin.im/collection/6845244081140924423

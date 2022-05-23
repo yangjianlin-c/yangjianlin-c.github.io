@@ -1,37 +1,4 @@
-# 10分钟上手ESP32 Arduino
-
-本文是ESP32开发板的入门指南。ESP32是它ESP8266的后继产品，显著的区别是ESP32拥有双核，及支持蓝牙。ESP32与ESP8266之间的差异： [ESP32与ESP8266 –优缺点](https://makeradvisor.com/esp32-vs-esp8266/)
-
-## ESP32 DEVKIT DOIT
-
-在本文中，我们将使用ESP32 DEVKIT DOIT开发板。但是此页面上的信息也与其他使用ESP-WROOM-32芯片的ESP32开发板兼容。
-
-## 技术指标
-
-关于ESP32关键参数：
-
-- ESP32是双核，这意味着它有2个处理器。
-- 具有Wi-Fi和内置蓝牙。
-- 运行32位程序。
-- 时钟频率可以高达240MHz，并且具有512 kB RAM。
-- 该特定板有30或36个引脚，每行15个。
-- 它还具有多种可用的外设，例如：电容式触摸，ADC，DAC，UART，SPI，I2C等。
-- 它带有内置霍尔效应传感器和内置温度传感器。
-
-要了解有关ESP32 GPIO的更多信息，请阅读我们的GPIO参考指南： ESP32引脚参考。
-
-## 软件开发环境
-
-ESP32可以在不同的编程环境中进行编程。您可以使用：
-
-- Arduino IDE
-- Espressif IDF（IoT开发框架）
-- Micropython
-- JavaScript
-- LUA
-- …
-
-在我们的项目中，我们主要使用Arduino IDE或MicroPython对ESP32进行编程。
+本文介绍如何使用Arduino IDE对ESP32进行编程。
 
 ### 在Arduino IDE中准备ESP32开发板
 
@@ -39,21 +6,6 @@ Arduino IDE有一个附加开发板选项，可让您使用Arduino IDE及其编�
 
 - **Windows**版–在Arduino IDE中安装ESP32开发板
 - **Mac和Linux**版–在Arduino IDE中安装ESP32开发板
-
-## ESP32引脚指南
-
-使用ESP32开发板首先需了解其引脚的分布及对应编号。ESP32 Devkit V1有两种版本，32引脚和36引脚的版本。两种版本对应的引脚名称如下：
-
-**具有30个GPIO的版本**
-
-![ESP32-DOIT-DEVKIT-V1-Board-Pinout-30-GPIOs](img/ESP32-DOIT-DEVKIT-V1-Board-Pinout-30-GPIOs.png)
-
-**具有36个GPIO的版本**
-
-![ESP32-DOIT-DEVKIT-V1-Board-Pinout-36-GPIOs](img/ESP32-DOIT-DEVKIT-V1-Board-Pinout-36-GPIOs.jpg)
-
-!!! tip
-    开发板上印的引脚编号为D0, D1, ...，它代表的含义就是GPIO0, GPIO1, ...
 
 ## 使用Arduino IDE将代码上传到ESP32
 
