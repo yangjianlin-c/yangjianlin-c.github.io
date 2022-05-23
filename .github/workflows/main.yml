@@ -19,7 +19,6 @@ jobs:
         with:
           host: ${{ secrets.HOST }}       
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
           key: ${{ secrets.KEY }}
           script: |
             cd /www/wwwroot/Flask_CMS/doc
