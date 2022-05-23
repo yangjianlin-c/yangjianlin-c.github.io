@@ -2,7 +2,7 @@ name: deploy to tencent cloud
 on:
   push:
     branches: 
-      #- master
+      - master
       - main
 jobs:
   deploy:
@@ -14,7 +14,9 @@ jobs:
           python-version: 3.x
       - run: pip install mkdocs-material
       - run: mkdocs gh-deploy --force
-
+  
+  update:
+    runs-on: ubuntu-latest
       - uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}       
@@ -23,3 +25,4 @@ jobs:
           script: |
             cd /www/wwwroot/Flask_CMS/doc
             git pull
+    needs: deploy
