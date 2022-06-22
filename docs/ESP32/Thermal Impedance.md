@@ -1,14 +1,4 @@
-+++
-date = "2017-04-13"
-image = "pcbpic.jpg"
-description = "Thermal Impedance and Thermal Resistance"
-categories = ["Thermal", "Learning"]
-title = "Thermal Impedance and Thermal Resistance"
-slug = "Thermal Impedance and Thermal Resistance"
-tags = ["TIM"]
-+++
- 
-#### 热阻
+## 热阻
 
 **热阻**（thermal resistance），$R$，单位是$°C/W$，它代表在单位时间内当有单位热能量通过物体时，物体两端的温度差。
 
@@ -16,11 +6,11 @@ $$R=(T_1-T_2)/Q=\Delta T/Q$$
 
 应用已知热阻计算温度差$\Delta T=RQ$。
 
-#### 导热率
+## 导热率
 
 **导热率**（thermal conductivity），$k$，单位是$W/(m·°C)$，是材料的固有特性。
 
-<img src="/images/steady_conditions.svg" ⧸⧸width="200"⧸⧸width="350"⧸⧸ />
+<img src="/images/steady_conditions.svg" width="200" width="350" />
 
 根据Fourier's law有
 
@@ -30,13 +20,13 @@ $$Q=\frac {kA\Delta T}{t}$$
 
 $$R=\frac{t}{kA}$$
 
-⧸⧸从上式可以看出材料的导热率$k$越大，接触面积越大$A$，热阻越小；厚度或间隙$t$越大，热阻越大。⧸⧸从上式可以看出物体的热阻$R$不仅和其本身的导热率$k$相关，还和参与热传导的面积$A$及厚度$t$相关。材料的导热率$k$越大，接触面积越大$A$，热阻越小；厚度或间隙$t$越大，热阻越大。⧸⧸
+从上式可以看出材料的导热率$k$越大，接触面积越大$A$，热阻越小；厚度或间隙$t$越大，热阻越大。从上式可以看出物体的热阻$R$不仅和其本身的导热率$k$相关，还和参与热传导的面积$A$及厚度$t$相关。材料的导热率$k$越大，接触面积越大$A$，热阻越小；厚度或间隙$t$越大，热阻越大。
 
-#### 接触热阻
+## 接触热阻
 
 接触热阻（thermal contact resistance），这里将接触热阻标记为$R_c$，单位是$m^2·°C/W$。
 
-⧸⧸两个互相接触的固体表面，实际上接触仅仅发生在一些离散的面积元上，在未接触的界面之间的间隙常常充满了空气，热量将以传导的方式穿过这种气隙层，这种情况与固体表面完全接触相比，增加了传递热阻。接触热阻等于两个交界表面温度之差除以热流量。接触热阻单位是：$m^2·K/W$。
+两个互相接触的固体表面，实际上接触仅仅发生在一些离散的面积元上，在未接触的界面之间的间隙常常充满了空气，热量将以传导的方式穿过这种气隙层，这种情况与固体表面完全接触相比，增加了传递热阻。接触热阻等于两个交界表面温度之差除以热流量。接触热阻单位是：$m^2·K/W$。
 
 需要注意的是，接触热阻的单位和我们前面说的热阻的单位是不一样的。我们可以认为，接触热阻等热阻乘以面积，因此接触热阻的大小与接触面积无关。
 
@@ -1146,10 +1136,10 @@ The thermal impedance is used to calculate the temperature change at a specified
 
 
 
- ⧸⧸两个互相接触的固体表面，实际上接触仅仅发生在一些离散的面积元上，在未接触的界面之间的间隙常常充满了空气，热量将以传导的方式穿过这种气隙层，这种情况与固体表面完全接触相比，增加了传递热阻。接触热阻等于两个交界表面温度之差除以热流量。
+ 两个互相接触的固体表面，实际上接触仅仅发生在一些离散的面积元上，在未接触的界面之间的间隙常常充满了空气，热量将以传导的方式穿过这种气隙层，这种情况与固体表面完全接触相比，增加了传递热阻。接触热阻等于两个交界表面温度之差除以热流量。
 
 需要注意的是，接触热阻的单位和我们前面说的热阻的单位是不一样的。我们可以认为，接触热阻等热阻乘以面积：
 
 $$R_c=RA=\frac{t}{k}$$
 
-因此接触热阻的大小与接触面积无关。注意对于接触面而言，上式中的$k$实际上是不存在的，因为接触面并不是一个特定的物理实体。⧸⧸<!--se_discussion_list:{"6PfKqjFa2UwMkwxdTWS3N0DO":{"selectionStart":861,"type":"conflict","selectionEnd":7108,"discussionIndex":"6PfKqjFa2UwMkwxdTWS3N0DO"}}-->
+因此接触热阻的大小与接触面积无关。注意对于接触面而言，上式中的$k$实际上是不存在的，因为接触面并不是一个特定的物理实体。<!--se_discussion_list:{"6PfKqjFa2UwMkwxdTWS3N0DO":{"selectionStart":861,"type":"conflict","selectionEnd":7108,"discussionIndex":"6PfKqjFa2UwMkwxdTWS3N0DO"}}-->
