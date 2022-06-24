@@ -3,11 +3,11 @@
 ![1526521568345](assets/1526521568345.png)
 
 $$
-B_n = \abs{H} \times \abs{T} \times |\cos(θ)|
+B_n = \left\lvert H \right\rvert \times \left\lvert T \right\rvert \times |\cos(θ)|
 $$
 从 $B_n$ 的定义，可以知道，它是热流矢量和温度梯度矢量的点乘有点类似，不过，它把余弦项取绝对值。
 $$
-B_n = \abs{\vec{H}} \times \abs{\vec{T}} \times |\cos(θ)|=\abs{\vec{H} \cdot \vec{T}}
+B_n = \left\lvert \vec{H} \right\rvert \times \left\lvert \vec{T} \right\rvert \times |\cos(θ)|=\left\lvert \vec{H} \cdot \vec{T} \right\rvert
 $$
 这样就没有负值了。理论上讲应该也不会存在负值。
 
@@ -26,7 +26,7 @@ $$
 
 类似地， $S_n$ 的定义为：
 $$
-S_n = \abs{H} \times \abs{T} \times |\sin(θ)|
+S_n = \left\lvert H \right\rvert \times \left\lvert T \right\rvert \times |\sin(θ)|
 $$
 
 - 两者方向不一致， $S_n$ 越大

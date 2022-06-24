@@ -13,4 +13,4 @@ First, click the **compact component** in the **Prject manager creater panel**. 
 
     The top and bottom side define by the Z axis of this devices. The top side is the high side in Z directoin, while the bottom side is the low side in Z direction. Shows in the figure below.
 
-    ![](assets/2R_resistance_model.png)
+![](assets/2R_resistance_model.png)
