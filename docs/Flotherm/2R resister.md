@@ -2,7 +2,7 @@
 
 In this article, we will build a 2R resistor model in Flotherm.
 
-- Click the **compact component** in the **Prject manager creater panel**. Then edit the component detial as follows:
+- Click the **compact component** in the **Project manager create panel**. Then edit the component detail as follows:
 
 - Model: 
     - Model type, select **2R resistor model**.

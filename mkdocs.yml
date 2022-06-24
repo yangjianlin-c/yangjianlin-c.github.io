@@ -15,7 +15,7 @@ copyright: 'Copyright &copy; 2020-2021 mekesim.com <a href="https://beian.miit.g
 # Configuration
 theme:
   name: material
-  language: en
+  language: zh
   palette:
     primary: indigo
   font: false
