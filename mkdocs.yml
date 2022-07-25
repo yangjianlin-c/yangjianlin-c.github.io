@@ -4,8 +4,8 @@
 # of this software and associated documentation files (the "Software"), to
 # deal in the Software without restriction, including without limitation the
 # rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-site_name: 米克网
-site_description: 文档
+site_name: Mekesim
+site_description: Document for the Mekesim
 site_author: Colin Yang
 site_url: http://www.mekesim.com/doc
 
@@ -15,7 +15,7 @@ copyright: 'Copyright &copy; 2020-2021 mekesim.com <a href="https://beian.miit.g
 # Configuration
 theme:
   name: material
-  language: zh
+  language: en
   palette:
     primary: indigo
   font: false
