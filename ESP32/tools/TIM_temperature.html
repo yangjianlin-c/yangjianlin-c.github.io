@@ -1,0 +1,141 @@
++++
+title = "Thermal pad Temperature Rise"
+description = "Calculate temperature rise due to thermal pad/gel or other type TIM."
+tags = [ "TIM"]
+date = "2017-04-10"
+categories = [
+  "Thermal",
+  "Calculation"
+]
+slug = "TIM_Temperature"
+image = "pcbpic.jpg"
++++
+
+  	<div class="col-md-12"><h2>TIM Temperature Rise</h2></div>
+    <div class="col-md-6 col-sm-12">
+    	<div class="panel panel-default">
+           <div class="panel-heading"><h4>Input Parameters</h4></div>
+   			<div class="panel-body">
+<table class="table table-no-border">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Value</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="vert-align">Width $W$</th>
+          <td >
+          <input type="text" class="form-control" value="10" data-cell="A1">
+          </td>
+          <td>
+            mm
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Length $L$</th>
+          <td class="form-group">
+            <input class="form-control" value="10" data-cell="A2">
+          </td>
+          <td>            
+            mm
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Gap/Thickness $t$</th>
+          <td class="form-group">
+            <input class="form-control" value="1" data-cell="A3">
+          </td>
+          <td>            
+            mm
+          </td>
+        </tr>
+                <tr>
+          <th scope="row">Conditicity $k$</th>
+          <td class="form-group">
+            <input class="form-control" value="3" data-cell="A4">
+          </td>
+          <td>            
+            W/K-m
+          </td>
+        </tr>
+         <tr>
+          <th scope="row">Power $Q$</th>
+          <td class="form-group">
+            <input class="form-control" value="5" data-cell="A5">
+          </td>
+          <td>            
+            W
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <button class="btn btn-success pull-right" type="button">Submit</button>
+</div>
+              
+
+           <div class="panel-heading"><h4>Result</h4></div>
+   			<div class="panel-body">
+
+<table class="table table-no-border">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Value</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Temperature Rise $\Delta T$</th>
+          <td class="form-group has-success has-feedback">            
+  <input type="text" class="form-control" placeholder="" data-cell="A6" data-format="0.00 %" data-formula="A5*A3/(A1*A2*A4)*1000*B7" />     
+          </td>
+          <td>            
+            <select class="form-control" data-cell="B7">
+              <option value ="1">°C</option>
+              <option value ="9/5">°F</option>
+            </select>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+            </div>
+         </div> 
+    </div>
+     <div class="col-md-6 col-sm-12">
+    	
+    </div><!-- end of section -->
+
+     <div class="col-md-6 col-sm-12">
+      <div class="panel panel-default">
+           <div class="panel-heading"><h4>Hints</h4></div>
+<div class="panel-thumbnail">
+              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- mekesim tools -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7755519570374304"
+     data-ad-slot="7339496951"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+              </div>
+
+
+        <div class="panel-body">
+
+
+Tempearture rise due to thermal pad or thermal gel is:
+
+$$\Delta T = \frac{Qt}{Ak}$$
+
+However, should be notice this formular just used for calculate the temeprature rise due to thermal pad. For testing and calculate thermal pad performance, it should also conside the contact thermal resistance between thermal pad and heatsink or devices.
+            </div>
+         </div> 
+    </div><!-- end of section -->

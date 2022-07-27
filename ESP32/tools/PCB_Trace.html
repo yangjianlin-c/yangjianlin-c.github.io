@@ -1,0 +1,204 @@
++++
+title = "PCB Trace Width Caculation"
+description = "spf13-vim is a cross platform distribution of vim plugins and resources for Vim."
+tags = [ ".vimrc", "plugins", "spf13-vim", "vim" ]
+date = "2012-04-06"
+categories = [
+  "Development",
+  "VIM"
+]
+slug = "spf13-vim-3-0-release-and-new-website"
++++
+<div class="row" id="tracewidth">
+  	<div class="col-md-12"><h2>PCB Trace Width Caculation</h2></div>
+    <div class="col-md-6 col-sm-12">
+    	<div class="panel panel-default">
+           <div class="panel-heading"><h4>Input Parameter</h4></div>
+   			<div class="panel-body">
+
+<table class="table table-no-border">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Value</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="vert-align">$\Delta T$</th>
+          <td >
+            <input class="form-control" placeholder="Allowed Temperature increase" data-cell="A1">
+          </td>
+          <td>
+            <select class="form-control" data-cell="B1">
+              <option selected="" value ="1">C</option>
+              <option value ="1">F</option>
+            </select>
+            <input type="hidden" data-cell="C1" data-formula="A1*B1">
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Cu Thickness</th>
+          <td>
+            <input class="form-control" placeholder="Layer thickness" data-cell="A2">
+          </td>
+          <td>            
+            <select class="form-control" data-cell="B2">
+              <option value ="1">mm</option>
+              <option value ="1E-3">um</option>
+              <option value ="25.4">inch</option>
+              <option value ="0.0254">mils</option>
+              <option selected="" value ="34.29E-3">oz/ft^2</option>
+            </select>
+            <input type="hidden" data-cell="C2" data-formula="A2*B2">
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">Current</th>
+          <td>
+            <input class="form-control" placeholder="Max Current" data-cell="A3">
+          </td>
+          <td>            
+            <select class="form-control" data-cell="B3">
+              <option selected="" value ="1">A</option>
+              <option value ="1E-3">mA</option>
+              <option value ="1E-6">uA</option>
+            </select>
+            <input type="hidden" data-cell="C3" data-formula="A3*B3">
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">Trace Length</th>
+          <td>
+            <input class="form-control" placeholder="Trace Length" data-cell="A4">
+          </td>
+          <td>            
+            <select class="form-control" data-cell="B4">
+              <option value ="1E3">m</option>
+              <option value ="10">cm</option>
+              <option selected="" value ="1">mm</option>
+              <option value ="1E-3">um</option>
+              <option value ="304.8">feet</option>
+              <option value ="25.4">inch</option>
+              <option value ="0.0254">mils</option>
+            </select>
+            <input type="hidden" data-cell="C4" data-formula="A4*B4">
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+              <hr>
+              <div class="panel-thumbnail"><img src="http://placehold.it/700X300/DD3333/ffffff" class="img-responsive">
+              </div>
+    
+            </div>
+         </div> 
+    </div>
+     <div class="col-md-6 col-sm-12">
+    	<div class="panel panel-default">
+           <div class="panel-heading"><h4>Output</h4></div>
+   			<div class="panel-body">
+              Check out some of our member profiles..
+
+
+<table class="table table-no-border">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Value</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <th scope="row">External or Inner Trace</th>
+
+          <td>            
+            <input data-cell="A5" name="optionsRadios" type="radio" value="2" checked="">
+    External
+            <input data-cell="B5" name="optionsRadios" type="radio" value="1">
+    Internal
+            <input type="hidden" data-cell="C5" data-formula="A5+B5">
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">Section Area</th>
+          <td>
+            <input type="hidden" class="form-control" data-cell="A6" data-formula="(C3/(C5*0.024*C1^0.44))^(1/0.725)" />
+            <input type="text" data-cell="C6" data-format="0.000" data-formula="0.0254^2*A6/B6^2" readonly/>
+          </td>
+          <td>            
+            <select class="form-control" data-cell="B6">
+              <option value ="1E3">m</option>
+              <option value ="10">cm</option>
+              <option selected="" value ="1">mm</option>
+              <option value ="1E-3">um</option>
+              <option value ="304.8">feet</option>
+              <option value ="25.4">inch</option>
+              <option value ="0.0254">mils</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">Required Trace Width</th>
+          <td>
+            <input type="hidden" class="form-control" data-cell="A7" data-formula="C6/C2" />
+            <input type="text" data-cell="C7" data-format="0.000" data-formula="A7*B7" readonly/>
+          </td>
+          <td>            
+            <select class="form-control" data-cell="B7">
+              <option value ="1E3">m</option>
+              <option value ="10">cm</option>
+              <option selected="" value ="1">mm</option>
+              <option value ="1E-3">um</option>
+              <option value ="304.8">feet</option>
+              <option value ="25.4">inch</option>
+              <option value ="0.0254">mils</option>
+            </select>
+          </td>
+        </tr>        
+      </tbody>
+    </table>
+            </div>
+         </div> 
+    </div><!-- end of section -->
+
+
+     <div class="col-md-6 col-sm-12">
+      <div class="panel panel-default">
+           <div class="panel-heading"><h4>Summary</h4></div>
+        <div class="panel-body">
+              Check out some of our member profiles..
+
+
+<table class="table table-no-border">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Value</th>
+          <th>Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Section Area</th>
+          <td data-cell="A100" data-formula="A5">           
+          </td>
+          <td>            
+            mm
+          </td>
+        </tr>
+      </tbody>
+    </table>
+            </div>
+         </div> 
+    </div><!-- end of section -->
+    </div>
