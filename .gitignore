@@ -19,3 +19,5 @@ env
 # other
 .DS_Store
 site
+
+.obsidian
