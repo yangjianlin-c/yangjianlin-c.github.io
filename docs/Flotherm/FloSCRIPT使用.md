@@ -1,11 +1,7 @@
-title: FloSCRIPT使用
-date: 2018/7/13
----
-
-用户在Project Manager, Drawing Board 和 FloMCAD Bridge的所有动作都自动记录为FloSCRIPT log 文件，位于：
+用户在Project Manager, Drawing Board 和 FloMCAD Bridge的所有动作都自动记录为FloSCRIPT模式的.xml文件，保存在LogFiles文件夹中：
 
 ```
-.\flosuite_v12\flotherm\WinXP\bin\LogFiles\
+.\Siemens\SimcenterFlotherm\202x.x\flotherm\WinXP\bin\LogFiles
 ```
 
 可以打开XML文件了解文件结构。
