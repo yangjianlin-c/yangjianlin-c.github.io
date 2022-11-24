@@ -1,8 +1,3 @@
----
-typora-copy-images-to: image
-typora-root-url: image
----
-
 ## Heatsink 网格划分
 
 Heat sink fins are not key-pointed.

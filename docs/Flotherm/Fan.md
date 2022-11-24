@@ -99,3 +99,6 @@ $$
 https://support.sw.siemens.com/kbassets/external/MG575744/files/10443.pdf
 
 https://support.sw.siemens.com/kbassets/external/MG575828/files/10539.pdf
+
+reinitialize, then the file is local in
+`project dir\ DataSets\BaseSolution\msp_x\PDTemp`
