@@ -1,0 +1,5100 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="米克网文档">
+      
+      
+        <meta name="author" content="Colin Yang">
+      
+      
+        <link rel="canonical" href="http://www.mekesim.com/doc/ESP32/MPU6050%E5%8A%A0%E9%80%9F%E5%BA%A6%E8%AE%A1%20%E9%99%80%E8%9E%BA%E4%BB%AA%E4%BC%A0%E6%84%9F%E5%99%A8/">
+      
+      
+        <link rel="prev" href="../MAX31855/">
+      
+      
+        <link rel="next" href="../Mannually%20download%20bin%20file%20to%20ESP32/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>MPU6050加速度计 陀螺仪传感器 - 米克网</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","UA-40504642-1"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","UA-40504642-1",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=UA-40504642-1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mpu6050" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="米克网" class="md-header__button md-logo" aria-label="米克网" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            米克网
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MPU6050加速度计 陀螺仪传感器
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Mekesim Documents
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Arduino/" class="md-tabs__link">
+          
+  
+  Arduino
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  ESP32
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Flotherm/" class="md-tabs__link">
+          
+  
+  Flotherm
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Flotherm%20XT/Flotherm%20XT%20EDA%20Bridge/" class="md-tabs__link">
+          
+  
+  Flotherm XT
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Products/MK2101/" class="md-tabs__link">
+          
+  
+  Products
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ml5/01%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="md-tabs__link">
+          
+  
+  Ml5
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../uploadfiles/image/201304/8.jpg/" class="md-tabs__link">
+          
+  
+  Uploadfiles
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%85%AC%E4%BC%97%E5%8F%B7/0725/" class="md-tabs__link">
+          
+  
+  公众号
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E7%94%B5%E8%B7%AF%E5%8F%82%E8%80%83/" class="md-tabs__link">
+          
+  
+  电路参考
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="米克网" class="md-nav__button md-logo" aria-label="米克网" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    米克网
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mekesim Documents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Arduino
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arduino
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Arduino Uno入门
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arduino Uno入门
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目一 初识Arduino
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目二 SOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目三 神奇的按钮
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目四 简易入侵检测仪
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目五 可调灯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目六 智能灯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目七 创意门铃
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目八 小小作曲家
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目九 噪音计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十 遥控灯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十一 另类电子琴
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十二 超声波测距仪
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十三 公园人数计数系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十四 打地鼠游戏
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ESP32
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            ESP32
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01%20ESP32%20%E5%BC%80%E5%8F%91%E6%9D%BF%20Devkit%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 ESP32 开发板 Devkit介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02%20ESP32%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B9%8B%20Arduino%20IDE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 ESP32 开发环境之 Arduino IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03%20ESP32%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B9%8B%20PlatformIO/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 ESP32开发环境之 PlatformIO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04%20ESP32%20GPIO%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 ESP32 GPIO介绍及使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 AD输入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADXL345%E5%8A%A0%E9%80%9F%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    总览
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Ansys%20Fail%20to%20Open/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ANSYS过段时间出现License错误的解决办法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arduino%20%E4%BD%BF%E7%94%A8Thermal%20Coupler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arduino 使用Thermal Coupler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arduino%20%E8%B6%85%E5%A3%B0%E6%B3%A2%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    超声波传感器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arduino/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arduino
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CDMA%20Demostration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CDMA code spreading demostrate with Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Car-basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arduino控制小车
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP-EYE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP EYE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP-NOW/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP NOW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20CAM%20Face/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 CAM Face
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20Connect%20Wifi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 连接Wifi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20MQTT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 使用MQTT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20use%20MAX31855/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 温度测量仪
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 功能介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 接口
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%20%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 测试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%E4%BC%91%E7%9C%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32睡眠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ESP32%E4%BD%BF%E7%94%A8%E5%8F%8C%E6%A0%B8FreeRTOS%E5%92%8CArduino%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32使用双核FreeRTOS和Arduino环境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ETS300753%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ETS 300753 解读
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FFT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FOTA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FOTA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Facenet%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FaceNet 使用实例介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Gat%20Data%20from%20Picture%20Curve/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Get Data from Picture Curve
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../How%20to%20Add%20High%20Quality%20Matlab%20Graphics%20in%20Latex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Add High Quality Matlab Graphics in Latex
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--public"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hugo%20on%20VPS%20with%20Git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hugo on VPS with Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../I2C%20Sanner/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I2C Sanner
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Inlation%20Mesh/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    在局部网格上设置通胀有什么好处？
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Insert%20Matlab%20Figure%20into%20Latex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Insert Matlab Figure into Latex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Interesting%20Things/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interesting DIY Things
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../L298N/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    L298N
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LED%E6%95%A3%E7%83%AD%E6%8A%80%E6%9C%AF%E6%96%B0%E5%8A%A8%E5%90%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LED散热技术新动向
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MAX31855/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MAX31855开发板使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    MPU6050加速度计 陀螺仪传感器
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    MPU6050加速度计 陀螺仪传感器
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mpu6050" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPU6050介紹
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPU6050介紹">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      三轴陀螺仪
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      三轴加速度计
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      DMP（数字运动处理器）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      片上温度传感器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mpu6050_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPU6050模块
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arduinompu6050" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arduino和MPU6050的连接方法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mpu6050arduino" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPU6050的Arduino代码
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Mannually%20download%20bin%20file%20to%20ESP32/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mannually download bin file to ESP32
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OFDM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OFDM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PA%20%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PA模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Polar%E7%BC%96%E7%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polar编码
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PowerPAD%20Packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PowerPAD Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Proe%20Layer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips about using Layer in Creo
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--public"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QFN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QFN Package
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sverchok%E4%B8%AD%E7%9A%84Bloom%20Spheres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sverchok中的Bloom Spheres
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TIM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    固态界面材料热特性测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TensorFlow%20Lite%20on%20Raspberry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow Lite on Raspberry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tensorflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tensorflow学习笔记1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Thermal%20Impedance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thermal Impedance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Use%20flogate_cl%20Command%20convert%20xml%20to%20pdml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use flogate_cl Command convert xml to pdml
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VL6180X%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VL6180X测距
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VS-code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VS Code and PlatformIO IDE for ESP32 and ESP8266 Arudino platform  code introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edgeimpulse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Edgeimpulse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flask_socketio_echarts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flask socketio echarts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git%20proxy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Github Desktop 设置代理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../icepak%20tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Icepak Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iphone/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iPhone 4 热分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../latextools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latextools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib_Chinese/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    python matplotlib 支持中文标题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meke%E6%9C%9F%E5%88%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    风扇设计与选型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdoc%20github/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mkdoc github
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rasp_pi_installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rasp pi installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shadowsocks_pi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    在树莓派上安装 shadowsocks 客户端
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wemos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wemos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BF%A1%E9%81%93%E7%BC%96%E7%A0%81%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    信道编码的前世今生
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8A%A8%E7%89%A9%E7%8E%8B%E5%9B%BD%E5%BC%80%E5%A4%A7%E4%BC%9A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    动物王国开大会
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    卡尔曼滤波
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BA%E6%80%81%E7%95%8C%E9%9D%A2%E6%9D%90%E6%96%99%E7%83%AD%E7%89%B9%E6%80%A7%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    固态界面材料热特性测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E8%A1%A8highcharts%E8%81%94%E5%90%88jquery%20ajax%20%E5%90%8E%E7%AB%AF%E5%8F%96%E6%95%B0%E6%8D%AE%E5%89%8D%E7%AB%AF%E5%9B%BE%E8%A1%A8%E6%B8%B2%E6%9F%93/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    图表highcharts联合jquery ajax 后端取数据前端图表渲染
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    工具合集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%BE%A1%20Air%202%20%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    御 Air 2 新手教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字调制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A0%91%E8%8E%93%E6%B4%BE%20Google%20Assistant/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    树莓派 Google Assistant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A0%91%E8%8E%93%E6%B4%BEAI%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    树莓派AI工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B8%A9%E7%AE%B1%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无线控制温箱
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%83%AD%E5%8A%9B%E5%AD%A6%E5%90%8D%E8%AF%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    热力学名词
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%94%B5%E8%A7%A3%E8%B4%A8%E7%94%B5%E5%AE%B9%E5%A4%B1%E6%95%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips about using Layer in Creo
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--public"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%A6%E5%8F%B7%E9%97%B4%E5%B9%B2%E6%89%B0%E4%B8%8E%E5%BE%AA%E7%8E%AF%E5%89%8D%E7%BC%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    符号间干扰(ISI)与循环前缀(CP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BA%A2%E5%A4%96%E7%83%AD%E5%83%8F%E4%BB%AA%E5%8F%91%E5%B0%84%E7%8E%87%E7%A1%AE%E5%AE%9A%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    红外热像仪发射率确定方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BC%96%E7%A0%81%E5%99%A8%20SIQ-02FVS3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    编码器 SIQ 02FVS3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%88%9E%E5%8F%B0%E5%89%A7%E8%8D%B7%E5%8F%B6%E5%9C%86%E5%9C%86%E8%84%9A%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    舞台剧荷叶圆圆脚本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无线通信基础之：调制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%95%BF%E5%B9%B3%E4%B9%8B%E6%88%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    长平之战
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_86" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_86" id="__nav_3_86_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sensor
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_86_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_86">
+            <span class="md-nav__icon md-icon"></span>
+            Sensor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor/sensor%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sensor滤波
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor/%E6%8C%89%E9%94%AE%E6%B6%88%E6%8A%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按键消抖
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_87" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_87" id="__nav_3_87_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_87_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_87">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools/01abc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01abc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Flotherm
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Flotherm
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/0311%20%E6%95%A3%E7%83%AD%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0311 散热基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/0312%20Flotherm%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm基础 (Day 2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/2R%20resister/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to build 2R resistor model in Flotherm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Bn%20and%20Sn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bn and Sn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/DCDC%20Buck-Boost%20Converter%20%E7%83%AD%E8%80%97%E8%AE%A1%E7%AE%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCDC Buck Boost Converter 热耗计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Fan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    关于风扇
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/FloSCRIPT%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FloSCRIPT使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/FloTHERM%E4%B8%AD%E6%A8%A1%E6%8B%9F%E5%A4%AA%E9%98%B3%E8%BE%90%E5%B0%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FloTHERM中模拟太阳辐射
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Floscript%20%E5%92%8C%20Flotherm%20Environment%20Shell%E7%9A%84%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Floscript 和 Flotherm Environment Shell的结合使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Floterm-PCB-Vias-%E6%A8%A1%E6%8B%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Floterm PCB Vias 模拟
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20Export%20Attribute%20Table%20Data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm Export Attribute Table Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20Tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20Workplan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm Workplan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20batch%20mode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    批处理模式运行Flotherm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm 快捷键
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20%E6%A8%A1%E6%8B%9F%E6%95%A3%E7%83%AD%E5%99%A8%E7%9A%84%E5%BB%BA%E8%AE%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm 模拟散热器的建议
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E4%B8%AD%E5%8A%A0%E5%85%A5%E7%83%AD%E7%AE%A1%E6%A8%A1%E5%9E%8B%E5%90%8E%E6%94%B6%E6%95%9B%E5%9B%B0%E9%9A%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm中加入热管模型后收敛困难
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E4%B8%AD%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm中的坐标系
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E6%9D%82%E9%A1%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm杂项
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E8%BE%90%E5%B0%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm中加入热管模型后收敛困难
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG244816/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FloTHERM 常用的快捷键?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG516365/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best practise for gridding heat sinks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG517829/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modeling a Thermal interface material (TIM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG526524/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding grid constraints to walls of an enclosure smart part
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG531465/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is the advantage of setting inflation on a localized grid?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG541045/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重力方向
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG558355/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MG558355
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG560544/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modeling Thermal Vias in FloTHERM using FloEDA Bridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG601650/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exporting ODB++ files from Mentor Graphics Xpedition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG603968/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Set Solar Radiation in FloTHERM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG606137/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Providing thermal keepout areas on PCB to the Electrical Engineers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Notes%20on%20importing%20CSV%20files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes on importing CSV files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Result/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何有效地分析结果
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/TIM%E5%BB%BA%E6%A8%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIM建模
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E4%BD%BF%E7%94%A8JEDEC%E7%83%AD%E5%BA%A6%E9%87%8F%E8%AE%A1%E7%AE%97%E8%8A%AF%E7%89%87%E6%B8%A9%E5%BA%A6%E6%97%A0%E9%99%84%E5%8A%A0%E6%95%A3%E7%83%AD%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用JEDEC热度量计算芯片温度（无附加散热器）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E5%85%B1%E8%BD%AD%E4%BC%A0%E7%83%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    共轭传热
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E5%9B%BA%E4%BD%93%E5%86%85%E9%83%A8%E7%83%AD%E6%B5%81%E5%9B%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 固体内部热流图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E5%B0%81%E8%A3%85%E7%83%AD%E9%98%BB%E8%A7%86%E9%A2%91%E4%B8%AD%E7%9A%84%E8%AE%A1%E7%AE%97%E5%AE%9E%E4%BE%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    封装热阻视频中的计算实例
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E8%87%AA%E5%8A%A8%E5%B1%80%E9%83%A8%E7%BD%91%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自动局部网格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Flotherm XT
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Flotherm XT
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm%20XT/Flotherm%20XT%20EDA%20Bridge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm XT EDA Bridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Products
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Products
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Products/MK2101/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MK2101
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Ml5
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ml5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/01%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01图像分类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/02%E4%BA%BA%E4%BD%93%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02人体动作识别
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/03%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03小程序
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/Pandas%20%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas 笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Uploadfiles
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Uploadfiles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Image
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_1" id="__nav_8_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    201304
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            201304
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../uploadfiles/image/201304/8.jpg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8.jpg
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    公众号
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            公众号
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E4%BC%97%E5%8F%B7/0725/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    电子产品热管理的新挑战和材料
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E4%BC%97%E5%8F%B7/IGBT%20%E6%B8%A9%E5%BA%A6%E9%A2%84%E6%B5%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IGBT 温度预测
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E4%BC%97%E5%8F%B7/%E4%BD%BF%E7%94%A8%E7%83%AD%E7%AE%A1%E8%BF%9B%E8%A1%8C%E9%94%82%E7%A6%BB%E5%AD%90%E7%94%B5%E6%B1%A0%E5%9C%A8%E7%94%B5%E5%8A%A8%E6%B1%BD%E8%BD%A6%E9%AB%98%E7%94%B5%E6%B5%81%E6%94%BE%E7%94%B5%E6%97%B6%E7%9A%84%E7%83%AD%E7%AE%A1%E7%90%86%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用热管进行锂离子电池在电动汽车高电流放电时的热管理分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%9F%BA%E4%BA%8E%E6%96%B0%E5%9E%8B%E8%9C%98%E8%9B%9B%E7%BD%91%E7%8A%B6%E9%80%9A%E9%81%93%E5%86%B7%E5%8D%B4%E6%9D%BF%E4%BA%A4%E6%8D%A2%E5%99%A8%E7%9A%84%E9%94%82%E7%A6%BB%E5%AD%90%E7%94%B5%E6%B1%A0%E7%83%AD%E7%AE%A1%E7%90%86%E6%95%B0%E5%80%BC%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于新型蜘蛛网状通道冷却板交换器的锂离子电池热管理数值研究
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%85%AC%E4%BC%97%E5%8F%B7/%E7%94%B5%E5%8A%A8%E6%B1%BD%E8%BD%A6%E7%94%B5%E6%B1%A0%E6%B3%A2%E6%B5%AA%E9%80%9A%E9%81%93%E6%B6%B2%E4%BD%93%E5%86%B7%E5%8D%B4%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%83%AD%E6%80%A7%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    电动汽车电池波浪通道液体冷却系统的热性能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    电路参考
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            电路参考
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%94%B5%E8%B7%AF%E5%8F%82%E8%80%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%94%B5%E8%B7%AF%E5%8F%82%E8%80%83/%E4%B8%80%E9%94%AE%E5%BC%80%E5%85%B3%E6%9C%BA%E7%94%B5%E8%B7%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一键开关机电路
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mpu6050" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPU6050介紹
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPU6050介紹">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      三轴陀螺仪
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      三轴加速度计
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      DMP（数字运动处理器）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      片上温度传感器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mpu6050_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPU6050模块
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arduinompu6050" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arduino和MPU6050的连接方法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mpu6050arduino" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPU6050的Arduino代码
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>MPU6050加速度计 陀螺仪传感器</h1>
+
+<h2 id="mpu6050">MPU6050介紹</h2>
+<p><img alt="" src="https://pic3.zhimg.com/80/v2-f4790fe09bb96ac22a0df7dbe38805f2_720w.jpg" /></p>
+<p>MPU6050是一种微电子机械系统（MEMS），在单芯片上集成了一个3轴加速度计和一个3轴陀螺仪，还有温度传感器，使用I2C 通信接口。</p>
+<p>它可以测量：</p>
+<ul>
+<li>加速度</li>
+<li>速度</li>
+<li>方向</li>
+<li>移位</li>
+<li>温度</li>
+</ul>
+<p>MPU6050 IMU也称为六轴运动跟踪设备或6 DoF（六自由度）设备，因为它有6个输出，即3个加速度计输出和3个陀螺仪输出。</p>
+<p>MPU6050加速度计测量加速度的方式与ADXL345加速度传感器相同。简而言之，它可以测量沿3个轴的加速度，结合一些三角学数学，我们可以计算传感器定位的角度。因此，如果我们融合或组合加速度计和陀螺仪数据，我们可以获得有关传感器方向的非常准确的信息。</p>
+<h3 id="_1">三轴陀螺仪</h3>
+<p>MPU6050 由采用微机电系统 (MEMS) 技术的 3 轴陀螺仪组成。用于检测沿 X、Y、Z 轴的旋转速度，如下图所示。</p>
+<p><img alt="MPU-6050 旋转方向和极性" src="https://www.electronicwings.com/public/images/user_images/images/Sensor%20%26%20Modules/MPU6050/2_Oreintation_Polarity_of_Rotation_MPU6050.PNG" /></p>
+<ul>
+<li>
+<p>当陀螺仪围绕任何传感轴旋转时，科里奥利效应会引起振动，MPU6050 内部的 MEM 会检测到该振动。</p>
+</li>
+<li>
+<p>产生的信号被放大、解调和过滤以产生与角速率成正比的电压。</p>
+</li>
+<li>
+<p>该电压使用 16 位 ADC 进行数字化以对每个轴进行采样。</p>
+</li>
+<li>
+<p>输出的满量程范围为 +/- 250、+/- 500、+/- 1000、+/- 2000。</p>
+</li>
+<li>
+<p>陀螺仪输出各轴角速度，单位为度/每秒。</p>
+</li>
+<li>
+<p>因此为了获得角度值，我们只需要对其进行积分。</p>
+</li>
+</ul>
+<h3 id="_2">三轴加速度计</h3>
+<p>MPU6050 由采用微机电 (MEMS) 技术的 3 轴加速度计组成。它用于检测沿 X、Y 和 Z 轴的倾斜或倾斜角度，如下图所示。</p>
+<p><img alt="MPU-6050 倾角" src="https://www.electronicwings.com/public/images/user_images/images/Sensor%20%26%20Modules/MPU6050/3_Angle_of_Inclination.png" /></p>
+<ul>
+<li>
+<p>沿轴的加速度使可移动质量偏转。</p>
+</li>
+<li>
+<p>移动板（质量）的这种位移使差分电容器不平衡，从而导致传感器输出。输出幅度与加速度成正比。</p>
+</li>
+<li>
+<p>16 位 ADC 用于获得数字化输出。</p>
+</li>
+<li>
+<p>加速度的满量程范围为 +/- 2g、+/- 4g、+/- 8g、+/- 16g。</p>
+</li>
+<li>
+<p>它以 g（重力）为单位测量。</p>
+</li>
+<li>
+<p>当设备放置在平面上时，它将在 X 和 Y 轴上测量 0g，在 Z 轴上测量 +1g。</p>
+</li>
+</ul>
+<h3 id="dmp">DMP（数字运动处理器）</h3>
+<p>嵌入式数字运动处理器 (DMP) 用于计算运动处理算法。它从陀螺仪、加速度计和额外的 3rd 方传感器（如磁力计）获取数据并处理数据。它提供了滚动、俯仰、偏航角、横向和纵向感等运动数据。它最大限度地减少了主机计算运动数据的过程。结果数据可以从 DMP 寄存器中读取。</p>
+<h3 id="_3">片上温度传感器</h3>
+<p>片上温度传感器输出使用 ADC 数字化。温度传感器的读数可以从传感器数据寄存器中读取。</p>
+<h2 id="mpu6050_1">MPU6050模块</h2>
+<p><img alt="" src="https://pic3.zhimg.com/80/v2-d17a51e92ff5c3433a2cfb91a2cf8e7a_720w.jpg" /></p>
+<p>MPU-6050 模块有 8 个引脚，</p>
+<ul>
+<li>INT：中断输出引脚。传感器数据可读时为高。</li>
+<li>AD0： I2C 从地址 LSB 引脚。这是设备的 7 位从地址中的第 0 位。如果连接到 VCC，那么它被读取为逻辑 1，默认为0。因此模块的默认I2C地址为 0x68。如果将AD0接VCC，则I2C地址为 0x69，这样一个MCU可以连接两个MPU6050。</li>
+<li>XCL：辅助串行时钟引脚。此引脚用于将其他启用 I2C 接口的传感器 SCL 引脚连接到 MPU-6050。</li>
+<li>XDA：辅助串行数据引脚。此引脚用于将其他启用 I2C 接口的传感器 SDA 引脚连接到 MPU-6050。</li>
+<li>SCL：串行时钟引脚。将此引脚连接到微控制器 SCL 引脚。</li>
+<li>SDA：串行数据引脚。将此引脚连接到微控制器 SDA 引脚。</li>
+<li>GND：接地引脚。将此引脚连接到接地连接。</li>
+<li>VCC：电源引脚。将此引脚连接到 +3 ~ 5V 直流电源。</li>
+</ul>
+<p>该模块两个辅助引脚XDA, XCL，可用于连接外部IIC模块，如3 轴磁力计、压力传感器等进行通信。如果将 3 轴磁力计连接到辅助 I2C 总线，则 MPU6050 可以提供完整的 9 轴 Motion Fusion 输出。</p>
+<p>MPU-6050 模块有 Slave 地址（当 AD0 = 0 时，即它不连接到 Vcc）为，</p>
+<ul>
+<li>从机写地址(SLA+W) : 0xD0</li>
+<li>从机读地址(SLA+R) : 0xD1</li>
+</ul>
+<p>MPU-6050 有各种寄存器来控制和配置其操作模式。因此，请仔细阅读<a href="https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf">MPU-6050 规格书</a>和<a href="https://store.invensense.com/Datasheets/invensense/RM-MPU-6000A.pdf">MPU-6050 寄存器映射</a>。</p>
+<h2 id="arduinompu6050">Arduino和MPU6050的连接方法</h2>
+<p>我们来看看如何使用Arduino连接和读取MPU6050传感器的数据。我们使用I2C协议与Arduino进行通信，因此只需要两条线进行连接，另外还有两条线用于供电。</p>
+<p><img alt="" src="https://pic3.zhimg.com/80/v2-c8915a1c2cdbce8e88ce9e5240a7f156_720w.jpg" /></p>
+<p>Arduino和MPU6050连接电路图</p>
+<h2 id="mpu6050arduino">MPU6050的Arduino代码</h2>
+<p>以下是用于从MPU6050传感器读取数据的Arduino代码。在代码下方，您可以找到它的详细说明。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">/*</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cm">   Arduino and MPU6050 Accelerometer and Gyroscope Sensor Tutorial</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cm">*/</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">MPU</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x68</span><span class="p">;</span><span class="w"> </span><span class="c1">// MPU6050 I2C address</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kr">float</span><span class="w"> </span><span class="n">AccX</span><span class="p">,</span><span class="w"> </span><span class="n">AccY</span><span class="p">,</span><span class="w"> </span><span class="n">AccZ</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kr">float</span><span class="w"> </span><span class="n">GyroX</span><span class="p">,</span><span class="w"> </span><span class="n">GyroY</span><span class="p">,</span><span class="w"> </span><span class="n">GyroZ</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kr">float</span><span class="w"> </span><span class="n">accAngleX</span><span class="p">,</span><span class="w"> </span><span class="n">accAngleY</span><span class="p">,</span><span class="w"> </span><span class="n">gyroAngleX</span><span class="p">,</span><span class="w"> </span><span class="n">gyroAngleY</span><span class="p">,</span><span class="w"> </span><span class="n">gyroAngleZ</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="kr">float</span><span class="w"> </span><span class="n">roll</span><span class="p">,</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span><span class="w"> </span><span class="n">yaw</span><span class="p">;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="kr">float</span><span class="w"> </span><span class="n">AccErrorX</span><span class="p">,</span><span class="w"> </span><span class="n">AccErrorY</span><span class="p">,</span><span class="w"> </span><span class="n">GyroErrorX</span><span class="p">,</span><span class="w"> </span><span class="n">GyroErrorY</span><span class="p">,</span><span class="w"> </span><span class="n">GyroErrorZ</span><span class="p">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="kr">float</span><span class="w"> </span><span class="n">elapsedTime</span><span class="p">,</span><span class="w"> </span><span class="n">currentTime</span><span class="p">,</span><span class="w"> </span><span class="n">previousTime</span><span class="p">;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="kr">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="kr">void</span><span class="w"> </span><span class="nb">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">begin</span><span class="p">(</span><span class="mi">19200</span><span class="p">);</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">begin</span><span class="p">();</span><span class="w">                      </span><span class="c1">// Initialize comunication</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">beginTransmission</span><span class="p">(</span><span class="n">MPU</span><span class="p">);</span><span class="w">       </span><span class="c1">// Start communication with MPU6050 // MPU=0x68</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="mh">0x6B</span><span class="p">);</span><span class="w">                  </span><span class="c1">// Talk to the register 6B</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="mh">0x00</span><span class="p">);</span><span class="w">                  </span><span class="c1">// Make reset - place a 0 into the 6B register</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">endTransmission</span><span class="p">(</span><span class="kr">true</span><span class="p">);</span><span class="w">        </span><span class="c1">//end the transmission</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="cm">/*</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="cm">  // Configure Accelerometer Sensitivity - Full Scale Range (default +/- 2g)</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="cm">  Wire.beginTransmission(MPU);</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="cm">  Wire.write(0x1C);                  //Talk to the ACCEL_CONFIG register (1C hex)</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="cm">  Wire.write(0x10);                  //Set the register bits as 00010000 (+/- 8g full scale range)</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="cm">  Wire.endTransmission(true);</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="cm">  // Configure Gyro Sensitivity - Full Scale Range (default +/- 250deg/s)</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="cm">  Wire.beginTransmission(MPU);</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="cm">  Wire.write(0x1B);                   // Talk to the GYRO_CONFIG register (1B hex)</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="cm">  Wire.write(0x10);                   // Set the register bits as 00010000 (1000deg/s full scale)</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="cm">  Wire.endTransmission(true);</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="cm">  delay(20);</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="cm">  */</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">  </span><span class="c1">// Call this function if you need to get the IMU error values for your module</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">  </span><span class="n">calculate_IMU_error</span><span class="p">();</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">  </span><span class="nf">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="p">}</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="kr">void</span><span class="w"> </span><span class="nb">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">  </span><span class="c1">// === Read acceleromter data === //</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">beginTransmission</span><span class="p">(</span><span class="n">MPU</span><span class="p">);</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="mh">0x3B</span><span class="p">);</span><span class="w"> </span><span class="c1">// Start with register 0x3B (ACCEL_XOUT_H)</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">endTransmission</span><span class="p">(</span><span class="kr">false</span><span class="p">);</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">requestFrom</span><span class="p">(</span><span class="n">MPU</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="kr">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// Read 6 registers total, each axis value is stored in 2 registers</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">  </span><span class="c1">//For a range of +-2g, we need to divide the raw values by 16384, according to the datasheet</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">  </span><span class="n">AccX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">16384.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// X-axis value</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">  </span><span class="n">AccY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">16384.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Y-axis value</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">  </span><span class="n">AccZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">16384.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Z-axis value</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">  </span><span class="c1">// Calculating Roll and Pitch from the accelerometer data</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">  </span><span class="n">accAngleX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">atan</span><span class="p">(</span><span class="n">AccY</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">pow</span><span class="p">(</span><span class="n">AccX</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">pow</span><span class="p">(</span><span class="n">AccZ</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PI</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.58</span><span class="p">;</span><span class="w"> </span><span class="c1">// AccErrorX ~(0.58) See the calculate_IMU_error()custom function for more details</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">  </span><span class="n">accAngleY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">atan</span><span class="p">(</span><span class="mi">-1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">AccX</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">pow</span><span class="p">(</span><span class="n">AccY</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">pow</span><span class="p">(</span><span class="n">AccZ</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PI</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.58</span><span class="p">;</span><span class="w"> </span><span class="c1">// AccErrorY ~(-1.58)</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">  </span><span class="c1">// === Read gyroscope data === //</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">  </span><span class="n">previousTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentTime</span><span class="p">;</span><span class="w">        </span><span class="c1">// Previous time is stored before the actual time read</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">  </span><span class="n">currentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">millis</span><span class="p">();</span><span class="w">            </span><span class="c1">// Current time actual time read</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">  </span><span class="n">elapsedTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">currentTime</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">previousTime</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w"> </span><span class="c1">// Divide by 1000 to get seconds</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">beginTransmission</span><span class="p">(</span><span class="n">MPU</span><span class="p">);</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="mh">0x43</span><span class="p">);</span><span class="w"> </span><span class="c1">// Gyro data first register address 0x43</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">endTransmission</span><span class="p">(</span><span class="kr">false</span><span class="p">);</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">requestFrom</span><span class="p">(</span><span class="n">MPU</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="kr">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// Read 4 registers total, each axis value is stored in 2 registers</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">  </span><span class="n">GyroX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// For a 250deg/s range we have to divide first the raw value by 131.0, according to the datasheet</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">  </span><span class="n">GyroY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="p">;</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">  </span><span class="n">GyroZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="p">;</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">  </span><span class="c1">// Correct the outputs with the calculated error values</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">  </span><span class="n">GyroX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.56</span><span class="p">;</span><span class="w"> </span><span class="c1">// GyroErrorX ~(-0.56)</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="w">  </span><span class="n">GyroY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroY</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// GyroErrorY ~(2)</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">  </span><span class="n">GyroZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroZ</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.79</span><span class="p">;</span><span class="w"> </span><span class="c1">// GyroErrorZ ~ (-0.8)</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">  </span><span class="c1">// Currently the raw values are in degrees per seconds, deg/s, so we need to multiply by sendonds (s) to get the angle in degrees</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="w">  </span><span class="n">gyroAngleX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gyroAngleX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">GyroX</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">elapsedTime</span><span class="p">;</span><span class="w"> </span><span class="c1">// deg/s * s = deg</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">  </span><span class="n">gyroAngleY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gyroAngleY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">GyroY</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">elapsedTime</span><span class="p">;</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="w">  </span><span class="n">yaw</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">yaw</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">GyroZ</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">elapsedTime</span><span class="p">;</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">  </span><span class="c1">// Complementary filter - combine acceleromter and gyro angle values</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="w">  </span><span class="n">roll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.96</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">gyroAngleX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.04</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">accAngleX</span><span class="p">;</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="w">  </span><span class="n">pitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.96</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">gyroAngleY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.04</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">accAngleY</span><span class="p">;</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="w">  </span><span class="c1">// Print the values on the serial monitor</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="n">roll</span><span class="p">);</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="n">pitch</span><span class="p">);</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">yaw</span><span class="p">);</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="p">}</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="kr">void</span><span class="w"> </span><span class="nf">calculate_IMU_error</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="w">  </span><span class="c1">// We can call this funtion in the setup section to calculate the accelerometer and gyro data error. From here we will get the error values used in the above equations printed on the Serial Monitor.</span>
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="w">  </span><span class="c1">// Note that we should place the IMU flat in order to get the proper values, so that we then can the correct values</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="w">  </span><span class="c1">// Read accelerometer values 200 times</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">beginTransmission</span><span class="p">(</span><span class="n">MPU</span><span class="p">);</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="mh">0x3B</span><span class="p">);</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">endTransmission</span><span class="p">(</span><span class="kr">false</span><span class="p">);</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">requestFrom</span><span class="p">(</span><span class="n">MPU</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="kr">true</span><span class="p">);</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a><span class="w">    </span><span class="n">AccX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">16384.0</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a><span class="w">    </span><span class="n">AccY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">16384.0</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a><span class="w">    </span><span class="n">AccZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">16384.0</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a><span class="w">    </span><span class="c1">// Sum all readings</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a><span class="w">    </span><span class="n">AccErrorX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccErrorX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">((</span><span class="n">atan</span><span class="p">((</span><span class="n">AccY</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">pow</span><span class="p">((</span><span class="n">AccX</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">pow</span><span class="p">((</span><span class="n">AccZ</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PI</span><span class="p">));</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a><span class="w">    </span><span class="n">AccErrorY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccErrorY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">((</span><span class="n">atan</span><span class="p">(</span><span class="mi">-1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">AccX</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">pow</span><span class="p">((</span><span class="n">AccY</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">pow</span><span class="p">((</span><span class="n">AccZ</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PI</span><span class="p">));</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a><span class="w">    </span><span class="n">c</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a><span class="w">  </span><span class="c1">//Divide the sum by 200 to get the error value</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a><span class="w">  </span><span class="n">AccErrorX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccErrorX</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a><span class="w">  </span><span class="n">AccErrorY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccErrorY</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a><span class="w">  </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a><span class="w">  </span><span class="c1">// Read gyro values 200 times</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">beginTransmission</span><span class="p">(</span><span class="n">MPU</span><span class="p">);</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="mh">0x43</span><span class="p">);</span>
+<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">endTransmission</span><span class="p">(</span><span class="kr">false</span><span class="p">);</span>
+<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">requestFrom</span><span class="p">(</span><span class="n">MPU</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="kr">true</span><span class="p">);</span>
+<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a><span class="w">    </span><span class="n">GyroX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">();</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a><span class="w">    </span><span class="n">GyroY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">();</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a><span class="w">    </span><span class="n">GyroZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">();</span>
+<a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a><span class="w">    </span><span class="c1">// Sum all readings</span>
+<a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a><span class="w">    </span><span class="n">GyroErrorX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroErrorX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">GyroX</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="p">);</span>
+<a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a><span class="w">    </span><span class="n">GyroErrorY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroErrorY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">GyroY</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="p">);</span>
+<a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a><span class="w">    </span><span class="n">GyroErrorZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroErrorZ</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">GyroZ</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="p">);</span>
+<a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a><span class="w">    </span><span class="n">c</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a><span class="w">  </span><span class="c1">//Divide the sum by 200 to get the error value</span>
+<a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a><span class="w">  </span><span class="n">GyroErrorX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroErrorX</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a><span class="w">  </span><span class="n">GyroErrorY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroErrorY</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a><span class="w">  </span><span class="n">GyroErrorZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroErrorZ</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a><span class="w">  </span><span class="c1">// Print the error values on the Serial Monitor</span>
+<a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;AccErrorX: &quot;</span><span class="p">);</span>
+<a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">AccErrorX</span><span class="p">);</span>
+<a id="__codelineno-0-123" name="__codelineno-0-123" href="#__codelineno-0-123"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;AccErrorY: &quot;</span><span class="p">);</span>
+<a id="__codelineno-0-124" name="__codelineno-0-124" href="#__codelineno-0-124"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">AccErrorY</span><span class="p">);</span>
+<a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;GyroErrorX: &quot;</span><span class="p">);</span>
+<a id="__codelineno-0-126" name="__codelineno-0-126" href="#__codelineno-0-126"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">GyroErrorX</span><span class="p">);</span>
+<a id="__codelineno-0-127" name="__codelineno-0-127" href="#__codelineno-0-127"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;GyroErrorY: &quot;</span><span class="p">);</span>
+<a id="__codelineno-0-128" name="__codelineno-0-128" href="#__codelineno-0-128"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">GyroErrorY</span><span class="p">);</span>
+<a id="__codelineno-0-129" name="__codelineno-0-129" href="#__codelineno-0-129"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;GyroErrorZ: &quot;</span><span class="p">);</span>
+<a id="__codelineno-0-130" name="__codelineno-0-130" href="#__codelineno-0-130"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">GyroErrorZ</span><span class="p">);</span>
+<a id="__codelineno-0-131" name="__codelineno-0-131" href="#__codelineno-0-131"></a><span class="p">}</span>
+</code></pre></div>
+<p>代码描述：首先我们需要包含用于I2C通信的Wire.h库，并定义一些存储数据所需的变量。</p>
+<p>在setup()函数部分，我们需要初始化wire库并通过电源管理寄存器复位传感器。 为此，我们需要查看传感器的<u><a rel="nofollow noreferrer" class="wrap external" href="https://link.zhihu.com/?target=https%3A//www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Register-Map1.pdf">数据手册</a></u>，从中我们可以看到寄存器地址。</p>
+<p><img alt="" src="https://pic2.zhimg.com/80/v2-cbd0e26d999ab528f567985ae1f9539d_720w.png" /></p>
+<p>MPU6050电源管理寄存器0x6B</p>
+<p>此外，如果需要，我们可以使用配置寄存器为加速度计和陀螺仪选择满量程范围。 对于这个例子，我们将使用加速度计的默认±2g范围和陀螺仪的250度/秒范围。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Configure Accelerometer Sensitivity - Full Scale Range (default +/- 2g)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">beginTransmission</span><span class="p">(</span><span class="n">MPU</span><span class="p">);</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="mh">0x1C</span><span class="p">);</span><span class="w">                  </span><span class="c1">//Talk to the ACCEL_CONFIG register (1C hex)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="mh">0x10</span><span class="p">);</span><span class="w">                  </span><span class="c1">//Set the register bits as 00010000 (+/- 8g full scale range)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">endTransmission</span><span class="p">(</span><span class="kr">true</span><span class="p">);</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="c1">// Configure Gyro Sensitivity - Full Scale Range (default +/- 250deg/s)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">beginTransmission</span><span class="p">(</span><span class="n">MPU</span><span class="p">);</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="mh">0x1B</span><span class="p">);</span><span class="w">                   </span><span class="c1">// Talk to the GYRO_CONFIG register (1B hex)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="mh">0x10</span><span class="p">);</span><span class="w">                   </span><span class="c1">// Set the register bits as 00010000 (1000deg/s full scale)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">endTransmission</span><span class="p">(</span><span class="kr">true</span><span class="p">);</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="o">*/</span>
+</code></pre></div>
+<p>在loop()函数部分，我们首先读取加速度计的数据。 每个轴的数据存储在两个字节或寄存器中，我们可以从传感器的数据手册中看到这些寄存器的地址。</p>
+<p><img alt="" src="https://pic3.zhimg.com/80/v2-7a483e3b8b1ab196efa9bfdb5ecf6a42_720w.jpg" /></p>
+<p>MPU6050 imu加速度计数据寄存器</p>
+<p>为了全部读取它们，我们从第一个寄存器开始，然后使用requiestFrom()函数，我们请求读取X、Y和Z轴的所有6个寄存器。 然后我们从每个寄存器读取数据，并且由于输出是二进制补码，我们将它们相应地组合以获得正确的值。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// === Read acceleromter data === //</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">beginTransmission</span><span class="p">(</span><span class="n">MPU</span><span class="p">);</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="mh">0x3B</span><span class="p">);</span><span class="w"> </span><span class="c1">// Start with register 0x3B (ACCEL_XOUT_H)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">endTransmission</span><span class="p">(</span><span class="kr">false</span><span class="p">);</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">requestFrom</span><span class="p">(</span><span class="n">MPU</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="kr">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// Read 6 registers total, each axis value is stored in 2 registers</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="c1">//For a range of +-2g, we need to divide the raw values by 16384, according to the datasheet</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="n">AccX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">16384.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// X-axis value</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="n">AccY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">16384.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Y-axis value</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="n">AccZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">16384.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Z-axis value</span>
+</code></pre></div>
+<p>为了获得-1g到+ 1g的输出值，适合计算角度，我们将输出除以先前选择的灵敏度。</p>
+<p><img alt="" src="https://pic4.zhimg.com/80/v2-1a9d805e22cedea4e8efac02fc6bdccb_720w.jpg" /></p>
+<p>mpu6050加速度计灵敏度满量程范围</p>
+<p>最后，使用这<u><a rel="nofollow noreferrer" class="wrap external" href="https://link.zhihu.com/?target=https%3A//www.nxp.com/files-static/sensors/doc/app_note/AN3461.pdf">两个公式</a></u>，我们从加速度计数据计算滚转角和俯仰角。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w"> </span><span class="n">accAngleX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">atan</span><span class="p">(</span><span class="n">AccY</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">pow</span><span class="p">(</span><span class="n">AccX</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">pow</span><span class="p">(</span><span class="n">AccZ</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PI</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.58</span><span class="p">;</span><span class="w"> </span><span class="c1">// AccErrorX ~(0.58) See the calculate_IMU_error()custom function for more details</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="n">accAngleY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">atan</span><span class="p">(</span><span class="mi">-1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">AccX</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">pow</span><span class="p">(</span><span class="n">AccY</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">pow</span><span class="p">(</span><span class="n">AccZ</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PI</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.58</span><span class="p">;</span><span class="w"> </span><span class="c1">// AccErrorY ~(-1.58)</span>
+</code></pre></div>
+<p>接下来，使用相同的方法我们得到陀螺仪数据。</p>
+<p><img alt="" src="https://pic2.zhimg.com/80/v2-08b85e88eaabc252ed99fdd071bcb23d_720w.jpg" /></p>
+<p>我们读取了六个陀螺仪寄存器，适当地组合它们的数据并将其除以先前选择的灵敏度，以便以每秒的度数获得输出。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// === Read gyroscope data === //</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="n">previousTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentTime</span><span class="p">;</span><span class="w">        </span><span class="c1">// Previous time is stored before the actual time read</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="n">currentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">millis</span><span class="p">();</span><span class="w">            </span><span class="c1">// Current time actual time read</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="n">elapsedTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">currentTime</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">previousTime</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w"> </span><span class="c1">// Divide by 1000 to get seconds</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">beginTransmission</span><span class="p">(</span><span class="n">MPU</span><span class="p">);</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="mh">0x43</span><span class="p">);</span><span class="w"> </span><span class="c1">// Gyro data first register address 0x43</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">endTransmission</span><span class="p">(</span><span class="kr">false</span><span class="p">);</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">requestFrom</span><span class="p">(</span><span class="n">MPU</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="kr">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// Read 4 registers total, each axis value is stored in 2 registers</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="n">GyroX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// For a 250deg/s range we have to divide first the raw value by 131.0, according to the datasheet</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="n">GyroY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="p">;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="n">GyroZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="p">;</span>
+</code></pre></div>
+<p><img alt="" src="https://pic4.zhimg.com/80/v2-16d1104850e6f95cd43f978cbf67760f_720w.jpg" /></p>
+<p>在这里你可以注意到我用一些小的计算误差值来校正输出值，我将在接下来解释它们是如何得到它们的。 因此，当输出以度/秒为单位时，现在我们需要将它们与时间相乘以得到度数。 使用millis()函数在每次读取迭代之前捕获时间值。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Correct the outputs with the calculated error values</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="n">GyroX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.56</span><span class="p">;</span><span class="w"> </span><span class="c1">// GyroErrorX ~(-0.56)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="n">GyroY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroY</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// GyroErrorY ~(2)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="n">GyroZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroZ</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.79</span><span class="p">;</span><span class="w"> </span><span class="c1">// GyroErrorZ ~ (-0.8)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="c1">// Currently the raw values are in degrees per seconds, deg/s, so we need to multiply by sendonds (s) to get the angle in degrees</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="n">gyroAngleX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gyroAngleX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">GyroX</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">elapsedTime</span><span class="p">;</span><span class="w"> </span><span class="c1">// deg/s * s = deg</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="n">gyroAngleY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gyroAngleY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">GyroY</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">elapsedTime</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="n">yaw</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">yaw</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">GyroZ</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">elapsedTime</span><span class="p">;</span>
+</code></pre></div>
+<p>最后，我们使用互补滤波器融合加速度计和陀螺仪数据。在这里，我们采用96％的陀螺仪数据，因为它非常准确，不会受到外力的影响。陀螺仪的缺点是存在漂移，或者随着时间的推移在输出中引入误差。因此，从长远来看，我们使用来自加速度计的数据，本例为4％，足以消除陀螺仪的漂移误差。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// Complementary filter - combine acceleromter and gyro angle values</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="n">roll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.96</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">gyroAngleX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.04</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">accAngleX</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="n">pitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.96</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">gyroAngleY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.04</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">accAngleY</span><span class="p">;</span>
+</code></pre></div>
+<p>但是，由于我们无法从加速度计数据计算偏航，我们无法在其上实现互补滤波器。</p>
+<p>在我们看一下结果之前，让我快速解释一下如何获得纠错值。为了计算这些错误，我们可以在传感器处于平坦静止位置时调用calculate_IMU_error()自定义函数。在这里，我们为所有输出做了200个读数，我们将它们相加并将它们除以200。由于我们将传感器保持在平坦静止位置，因此预期输出值应为0。因此，通过此计算，我们可以得到传感器的平均误差。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">void</span><span class="w"> </span><span class="nf">calculate_IMU_error</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="c1">// We can call this funtion in the setup section to calculate the accelerometer and gyro data error. From here we will get the error values used in the above equations printed on the Serial Monitor.</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="c1">// Note that we should place the IMU flat in order to get the proper values, so that we then can the correct values</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="c1">// Read accelerometer values 200 times</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">beginTransmission</span><span class="p">(</span><span class="n">MPU</span><span class="p">);</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="mh">0x3B</span><span class="p">);</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">endTransmission</span><span class="p">(</span><span class="kr">false</span><span class="p">);</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">requestFrom</span><span class="p">(</span><span class="n">MPU</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="kr">true</span><span class="p">);</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="n">AccX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">16384.0</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="n">AccY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">16384.0</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="n">AccZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">16384.0</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="c1">// Sum all readings</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">    </span><span class="n">AccErrorX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccErrorX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">((</span><span class="n">atan</span><span class="p">((</span><span class="n">AccY</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">pow</span><span class="p">((</span><span class="n">AccX</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">pow</span><span class="p">((</span><span class="n">AccZ</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PI</span><span class="p">));</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="n">AccErrorY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccErrorY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">((</span><span class="n">atan</span><span class="p">(</span><span class="mi">-1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">AccX</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">pow</span><span class="p">((</span><span class="n">AccY</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">pow</span><span class="p">((</span><span class="n">AccZ</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PI</span><span class="p">));</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="n">c</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">  </span><span class="c1">//Divide the sum by 200 to get the error value</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">  </span><span class="n">AccErrorX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccErrorX</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">  </span><span class="n">AccErrorY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccErrorY</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">  </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">  </span><span class="c1">// Read gyro values 200 times</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">beginTransmission</span><span class="p">(</span><span class="n">MPU</span><span class="p">);</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="mh">0x43</span><span class="p">);</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">endTransmission</span><span class="p">(</span><span class="kr">false</span><span class="p">);</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">    </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">requestFrom</span><span class="p">(</span><span class="n">MPU</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="kr">true</span><span class="p">);</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">    </span><span class="n">GyroX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">();</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="w">    </span><span class="n">GyroY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">();</span>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w">    </span><span class="n">GyroZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Wire</span><span class="p">.</span><span class="nf">read</span><span class="p">();</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="w">    </span><span class="c1">// Sum all readings</span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="w">    </span><span class="n">GyroErrorX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroErrorX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">GyroX</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="p">);</span>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="w">    </span><span class="n">GyroErrorY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroErrorY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">GyroY</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="p">);</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="w">    </span><span class="n">GyroErrorZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroErrorZ</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">GyroZ</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">131.0</span><span class="p">);</span>
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a><span class="w">    </span><span class="n">c</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="w">  </span><span class="c1">//Divide the sum by 200 to get the error value</span>
+<a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="w">  </span><span class="n">GyroErrorX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroErrorX</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a><span class="w">  </span><span class="n">GyroErrorY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroErrorY</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a><span class="w">  </span><span class="n">GyroErrorZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GyroErrorZ</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a><span class="w">  </span><span class="c1">// Print the error values on the Serial Monitor</span>
+<a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;AccErrorX: &quot;</span><span class="p">);</span>
+<a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">AccErrorX</span><span class="p">);</span>
+<a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;AccErrorY: &quot;</span><span class="p">);</span>
+<a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">AccErrorY</span><span class="p">);</span>
+<a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;GyroErrorX: &quot;</span><span class="p">);</span>
+<a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">GyroErrorX</span><span class="p">);</span>
+<a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;GyroErrorY: &quot;</span><span class="p">);</span>
+<a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">GyroErrorY</span><span class="p">);</span>
+<a id="__codelineno-7-50" name="__codelineno-7-50" href="#__codelineno-7-50"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;GyroErrorZ: &quot;</span><span class="p">);</span>
+<a id="__codelineno-7-51" name="__codelineno-7-51" href="#__codelineno-7-51"></a><span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">GyroErrorZ</span><span class="p">);</span>
+<a id="__codelineno-7-52" name="__codelineno-7-52" href="#__codelineno-7-52"></a><span class="p">}</span>
+</code></pre></div>
+<p>我们只需在串行监视器上打印这些值，一旦我们知道它们，我们就可以在前面所示的代码中实现它们，用于滚动和俯仰计算，以及3个陀螺仪输出。</p>
+<p><img alt="" src="https://pic2.zhimg.com/80/v2-b64880d120d30bfa6e0577f2a4354a6d_720w.jpg" /></p>
+<p>MPU6050俯仰滚转和偏航输出</p>
+<p>最后，使用Serial.print函数，我们可以在串行监视器上打印Roll、Pitch和Yaw值，看看传感器是否正常工作。</p>
+<p>測試I2C是否連接妥當</p>
+<p>使用i2c_scanner sketch測試I2C是否裝置妥當 
+http://playground.arduino.cc//Main/I2cScanner
+執行i2c_scanner sketch，終端機會出現所偵測到的i2c裝置位址。</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2020-2021 mekesim.com <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">浙ICP备10045952号-5</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

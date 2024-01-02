@@ -1,0 +1,5059 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="米克网文档">
+      
+      
+        <meta name="author" content="Colin Yang">
+      
+      
+        <link rel="canonical" href="http://www.mekesim.com/doc/%E5%85%AC%E4%BC%97%E5%8F%B7/0725/">
+      
+      
+        <link rel="prev" href="../../uploadfiles/image/201304/8.jpg/">
+      
+      
+        <link rel="next" href="../IGBT%20%E6%B8%A9%E5%BA%A6%E9%A2%84%E6%B5%8B/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>电子产品热管理的新挑战和材料 - 米克网</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","UA-40504642-1"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","UA-40504642-1",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=UA-40504642-1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="米克网" class="md-header__button md-logo" aria-label="米克网" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            米克网
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              电子产品热管理的新挑战和材料
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Mekesim Documents
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Arduino/" class="md-tabs__link">
+          
+  
+  Arduino
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ESP32/" class="md-tabs__link">
+          
+  
+  ESP32
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Flotherm/" class="md-tabs__link">
+          
+  
+  Flotherm
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Flotherm%20XT/Flotherm%20XT%20EDA%20Bridge/" class="md-tabs__link">
+          
+  
+  Flotherm XT
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Products/MK2101/" class="md-tabs__link">
+          
+  
+  Products
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ml5/01%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="md-tabs__link">
+          
+  
+  Ml5
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../uploadfiles/image/201304/8.jpg/" class="md-tabs__link">
+          
+  
+  Uploadfiles
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  公众号
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E7%94%B5%E8%B7%AF%E5%8F%82%E8%80%83/" class="md-tabs__link">
+          
+  
+  电路参考
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="米克网" class="md-nav__button md-logo" aria-label="米克网" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    米克网
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mekesim Documents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Arduino
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arduino
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Arduino Uno入门
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arduino Uno入门
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目一 初识Arduino
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目二 SOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目三 神奇的按钮
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目四 简易入侵检测仪
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目五 可调灯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目六 智能灯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目七 创意门铃
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目八 小小作曲家
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目九 噪音计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十 遥控灯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十一 另类电子琴
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十二 超声波测距仪
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十三 公园人数计数系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十四 打地鼠游戏
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ESP32
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            ESP32
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/01%20ESP32%20%E5%BC%80%E5%8F%91%E6%9D%BF%20Devkit%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 ESP32 开发板 Devkit介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/02%20ESP32%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B9%8B%20Arduino%20IDE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 ESP32 开发环境之 Arduino IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/03%20ESP32%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B9%8B%20PlatformIO/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 ESP32开发环境之 PlatformIO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/04%20ESP32%20GPIO%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 ESP32 GPIO介绍及使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 AD输入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ADXL345%E5%8A%A0%E9%80%9F%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    总览
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Ansys%20Fail%20to%20Open/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ANSYS过段时间出现License错误的解决办法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Arduino%20%E4%BD%BF%E7%94%A8Thermal%20Coupler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arduino 使用Thermal Coupler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Arduino%20%E8%B6%85%E5%A3%B0%E6%B3%A2%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    超声波传感器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Arduino/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arduino
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/CDMA%20Demostration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CDMA code spreading demostrate with Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Car-basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arduino控制小车
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP-EYE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP EYE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP-NOW/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP NOW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20CAM%20Face/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 CAM Face
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20Connect%20Wifi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 连接Wifi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20MQTT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 使用MQTT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20use%20MAX31855/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 温度测量仪
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 功能介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 接口
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 测试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%E4%BC%91%E7%9C%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32睡眠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%E4%BD%BF%E7%94%A8%E5%8F%8C%E6%A0%B8FreeRTOS%E5%92%8CArduino%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32使用双核FreeRTOS和Arduino环境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ETS300753%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ETS 300753 解读
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/FFT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/FOTA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FOTA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Facenet%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FaceNet 使用实例介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Gat%20Data%20from%20Picture%20Curve/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Get Data from Picture Curve
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/How%20to%20Add%20High%20Quality%20Matlab%20Graphics%20in%20Latex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Add High Quality Matlab Graphics in Latex
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--public"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Hugo%20on%20VPS%20with%20Git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hugo on VPS with Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/I2C%20Sanner/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I2C Sanner
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Inlation%20Mesh/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    在局部网格上设置通胀有什么好处？
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Insert%20Matlab%20Figure%20into%20Latex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Insert Matlab Figure into Latex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Interesting%20Things/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interesting DIY Things
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/L298N/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    L298N
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/LED%E6%95%A3%E7%83%AD%E6%8A%80%E6%9C%AF%E6%96%B0%E5%8A%A8%E5%90%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LED散热技术新动向
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/MAX31855/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MAX31855开发板使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/MPU6050%E5%8A%A0%E9%80%9F%E5%BA%A6%E8%AE%A1%20%E9%99%80%E8%9E%BA%E4%BB%AA%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MPU6050加速度计 陀螺仪传感器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Mannually%20download%20bin%20file%20to%20ESP32/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mannually download bin file to ESP32
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/OFDM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OFDM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/PA%20%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PA模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Polar%E7%BC%96%E7%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polar编码
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/PowerPAD%20Packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PowerPAD Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Proe%20Layer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips about using Layer in Creo
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--public"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/QFN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QFN Package
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Sverchok%E4%B8%AD%E7%9A%84Bloom%20Spheres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sverchok中的Bloom Spheres
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/TIM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    固态界面材料热特性测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/TensorFlow%20Lite%20on%20Raspberry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow Lite on Raspberry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Tensorflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tensorflow学习笔记1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Thermal%20Impedance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thermal Impedance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Use%20flogate_cl%20Command%20convert%20xml%20to%20pdml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use flogate_cl Command convert xml to pdml
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/VL6180X%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VL6180X测距
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/VS-code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VS Code and PlatformIO IDE for ESP32 and ESP8266 Arudino platform  code introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/edgeimpulse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Edgeimpulse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/flask_socketio_echarts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flask socketio echarts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/git%20proxy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Github Desktop 设置代理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/icepak%20tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Icepak Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/iphone/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iPhone 4 热分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/latextools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latextools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/matplotlib_Chinese/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    python matplotlib 支持中文标题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/meke%E6%9C%9F%E5%88%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    风扇设计与选型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/mkdoc%20github/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mkdoc github
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/rasp_pi_installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rasp pi installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/shadowsocks_pi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    在树莓派上安装 shadowsocks 客户端
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/wemos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wemos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E4%BF%A1%E9%81%93%E7%BC%96%E7%A0%81%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    信道编码的前世今生
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%8A%A8%E7%89%A9%E7%8E%8B%E5%9B%BD%E5%BC%80%E5%A4%A7%E4%BC%9A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    动物王国开大会
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    卡尔曼滤波
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%9B%BA%E6%80%81%E7%95%8C%E9%9D%A2%E6%9D%90%E6%96%99%E7%83%AD%E7%89%B9%E6%80%A7%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    固态界面材料热特性测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%9B%BE%E8%A1%A8highcharts%E8%81%94%E5%90%88jquery%20ajax%20%E5%90%8E%E7%AB%AF%E5%8F%96%E6%95%B0%E6%8D%AE%E5%89%8D%E7%AB%AF%E5%9B%BE%E8%A1%A8%E6%B8%B2%E6%9F%93/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    图表highcharts联合jquery ajax 后端取数据前端图表渲染
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    工具合集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%BE%A1%20Air%202%20%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    御 Air 2 新手教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字调制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E6%A0%91%E8%8E%93%E6%B4%BE%20Google%20Assistant/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    树莓派 Google Assistant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E6%A0%91%E8%8E%93%E6%B4%BEAI%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    树莓派AI工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E6%B8%A9%E7%AE%B1%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无线控制温箱
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E7%83%AD%E5%8A%9B%E5%AD%A6%E5%90%8D%E8%AF%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    热力学名词
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E7%94%B5%E8%A7%A3%E8%B4%A8%E7%94%B5%E5%AE%B9%E5%A4%B1%E6%95%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips about using Layer in Creo
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--public"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E7%AC%A6%E5%8F%B7%E9%97%B4%E5%B9%B2%E6%89%B0%E4%B8%8E%E5%BE%AA%E7%8E%AF%E5%89%8D%E7%BC%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    符号间干扰(ISI)与循环前缀(CP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E7%BA%A2%E5%A4%96%E7%83%AD%E5%83%8F%E4%BB%AA%E5%8F%91%E5%B0%84%E7%8E%87%E7%A1%AE%E5%AE%9A%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    红外热像仪发射率确定方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E7%BC%96%E7%A0%81%E5%99%A8%20SIQ-02FVS3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    编码器 SIQ 02FVS3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E8%88%9E%E5%8F%B0%E5%89%A7%E8%8D%B7%E5%8F%B6%E5%9C%86%E5%9C%86%E8%84%9A%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    舞台剧荷叶圆圆脚本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无线通信基础之：调制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E9%95%BF%E5%B9%B3%E4%B9%8B%E6%88%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    长平之战
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_86" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_86" id="__nav_3_86_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sensor
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_86_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_86">
+            <span class="md-nav__icon md-icon"></span>
+            Sensor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/sensor/sensor%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sensor滤波
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/sensor/%E6%8C%89%E9%94%AE%E6%B6%88%E6%8A%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按键消抖
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_87" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_87" id="__nav_3_87_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_87_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_87">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/tools/01abc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01abc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Flotherm
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Flotherm
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/0311%20%E6%95%A3%E7%83%AD%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0311 散热基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/0312%20Flotherm%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm基础 (Day 2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/2R%20resister/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to build 2R resistor model in Flotherm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Bn%20and%20Sn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bn and Sn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/DCDC%20Buck-Boost%20Converter%20%E7%83%AD%E8%80%97%E8%AE%A1%E7%AE%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCDC Buck Boost Converter 热耗计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Fan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    关于风扇
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/FloSCRIPT%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FloSCRIPT使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/FloTHERM%E4%B8%AD%E6%A8%A1%E6%8B%9F%E5%A4%AA%E9%98%B3%E8%BE%90%E5%B0%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FloTHERM中模拟太阳辐射
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Floscript%20%E5%92%8C%20Flotherm%20Environment%20Shell%E7%9A%84%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Floscript 和 Flotherm Environment Shell的结合使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Floterm-PCB-Vias-%E6%A8%A1%E6%8B%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Floterm PCB Vias 模拟
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20Export%20Attribute%20Table%20Data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm Export Attribute Table Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20Tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20Workplan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm Workplan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20batch%20mode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    批处理模式运行Flotherm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm 快捷键
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20%E6%A8%A1%E6%8B%9F%E6%95%A3%E7%83%AD%E5%99%A8%E7%9A%84%E5%BB%BA%E8%AE%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm 模拟散热器的建议
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E4%B8%AD%E5%8A%A0%E5%85%A5%E7%83%AD%E7%AE%A1%E6%A8%A1%E5%9E%8B%E5%90%8E%E6%94%B6%E6%95%9B%E5%9B%B0%E9%9A%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm中加入热管模型后收敛困难
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E4%B8%AD%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm中的坐标系
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E6%9D%82%E9%A1%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm杂项
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E8%BE%90%E5%B0%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm中加入热管模型后收敛困难
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG244816/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FloTHERM 常用的快捷键?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG516365/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best practise for gridding heat sinks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG517829/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modeling a Thermal interface material (TIM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG526524/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding grid constraints to walls of an enclosure smart part
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG531465/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is the advantage of setting inflation on a localized grid?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG541045/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重力方向
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG558355/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MG558355
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG560544/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modeling Thermal Vias in FloTHERM using FloEDA Bridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG601650/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exporting ODB++ files from Mentor Graphics Xpedition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG603968/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Set Solar Radiation in FloTHERM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG606137/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Providing thermal keepout areas on PCB to the Electrical Engineers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Notes%20on%20importing%20CSV%20files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes on importing CSV files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Result/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何有效地分析结果
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/TIM%E5%BB%BA%E6%A8%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIM建模
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E4%BD%BF%E7%94%A8JEDEC%E7%83%AD%E5%BA%A6%E9%87%8F%E8%AE%A1%E7%AE%97%E8%8A%AF%E7%89%87%E6%B8%A9%E5%BA%A6%E6%97%A0%E9%99%84%E5%8A%A0%E6%95%A3%E7%83%AD%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用JEDEC热度量计算芯片温度（无附加散热器）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E5%85%B1%E8%BD%AD%E4%BC%A0%E7%83%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    共轭传热
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E5%9B%BA%E4%BD%93%E5%86%85%E9%83%A8%E7%83%AD%E6%B5%81%E5%9B%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 固体内部热流图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E5%B0%81%E8%A3%85%E7%83%AD%E9%98%BB%E8%A7%86%E9%A2%91%E4%B8%AD%E7%9A%84%E8%AE%A1%E7%AE%97%E5%AE%9E%E4%BE%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    封装热阻视频中的计算实例
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E8%87%AA%E5%8A%A8%E5%B1%80%E9%83%A8%E7%BD%91%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自动局部网格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Flotherm XT
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Flotherm XT
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm%20XT/Flotherm%20XT%20EDA%20Bridge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm XT EDA Bridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Products
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Products
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Products/MK2101/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MK2101
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Ml5
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ml5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/01%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01图像分类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/02%E4%BA%BA%E4%BD%93%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02人体动作识别
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/03%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03小程序
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/Pandas%20%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas 笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Uploadfiles
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Uploadfiles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Image
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_1" id="__nav_8_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    201304
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            201304
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../uploadfiles/image/201304/8.jpg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8.jpg
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    公众号
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            公众号
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    电子产品热管理的新挑战和材料
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    电子产品热管理的新挑战和材料
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      米克网总结：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      介绍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      高导热立方晶体
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2d" class="md-nav__link">
+    <span class="md-ellipsis">
+      具有各向异性热导率的二维 (2D) 层状材料
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      导热纳米结构网络和复合材料
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      具有增强热性能的有机材料
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      结论与展望
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      致谢
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IGBT%20%E6%B8%A9%E5%BA%A6%E9%A2%84%E6%B5%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IGBT 温度预测
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BD%BF%E7%94%A8%E7%83%AD%E7%AE%A1%E8%BF%9B%E8%A1%8C%E9%94%82%E7%A6%BB%E5%AD%90%E7%94%B5%E6%B1%A0%E5%9C%A8%E7%94%B5%E5%8A%A8%E6%B1%BD%E8%BD%A6%E9%AB%98%E7%94%B5%E6%B5%81%E6%94%BE%E7%94%B5%E6%97%B6%E7%9A%84%E7%83%AD%E7%AE%A1%E7%90%86%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用热管进行锂离子电池在电动汽车高电流放电时的热管理分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9F%BA%E4%BA%8E%E6%96%B0%E5%9E%8B%E8%9C%98%E8%9B%9B%E7%BD%91%E7%8A%B6%E9%80%9A%E9%81%93%E5%86%B7%E5%8D%B4%E6%9D%BF%E4%BA%A4%E6%8D%A2%E5%99%A8%E7%9A%84%E9%94%82%E7%A6%BB%E5%AD%90%E7%94%B5%E6%B1%A0%E7%83%AD%E7%AE%A1%E7%90%86%E6%95%B0%E5%80%BC%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于新型蜘蛛网状通道冷却板交换器的锂离子电池热管理数值研究
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%94%B5%E5%8A%A8%E6%B1%BD%E8%BD%A6%E7%94%B5%E6%B1%A0%E6%B3%A2%E6%B5%AA%E9%80%9A%E9%81%93%E6%B6%B2%E4%BD%93%E5%86%B7%E5%8D%B4%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%83%AD%E6%80%A7%E8%83%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    电动汽车电池波浪通道液体冷却系统的热性能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    电路参考
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            电路参考
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%94%B5%E8%B7%AF%E5%8F%82%E8%80%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%94%B5%E8%B7%AF%E5%8F%82%E8%80%83/%E4%B8%80%E9%94%AE%E5%BC%80%E5%85%B3%E6%9C%BA%E7%94%B5%E8%B7%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一键开关机电路
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      米克网总结：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      介绍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      高导热立方晶体
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2d" class="md-nav__link">
+    <span class="md-ellipsis">
+      具有各向异性热导率的二维 (2D) 层状材料
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      导热纳米结构网络和复合材料
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      具有增强热性能的有机材料
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      结论与展望
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      致谢
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">电子产品热管理的新挑战和材料</h1>
+<p>原文标题：Emerging challenges and materials for thermal management of electronics</p>
+<p>作者：Arden L. Moore 1, Li Shi 2</p>
+<p>1 IBM Corporation, 11400 Burnet Road, Austin, TX 78758, United States</p>
+<p>2 Department of Mechanical Engieering and Texas Materials Institute, The University of Texas at Austin, 204 East Dean Keeton Street, Mail Stop C2200, Austin, TX 78712-0292, United States</p>
+<p>发表日期 24 April 2014.</p>
+<h2 id="_2">米克网总结：</h2>
+<p>这篇文章发表的较早，近十年前，不过还是有较大的参考价值。该论文讨论了由于与增强计算能力相关的物理手段而使电子设备保持冷却所面临的挑战。文章综述了各种新材料在应对这些热管理挑战方面的潜力。</p>
+<p>它研究了各种材料的潜在应用，例如散热层和基板、热界面材料以及未来一代电子产品中的底部填充材料。本文讨论了每种材料的优缺点及其在不同电子设备中的潜在应用。它还强调了对新材料的需求，以应对与更快、更便宜、更强大的计算的快速发展相关的紧迫热管理挑战。</p>
+<p>就理想情况下，各种材料的导热系数排列：</p>
+<table>
+<thead>
+<tr>
+<th>Interface Materials</th>
+<th>Thermal Conductivity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cubic Crystals</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Two-dimensional Layered Materials</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Nanostructure Networks and Composites</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Molecular Layers and Surface Functionalization</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td>Aligned Polymer Structures</td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">介绍</h2>
+<p>在过去的半个世纪中，对更快、更便宜的计算的追求及其对增加设备密度和逐步设备小型化的长期相关要求，推动科学家和工程师不断开发新的、不断改进的材料、工具、工艺和设计方法。因此，电子器件及其应用已成为发展最快的领域之一，器件的特征尺寸在短短二十年的时间内就在过去的半个世纪中，对更快、更便宜的计算的追求及其对增加设备密度和逐步设备小型化的长期相关要求，推动科学家和工程师不断开发新的、不断改进的材料、工具、工艺和设计方法。因此，电子器件及其应用已成为发展最快的领域之一，器件的特征尺寸在短短二十年的时间内就在过去的半个世纪中，对更快、更便宜的计算的追求及其对增加设备密度和逐步设备小型化的长期相关要求，推动科学家和工程师不断开发新的、不断改进的材料、工具、工艺和设计方法。因此，电子器件及其应用已成为发展最快的领域之一，器件的特征尺寸在短短二十年的时间内就从微米级缩小到纳米级[1] , [2]。如今，许多现代电子设备的运行临界尺寸为数十纳米。此外<code>，</code>最小特征尺寸为 14 nm 及以下的技术正成为下一代技术节点的目标[1] , [2]。与此同时，芯片和封装集成级别的新方法，例如众核架构和三维 (3D) 芯片堆叠[3]、[4]正在成为提高计算性能的潜在手段，而无需仅依赖于减少功能缩放。此外，移动设备和触摸屏应用的兴起推动了与透明和/或柔性基板兼容的设备和材料的新研发工作设计要求。然而，这些令人兴奋的技术进步和新兴应用也带来了热挑战，可能最终限制其有效性、实施范围或整体可行性。</p>
+<p>有充分证据表明，随着时间的推移，晶体管和其他集成电路器件尺寸的缩小和密度的增加增强了计算能力，但代价是增加了器件、芯片和系统级别的功耗[5]、[6]、[7]。一些现代处理器模块上的高性能计算应用所需的功率可以达到 200-250 W 或更高[8]，导致热负载接近 1 kW 用于四路计算系统中的处理器。虽然高功率耗散肯定会对系统和数据中心级别产生影响，但芯片级别的功率密度及其空间分布也值得关注，并且可能具有重要的可靠性和热管理影响。现代芯片架构中的功耗在芯片表面上可能非常不均匀，局部功能区域的功率密度比芯片平均值高五到十倍 [9] 、 [10] 、[11]、[12]。这些功率密集区域会产生“热点”——局部温度明显高于芯片平均温度的区域[6]，[10]、 [11]、 [12]、 [13]。芯片级热点尺寸的范围可以从~<span class="arithmatex">\(500 μm^2\)</span> 到~<span class="arithmatex">\(5 mm^2\)</span>。对于电子产品来说，整体可靠性取决于芯片上最热的区域，而不是芯片的平均温度。因此，热点通常会决定所需的更高级别的封装和热管理解决方案，包括材料选择、散热器和冷板设计以及所需的泵送系统和设施级别的电源。因此，器件和芯片级的热状态可以对数据中心冷却要求和环境影响产生深远的影响。此外，如果无法提供所需的冷却来将芯片的最热区域保持在其规定的温度阈值以下，则可能会降低性能以降低功耗。这种不必要的性能下降被视为尽可能避免的最后手段。因此，非常希望在“局部”单晶体管器件级别以及“全局”芯片和封装级别都具有增强的、高效的散热能力，以便最大限度地减少这些热点的严重性和影响。</p>
+<p>散热材料的有效性与其热导率直接相关。如图 1所示，电子应用中使用的已知块体材料的室温导热系数  范围从同位素纯化金刚石[14]的约 <span class="arithmatex">\(3450 W / m K\)</span> 到聚甲基丙烯酸甲酯 (PMMA) [15]等聚合物的 <span class="arithmatex">\(0.2 W / m K\)</span> 左右。在固体中，热量可以通过原子晶格振动传递，其能量量子被称为声子，以及电子和空穴等载流子。对于绝缘体和半导体，热导率主要由声子的贡献决定，而在金属中，电子的贡献远远超过晶格成分。晶格热导率 <span class="arithmatex">\(\kappa_L\)</span> 可由下式获得(1)</p>
+<div class="arithmatex">\[
+\kappa_L=\sum_\lambda C_\lambda v_\lambda l_\lambda 
+\]</div>
+<p>其中<span class="arithmatex">\(C_\lambda\)</span>是声子模式的体积比热贡献， <span class="arithmatex">\(v_\lambda\)</span> 是沿温度梯度方向的声子群速度分量，<span class="arithmatex">\(l_\lambda\)</span> 是由于与其他声子、缺陷和晶界的散射而沿声子温度梯度方向的平均自由程分量。求和是针对所有声子模式<span class="arithmatex">\(λ =k , i\)</span>以及波矢<span class="arithmatex">\(k\)</span>和偏振<span class="arithmatex">\(i\)</span> 。类似的表达式可用于计算主导金属热导率的电子的热导率贡献。当电子器件中薄膜和纳米结构材料的膜厚度、线或通道宽度或晶粒尺寸减小到与相应块体材料中主要热载流子的固有平均自由程相当或小于时，增强的边界散射会使热导率显着低于块体值 [16] 、 [17 ]、[18]。随着特征尺寸的减小，这种热导率抑制变得更加明显，这反过来又可能加剧特征尺寸足够小的电子器件中热点的形成和严重程度。对于图 2中绘制的硅(Si) 材料数据来说，热导率随着特征尺寸的减小而降低。</p>
+<p><img alt="" src="https://ars.els-cdn.com/content/image/1-s2.0-S1369702114001138-gr1_lrg.jpg" /></p>
+<p>图1。各种散装固体的代表性温度相关热导率值：富含同位素的金刚石[14]、砷化硼[49]、热解石墨 [100]、铜[101]、晶体硅[46]、无定形二氧化硅[199]、聚甲基丙烯酸甲酯 (PMMA) [15]和两种类型的聚酰亚胺 [200]。</p>
+<p>图2 . 硅纳米线和薄膜（面内）的室温导热率与体积值相比，作为特征尺寸的函数。所指示的黑色和灰色虚线代表分别针对<span class="arithmatex">\(1 \times 10^{13}\)</span>和<span class="arithmatex">\(1 \times 10^{19}cm^{-3}\)</span>的硼掺杂浓度计算的Si纳米线的卡西米尔极限[201]。</p>
+<p>除了特征尺寸的减小之外，另一个重要趋势在于互连层数量的增加[19] ，国际半导体技术路线图(ITRS)微处理器互连技术要求中确定的金属层数量逐渐从2001年的7层[20]增加到2014年的13层。这在芯片结构内引入了更高密度的接口和边界，每个接口和边界都可以充当热流的热阻抗[16]、[18]。同样，在器件层面，传统平面金属氧化物半导体场效应晶体管 (MOSFET) 的转变（图 3a））到 3D FinFET/多栅极设计[2]（图 3b）和垂直纳米线绕栅器件[21]、[22]、[23]（图 3c）代表了向更复杂的器件几何形状和接口配置的转变。</p>
+<p><img alt="" src="https://ars.els-cdn.com/content/image/1-s2.0-S1369702114001138-gr3_lrg.jpg" /></p>
+<p>图3 . (a) 基于 SOI 晶圆构建的传统MOSFET设计，具有 2D、顶栅平面沟道。还注意到相关的埋层氧化物 (BOX) 层。(b) 最近使用的 3D FinFET/多栅极设计。(c) 具有环绕栅极的垂直纳米线器件的横截面图。在此图中，术语“高电介质<span class="arithmatex">\(k\)</span>”材料是指具有高介电常数( <span class="arithmatex">\(k\)</span> ) 而不是高导热率 ( <span class="arithmatex">\(\kappa\)</span> ) 。</p>
+<p>电子封装变得越来越复杂，散热也变得越来越困难。例如，在图4a所示的传统单芯片倒装芯片封装示意图中，Si芯片通过热界面材料（TIM）附接到散热器或冷板。如果封装包括位于芯片和散热器解决方案之间的盖，则可以使用附加 TIM 层，在这种情况下，芯片和盖之间的 TIM 通常称为 TIM1，而盖顶部和散热器解决方案之间的附加 TIM 称为 TIM2。TIM 通常是合规的润滑脂、凝胶、金属焊料或箔，或相变材料（PCM）通过填充非接触区域来补偿接口表面的粗糙度，否则这些区域将被导电不良的气隙占据。除了这些接口之外，当单独的平面芯片堆叠在 3D 架构中时，还会在封装级引入额外的热挑战[3]、 [24]、 [25]，如图4b所示。这里，功耗芯片彼此堆叠可以产生比单芯片封装更高的功率密度。进一步的复杂性是位于功率密集区域和可用热管理资源（包括散热器、冷板、微信，等等。在许多 3D 封装方案中，各个芯片垂直堆叠并使用焊料凸块或某种其他类型的互连连接在一起。虽然这些连接通常是具有高导热性的金属材料，并且可以充当良好的芯片间热连接，但它们仅与总芯片面积的一小部分连接，从而限制了它们的整体传输横截面，同时也没有提供在芯片表面平面内传播热量的可行方法。在焊料凸块或具有非零高度的互连的情况下，连接之间的剩余间隙空间可能被底部填充占据材料。这样做是为了防止污染并提供结构支撑。底部填充通常是一种类环氧树脂材料，具有较低的固有热导率 (∼<span class="arithmatex">\(0.1 \sim 0.2  W/ mK\)</span>) [26] , [27]，从而无法有效地利用可用的传输截面进行热管理。因此，需要具有各向同性高导热率的新型底部填充材料或复合材料来提供增强横截面、芯片间热传输的方法，同时改善源自芯片面的高度局部热量的面内扩散。值得注意的是，热挑战已被确定为 3D 芯片堆栈技术的限制因素[3]、 [12]、 [28]、 [29]、 [30]正在推动新材料和冷却策略的重大研究和开发工作[29]、 [30]、 [31]、 [32]、 [33]，以便充分利用 3D 集成的性能潜力。</p>
+<p><img alt="" src="https://ars.els-cdn.com/content/image/1-s2.0-S1369702114001138-gr4_lrg.jpg" /></p>
+<p>图4 . 代表性 (a) 单芯片倒装芯片封装和 (b) 3D 芯片堆叠无盖模块的图示，其中显示了选定的概念性热流路径。对于在最顶部芯片和封装级散热解决方案（散热器、冷板等）之间带有盖子的模块，需要额外的热界面材料 (TIM)。(b) 中的详细信息由International Business Machines Corporation提供。详细信息包括前端生产线 (FEOL) 和后端生产线 (BEOL) 器件和互连层以及受控塌陷芯片连接 (C4) 和更小的 μ-C4 功能。</p>
+<p>虽然与移动和触摸屏设备相关的功率水平比服务器或高性能计算硬件中的功率水平要低得多（CPU 通常小于 10 W），但它们的密集封装和用于风扇或散热器等热管理组件的有限空间，使得对可作为产品封装一部分的高效散热材料和方法非常重视。其中一个机会领域在于透明触摸屏，它已成为智能手机、平板电脑和其他电子界面不可或缺的一部分。然而，它们的日益普及也导致对透明导电材料的需求不断增加。其中最著名的是氧化铟锡 （ITO）历来是首选材料，但现在由于缺乏灵活性和成本上升而感到压力[34]。因此，许多研究人员一直在研究碳纳米管（CNT）[35]、 [36]、 [37]、石墨烯[38]、 [39]、 [40]、薄硅膜[41]和银纳米线[42]、 [43]、 [44]在各种透明基材材料上或内部的使用作为实现替代、可持续透明导电材料和显示器的一种手段[34]。尽管这些材料的块状形式是不透明的，但作为纳米结构，它们可能看起来是透明的，具体取决于尺寸和负载。虽然由这些或类似纳米材料组成的电路元件可能具有良好的热和光学特性，但支撑它们的许多透明基板材料却没有。非晶玻璃和氧化物的室温导热系数通常约为 <span class="arithmatex">\(1 \sim 2  W/mK\)</span>，而传统电子基板（例如晶体硅）的室温导热系数为 <span class="arithmatex">\(120 \sim 150 W/mK\)</span>。这种低基板热导率极大地限制了热扩散。此外，新兴的柔性电子领域面临着潜在的严峻挑战。这里，电路元件构建在柔性聚合物基板上，例如如图 5a所示的聚酰亚胺(PI) 、聚二甲基硅氧烷(PDMS)、聚醚醚酮(PEEK)、聚醚酰亚胺(PEI)、聚对苯二甲酸乙二醇酯（PET）或其他类似材料。Kapton 是柔性电子文献中常见的另一种材料名称，但实际上是商业聚酰亚胺材料系列的商标品牌名称，其中 HN 型使用最广泛。与许多聚合物一样，上述材料的导热率非常低，在 <span class="arithmatex">\(0.1 \sim 0.3  W/mK\)</span>范围内。因此，尽管与这些类型的设备相关的功率水平远小于高性能计算中的功率水平，但基板材料的低电导率可能会导致热管理问题或设备损坏[45]，如图5所示c 发生的功率比其他应用中发生的功率低得多。使用高导热率超薄材料（例如 h-BN）作为栅极电介质如图 5d所示。</p>
+<p><img alt="" src="https://ars.els-cdn.com/content/image/1-s2.0-S1369702114001138-gr5_lrg.jpg" /></p>
+<p>图5 . (a) 在聚酰亚胺 (PI) 上制造的柔性电子器件的 3D 横截面图，如图所示，具有石墨烯沟道和原子层沉积 (ALD) <span class="arithmatex">\(Al_2O_3\)</span>栅极电介质、源极 (S) 和漏极 (D)金属触点以及掩埋金属栅极。 (b) 使用 ~10 nm ALD <span class="arithmatex">\(Al_2O_3\)</span>栅极电介质在 PI 上制造的柔性石墨烯场效应晶体管 (GFET) 的俯视图。(c) 与 (b) 中相同的器件在较高漏极场运行时遭受热损伤后。(b) 和 (c) 左下图像中的比例尺均为 3 μm。(d) 与 (a) 类似但采用 ALD Al 的 GFET 的 3D 横截面图<span class="arithmatex">\(Al_2O_3\)</span>被潜在热有利的 h-BN 栅极电介质取代。图片由德克萨斯大学奥斯汀分校 Deji Akinwande 小组提供[202]。</p>
+<p>上述讨论强调了功耗、材料和结构在确定热特性和与电子设备相关的挑战方面的重要性。虽然每个领域都值得详细研究，但本文重点关注新兴材料的热性能，这些材料可能在改善下一代电子产品的热管理特性方面很有前景。讨论的材料包括立方晶体、二维 (2D) 层状材料、纳米结构网络和复合材料、分子层和表面功能化以及排列聚合物结构。具体来说，讨论的重点是利用这些材料作为具有增强散热能力的有源通道层、靠近通道层的散热层、高导热刚性或柔性基板、具有卓越性能特征的TIM以及用于3D芯片堆栈热管理的新型底部填充材料的潜在好处和局限性。</p>
+<h2 id="_4">高导热立方晶体</h2>
+<p>已知某些立方晶体具有高的各向同性导热率，这对于散热应用来说是理想的。例如，由于其金刚石晶格结构，大多数现代电子设备中用于基板的Si被认为是相对良好的热导体，其室温导热系数约为<span class="arithmatex">\(140  W/mK\)</span> [46] , [47]。然而，与金刚石相比，这显得相形见绌，金刚石保持着已知散装固体中高导热率的记录，天然金刚石和同位素富集 99.9% <span class="arithmatex">\(^{12}C\)</span> 金刚石在室温下的导热率报告值分别为为 <span class="arithmatex">\(2270\)</span> 和 <span class="arithmatex">\(3450 W/mK\)</span> [14]。在<span class="arithmatex">\(104 K\)</span>的温度下， 99.9% <span class="arithmatex">\(^{12}C\)</span>金刚石的的导热率为<span class="arithmatex">\(41000 W m/K\)</span>，仍然是迄今为止报道的任何固体的最高实验导热率，如图1所示。预计 99.9%  <span class="arithmatex">\(^{12}C\)</span> 金刚石在约 <span class="arithmatex">\(5K\)</span> 时会出现接近 <span class="arithmatex">\(60 000 W m/K\)</span>的更高峰值。但该值超出了测量中使用的thermal wave mirage技术的能力，因为随着热导率的增加，信噪比迅速下降[14]。这种优异的热传输性能促进了金刚石薄膜和基底的合成和集成到高功率密度电子器件中，以减轻局部热点并提高器件的性能和可靠性。然而，天然金刚石稀缺且昂贵，需要进一步研究以提高生长速率、提高晶体质量、降低人造金刚石 的成本[48]。</p>
+<p>最近，Lindsey、Broido和Reinecke采用第一原理计算预测立方砷化硼（BAs）在室温下可能表现出超过<span class="arithmatex">\(2000 W/mK\)</span>的极高导热率（图1）[49] 。令人惊讶的理论结果与两种组成元素之间巨大的原子质量差异有关。这种差异导致声学声子分支和光学声子分支之间存在较大的能隙。此功能大大减少了高群速度传播的声学声子之间的散射和低群速度的高频局域光学声子。此外，砷原子仅存在一种同位素，它主导着相对短波长声子的原子运动，对BAs热导率做出了很大贡献。因此，BAs 热导率对较轻硼原子的同位素杂质变得不敏感。这些功能共同显着降低了散射率并导致较长的平均自由程BA 中的声学声子对热传输很重要。有趣的是，这些与 BA 的预测高导热率相关的机制不同于观察金刚石或立方氮化硼 (c-BN) 等固体中高导热率的普遍接受的标准。这些包括简单的晶体结构、低原子质量、强原子键合以及原子间势的低非和谐性。</p>
+<p>除了c-BN之外，其他立方氮化物晶体，例如氮化铝（AlN）和氮化镓 （GaN）在室温有相对较高的导热率，根据纯度和缺陷，约<span class="arithmatex">\(200 \sim 400W/mK\)</span>范围[50]， [51]。这些值比 Si 和其他 III-V 族化合物半导体高几倍[52] 。由于具有高导热性和理想的电子性能，AlN 和 GaN 在发光二极管、光电子学、高功率开关、介电层和热学领域的应用受到越来越多的关注。电子器件的导电基板。此外，与目前用作透明或柔性电子产品的基板或背板的非晶玻璃和聚合物相比，立方AlN和GaN的导热率高出两到三个数量级，并且如果生产时杂质或缺陷很少，则可以是透明的[53]，[54]，[55]。尽管烧结 AlN 复合材料的热导率已超过 <span class="arithmatex">\(100W/mK\)</span>[58]，[59]，自 20 世纪 80 年代中期以来已成功应用于高功率电子封装[56] , [60]，但[50]、[51]、[55]、[56]、[57]中报道的最高热导率值需要严格的晶体质量。此外，Wieg 等人 [61] 报道了烧结多晶掺铽 AlN半透明在室温下<span class="arithmatex">\(94 W/ mK\)</span>的样品。实现透明度和高导热性的高质量要求似乎会使目前的块状氮化物无法成为透明电子产品的可行材料，因为高质量晶体通常难以大尺寸或大量实现。与目前使用的材料相比，与这种生产相关的成本是另一个问题。因此，生产具有数十<span class="arithmatex">\(W/mK\)</span>的合格热导率的透明材料的低成本、可扩展的方法可能会引起人们对透明电子产品的兴趣，作为对当前最先进技术的改进。</p>
+<p>还应该指出的是，这些立方晶体中的长声子平均自由程会对热导率产生强烈的尺寸效应。对体热导率有重要贡献的声子的平均自由程跨越了从纳米到微米尺度的大范围，如图6a中计算的[62]、[63]、[64]、[65]、[66]和测量的[67]体硅热导率累积函数所示。因此，即使特征特征尺寸达到微米级，也会导致硅薄膜和纳米线的热导率受到抑制，如图2的Si数据所示。除了 Si [17]、[68]、[69]、[70]、[71]、[72]、[73]、[74]之外，在其他电子材料中也通过实验观察到尺寸相关的热导率降低，包括化合物半导体[75]、[76]和铜[77]等。适用于由金刚石、石墨、BN制成的薄膜或纳米结构或 BA 具有比 Si 更高的体热导率和更长的声子平均自由程，预计热导率抑制会在更大的特征尺寸上发生。</p>
+<p><img alt="" src="https://ars.els-cdn.com/content/image/1-s2.0-S1369702114001138-gr6_lrg.jpg" /></p>
+<p>图6 . (a) 室温附近对块体硅热导率的归一化累积贡献与声子平均自由程的关系。(b) 体硅热导率的归一化累积贡献与接近室温的声子波长的关系。数据取自 Dames 等人。[62]、[63]、Henry 和 Chen [64]、Esfarjani 等人。[65]，李等人。[66]和雷格纳等人。[67]。(b) 中的纳米线 (NW) 数据基于所有声子均被纳米线表面漫散射的假设。</p>
+<p>许多显示电导率随尺寸减小而受到抑制的测量结果可以用Casimir  [78]、Ziman [79]等人几十年前建立的热载体扩散表面散射理论来解释。在圆棒的情况下，漫射表面散射的卡西米尔极限产生等于棒直径的平均边界散射平均自由程。最近对粗糙硅纳米线的一些热测量得出的热导率值远低于卡西米尔极限[80]、[81]、[82]，如图2所示。当特征尺寸进一步减小到与主导热导率的声子波长相当时（如图6b所示的 Si 所示），影响声子速度、比热和声子-声子散射的附加尺寸效应可能会发挥作用。然而，与室温下主导热导率的声子波长相比，所测量的粗糙硅纳米线的直径仍然相对较大，因此预计声子群速度和光谱比热不会与体积值相比发生很大变化。因此，异常低的导热系数是否受到内部缺陷或微观结构变化的影响还有待更好地理解[82]，[83]，多点散射的声子之间的 干扰对表面粗糙度的影响[81]、 [84]或其他影响。清楚地了解所观察到的硅纳米结构异常低热导率的实际起源对于重建足够的理论能力来预测其他高热导率立方晶体的纳米结构的热导率是必要的，而这些晶体仍然缺乏与尺寸相关的热导率的实验数据。</p>
+<h2 id="2d">具有各向异性热导率的二维 (2D) 层状材料</h2>
+<p>这独特的与原子薄膜等二维材料相关的传输特性使其成为十多年来下一代电子学理论和实验研究的重点领域。最近，单层石墨烯（SLG）和少层石墨烯（FLG）的分离和识别引起了对它们的物理性质、合成和加工方法以及它们在电子设备中的性能评估的研究[85]，[86]，[87]，[88]，[89]，[90]的爆炸式增长[39]，[91]，[92]，[93]，传感器[94]，[95]、 [96]和复合材料[97]、 [98]、 [99]。除了电传输和器件性能特征之外，各种技术相关形式的石墨烯内的热传输也成为了人们广泛研究的领域，部分原因是热解石墨在室温下具有~<span class="arithmatex">\(1500–2000 W/ mK\)</span>的高基面导热系数 [100] 、 [101] 、 [102] 、 [103]  ，这是 由堆叠石墨烯片组成的相对丰富的3D碳同素异形体。 。对悬浮 SLG 的测量产生了室温附近约 <span class="arithmatex">\(1500–4600 W /mK\)</span>的热导率值[104]、 [105]、 [106]。该范围内的大部分较高值是基于显微拉曼光谱方法获得的，该方法在光学吸收方面存在很大的不确定性并且温度敏感性较差。然而，消除悬浮石墨烯中的层间声子散射预计将导致石墨烯比石墨具有更高的底面导热系数[107]，并且对于薄于五层的FLG，导热系数随着层厚度的减小而增加的趋势[106]、 [108]。除了石墨烯热导率的更准确测量结果之外，悬浮石墨烯甚至石墨中的高底面热导率是否由面外偏振、面内传播弯曲声子（ZA模式）的很大贡献组成还有待更好地理解[107]， [108]。</p>
+<p>尽管悬浮的SLG和FLG具有高导热率，但用于面内传输的SLG和FLG的小横截面限制了这些材料的热导率。热导率包括物体的导热率及其几何形状，它决定了结构在给定温差下可以传输的热量。为了用作电子器件中的散热层[109]，可能需要增加层的厚度或数量以获得在一些应用中有效散热的足够的热导率。另一方面，使用多层石墨烯（MLG）作为纳米填料为了提高复合材料的热导率，其中纳米填料的体积分数可能受到其他要求（例如机械柔量）的限制，有效介质理论[110]可以用来表明，只要热导率不随着厚度的减小而降低，就可以通过减小MLG层的厚度来增加表面积与体积比。</p>
+<p>在许多应用中，石墨烯被支撑在介质上或嵌入在介质中，而不是自由悬挂。必须了解支撑介质对热传输的影响，以便能够设计并实现最佳性能。最近的测量发现，<span class="arithmatex">\(SiO_2\)</span>上的 SLG 的热导率在室温附近被抑制至 ~600 W/mK$ ，高于块状 Cu，但远低于报道的悬浮和清洁石墨烯[111]。这种抑制归因于 SLG-氧化物界面对声子（尤其是 ZA 声子）的散射。基于该实验数据，室温下支撑式 SLG 的平均声子平均自由程估计为~90-100 nm，远小于 悬浮 SLG 的~300-600 nm 平均自由程估计[91]、[112]。氧化物包裹 [113]和聚合物残留物[114]也被证明可以显着抑制SLG和FLG中的热传输。对于氧化物包裹的[113]以及氧化物支撑的石墨烯[115]，已经表明热导率随着层数的增加而增加，接近石墨值。这种趋势归因于界面散射的影响随着包裹或支撑的多层石墨烯（MLG）的层厚度的增加而减小。由于石墨中较长的本征声子平均自由程，即使是沿着 MLG 中的横截面方向，厚度为 34 层的声子也可以在散射之前到达与非晶支撑体的界面 [115]。因此，<span class="arithmatex">\(SiO_2\)</span>负载的 MLG 需要超过 30 层的热导率才能恢复石墨的基面热导率[115]。</p>
+<p>除了基底效应之外，支撑石墨烯纳米带图案边缘的散射还可能导致热导率进一步降低[112]。由于边缘无序的声子散射，长度为260 nm的图案化SLG纳米带的热导率 随着带宽度的减小而降低，从130 nm处的<span class="arithmatex">\(230 W/mK\)</span>到300 K附近45 nm处的<span class="arithmatex">\(80 W/mK\)</span>，而热导率随着长度的减小而增加，以接近弹道声子输运的极限[112]。      </p>
+<p>最近，与负载在非晶氧化物上的石墨烯相比，负载在原子级平坦的六方氮化硼（h-BN）上的石墨烯已经实现了大大提高的电子迁移率值[116]。研究发现，被聚合物残留物污染的几层 h-BN 的底面导热系数随着层厚度的增加而增加[117]，与支撑型 FLG [115]所揭示的趋势相似，而与悬浮型 FLG [106]所报道的趋势相反。由于h-BN中的声子平均自由程比石墨中的声子平均自由程稍短，因此11层污染的h-BN样品的底面热导率已达到<span class="arithmatex">\(380 W/mK\)</span>接近 300 K，接近报道的体基面值。当层厚度减小至约5层时，热导率被抑制至约<span class="arithmatex">\(250 W/mK\)</span> [117]。相比之下，h-BN 的横截面（平行于_c_轴）热导率在 300 K时约为 1.5–2.5 W/mK$ [118] 。上面给出的 h-BN 基面热导率值比非晶埋氧层高两个数量级 目前用于绝缘体上硅 (SOI) 器件。因此，如果h-BN（一种电介质）可用于替代硅基或石墨烯基器件的埋置氧化物，则可以极大地增强横向热扩散并减少热点的发生或严重程度。此外，与非晶衬底上支撑的石墨烯相比，异质结构中石墨烯和 h-BN 之间的原子平坦界面和相似的 2D 晶体结构可能会产生不同的面内和跨面声子传输行为。尽管石墨烯/六方氮化硼异质结构具有器件级热管理潜力，但该系统的传输特性仍有待研究。</p>
+<p>除了分别具有大带隙和极小带隙的h-BN和石墨烯之外，硅烯 [119]、[120]、[121]、[122]、[123]、锗烷[123] 、[124]、MoSe <sub xt-marked="ok"><span><span xt-marked="ok">2 </span></span></sub> [123]、MoS <sub xt-marked="ok"><span><span xt-marked="ok">2 </span></span></sub> [125]和其他 具有不同带隙值的二维层状材料[123]也受到了欢迎。对设备应用的兴趣日益浓厚。它们的器件性能可能部分取决于它们的热传输特性，预计这些特性会偏离整体行为，但尚未得到研究。</p>
+<p>尽管二维层状材料的基面热导率可能非常高，但横截面热导率可能要低一个数量级以上。例如，石墨的横截面热导率约为<span class="arithmatex">\(6 W/mK\)</span>  [100]  ，比高质量石墨的<span class="arithmatex">\(2000 W/mK\)</span>面内热导率低300倍以上。据报道，无序层状 <span class="arithmatex">\(WSe_2\)</span>薄膜的横截面热导率低至 <span class="arithmatex">\(0.05 W/mK\)</span> [126]，大约仅为空气的两倍，比面内测量值低 30 倍[127]。高度各向异性的热导率与这些二维材料中的各向异性声子色散相关，该色散由层之间的弱范德华键组成。特别是，声子群速度具有比横截面或c轴分量大得多的基面分量。与高基面热导率一起，基于 2D 层（例如 h-BN）的横向散热器的低横截面热导率可用于降低热点正下方的局部衬底温度。对于低热导率柔性器件的情况，低玻璃化转变温度 聚合物基板，该特征实际上可用于防止高功率密度区域正下方的基板局部熔化。</p>
+<p>二维层状材料与其支撑材料之间存在的界面热阻是热量从二维材料垂直扩散到基板的另一个限制因素。 当 2D 堆栈的厚度减小到与横面声子平均自由程相当时，这甚至可以主导横面热阻，石墨的平均自由程估计超过 10 nm [115]、[128]。已经有SLG与包括二氧化硅和金属在内的不同材料之间的热界面热阻的测量结果。测量值范围为 <span class="arithmatex">\(1.2\times 10^{-8} \sim 4\times 10^{-8} m^2K/W\)</span> [93]、[129]、[130]、[131]，与报道的各种金属-介电界面的热阻相当或稍高[132]、[133]。当石墨烯层厚度增加时，FLG 会变得坚硬，并且与表面粗糙度的共形性较差，从FLG 和 SLG 中测量的界面粘附能降低可以明显看出[134]。二维材料上的界面热传输与界面粘附力密切相关，这是在制造新型电子器件的基板上集成不同二维层状材料时需要解决的关键问题[91]。然而，报道的 FLG 和二氧化硅之间的热界面电导并未表现出对层厚度的明显依赖性[129]、[130]。目前，对于二维石墨烯中的声子与基底中的表面和体声子模式之间的耦合机制仍然缺乏详细的了解。这是必须理解的支持二维材料中热传输的一个关键方面。</p>
+<h2 id="_5">导热纳米结构网络和复合材料</h2>
+<p>人们在探索纳米颗粒 [135]、[136]、[137]、[138]、纳米线[136]、[139]、纳米管 [99]、[140]、[141]、 [142] 、纳米片[98]、[99]、[143]和2D 层[141] 、[144] 方面做出了许多努力。]用于增强 TIM 以及用作底部填充材料的聚合物材料的热性能 3D 芯片堆栈或柔性电子基板。据报道，悬浮碳纳米管（CNT）的高导热性[145]、 [146]特别激发了对垂直CNT阵列作为顺应TIM的研究[140]、 [142]、 [147]、 [148]、 [149]。然而，采用垂直 CNT 阵列作为 TIM 存在相当大的挑战，包括填充率低和接触两个配合表面的 CNT 比例较小，这两个问题都可以通过工程创新来克服。例如，最近的一项研究报告称，垂直 CNT 后热界面电导率提高了九倍TIM阵列用芘基丙基膦酸进行修饰 [150]。其他挑战包括碳纳米管阵列内管间声子散射可能抑制热导率的基本问题[140]、 [142]、 [147]。或者，最近开发了铜纳米弹簧阵列作为机械顺应性 TIM [151]。与碳纳米管阵列相比，单个铜纳米弹簧的热导率预计对表面散射相对不敏感，因为主导铜热导率的电子平均自由程较短。</p>
+<p>与垂直碳纳米管或金属纳米线阵列相比，通过在基体上负载高导热率微填料和纳米填料来制备聚合物纳米复合TIM材料是一种常见的方法，很容易被实际应用所接受。这种聚合物纳米复合材料也可以用作柔性电子器件的基材或 3D 封装中的底部填充层。从根本上说，这些复合材料的目标是与纯基体相比，大大提高所得复合材料的有效导热系数 <span class="arithmatex">\(κ_{m}\)</span> 。对于基体和界面中导热系数为 <span class="arithmatex">\(κ_{p}\)</span> 的球形颗粒忽略界面热阻， <span class="arithmatex">\(κ_{eff}\)</span> 可以通过 Maxwell-Garnett 表达式计算：</p>
+<div class="arithmatex">\[
+\frac{\kappa_{eff}}{\kappa_m}=\frac{\kappa_p+2\kappa_m-2\phi(\kappa_m-\kappa_p)}{\kappa_p+2\kappa_m+\phi(\kappa_m-\kappa_p)}
+\]</div>
+<p>其中是 <span class="arithmatex">\(\phi\)</span> 颗粒的体积分数[152]。还可以使用其他更复杂的非球形夹杂物表达式以及考虑界面热阻的表达式[110]、[153]。</p>
+<p>研究的微填料和纳米填料包括氧化铝[26]、[154]、二氧化硅 [26]、[154]、[155]、氮化硼[26]、[27]、 [154] 、[156]、[157]、氮化铝[158]、碳化硅[159]、石墨[154] 、金刚石[26]、[154] , [156] ,石墨烯纳米片[99] , [157] , 碳纳米管[99]、 [159]、 [160]、碳纤维[155]和少层材料[97]、 [144]、 [161]。许多研究报告称，高负载下复合材料的热导率比纯基体材料的热导率大幅提高。然而，考虑到纯基体的低热导率，有效热导率仍然通常小于 <span class="arithmatex">\(10  W/mK\)</span> [162]，更常见的是在<span class="arithmatex">\(\sim 0.5–2.0 W/mK\)</span>范围内，即使在重负载下也是如此[26]，[158]、 [160]。在少数例外中，据报道，78.5vol.%氮化硼负载的聚苯并恶嗪的热导率为 <span class="arithmatex">\(32.5 W/mK\)</span> [163]。许多研究指出，改进的水平可能受到碳纳米管、石墨烯片和金属纳米结构等纳米填料的高热界面电阻的限制[164]、 [165] ，这些纳米填料在负载量增加超过渗滤阈值后通常会形成范德华键合网络。其他因素包括团聚、结构变形、缺陷以及支撑或介质相互作用 [111]、 [114]、 [165]的填料。</p>
+<p>另一个有前景的领域在于高导热率材料（如金属、石墨或某些电介质（如BN或 AlN））的 3D 多孔泡沫。原则上，泡沫材料的固体支柱类似于上面讨论的微粒/纳米颗粒网络[154]、 [156]、 [166] ，但作为单一的、固有连接的结构，没有颗粒-颗粒界面。因此，与具有随机分散填料结构的复合材料相比，范德华界面处的高热阻限制了复合材料的有效导热率，3D多孔基体不需要高填充量的填料达到渗透阈值，并且共价键合网络内的热界面阻力最小化。这些类型的 3D 矩阵还能够增强面内散热以及芯片间热传递，特别是当孔能够用相变材料 [167]、导热油脂甚至标准底部填充环氧树脂等辅助成分浸渍时。与高度各向异性材料（例如由排列纳米管或纳米纤维 组成的材料）相比，这种各向同性传导特性也是一个优势。未浸渍的超薄石墨泡沫 (UGF) 的有效导热系数经测量为 <span class="arithmatex">\(0.27\sim 3.44 W/mK\)</span>取决于加工方法，超薄石墨支柱本身的提取电导率在 <span class="arithmatex">\(\sim 500–1000 W/mK\)</span> [167] , [168]范围内。与涉及碳基 3D 多孔结构的 UGF 类似，人们提出了CNT 网络[169]或 CNT 支柱作为对齐石墨烯片之间的链接[91]、[170]。然而，要使这些材料中的任何一种得到广泛使用，都需要解决重大的集成挑战，以便 3D 矩阵不会干扰物理或电气互连。因此，具有高导热率但电绝缘体的 3D 多孔材料（例如 h-BN 泡沫[171]）可能比由金属或石墨制成的材料更受欢迎。此外，现有的超薄 h-BN 和石墨泡沫的导热系数仍因密度低而限制在小于 <span class="arithmatex">\(10 W/mK\)</span>，而这又受到约 500um 的大孔径的限制。尽管存在高密度碳泡沫，但它们通常具有类似的大孔径和数百纳米或更厚的支柱壁厚。对于给定的密度，对于将泡沫用作热管理的 PCM 中的填料，较小孔径的泡沫填料比较厚的壁更理想[172]。因此，需要建立可用于控制泡沫结构的孔径和壁厚的新制造方法。</p>
+<h2 id="_6">具有增强热性能的有机材料</h2>
+<p>除了填充填料的聚合物纳米复合材料之外，改善聚合物热扩散的更基本方法侧重于导热不良的原因。非晶材料的低导热率源于原子尺度上缺乏有序性。因此，如果给定的玻璃或聚合物以有序、结晶甚至准结晶形式合成且几乎没有缺陷，则热导率可能会得到显着改善。例如，挤出、凝胶纺丝或熔体拉伸可以帮助排列聚合物内的微晶区域[173]、 [174]、 [175]、 [176]、 [177]、[178]、[179]、[180]在对齐方向上的机械性能和导热性能显着提高。在一项研究中，据报道，聚乙烯 和聚苯并二恶唑纤维在室温附近的导热系数在 <span class="arithmatex">\(55 \sim 60 W/mK\)</span>之间[180]。据报道，在最高拉伸比下，聚乙烯纳米纤维 的导热率为 <span class="arithmatex">\(75 \sim 125 W/mK\)</span> [181] 。最近对各种聚合物材料的微纤维 进行的时域热反射（TDTR）测量获得了 <span class="arithmatex">\(\sim 20 W/mK\)</span>的室温导热系数值，[182]，低于早期类似样品的导热系数测量结果[180] 。然而，TDTR 测量显示热导率随着温度的升高而降低，这表明热导率已达到由非谐性而不是缺陷或边界散射决定的固有极限。基于这些发现，推测一些早期的微纤维测量结果可能包含由于以下原因而产生的误差：辐射损失[182]。尽管现有的结果已经非常显着，并且可能对透明或柔性电子产品有用，但还需要进一步的工作来研究通过增强链排列和其他方法增强聚合物的导热性和机械性能的极限。</p>
+<p>有机材料也被研究用于增强界面热导。尽管沉积薄膜之间的界面处通常不存在空隙，但此类界面仍会受到界面热阻的影响，该界面热阻取决于键合强度、界面原子混合和粗糙度以及与接触材料的密度和声子群速度成比例的声阻抗失配。关于声子和电子的界面热传输已有许多研究[183] 、[184]、[185]、[186]、[187]、[188]、[189]。除了电子-声子耦合的作用和结构各向异性的影响之外[190]、[191]、[192] ，还报道了通过单分子[193]、[194]、有机-无机纳米晶体阵列[195]和单分子层[196] 、 [197]进行热传输的新实验研究。在最近的一项工作[197]中，强键合的有机纳米分子层 (NML) 被用作弱键合的 <span class="arithmatex">\(Cu/SiO_2\)</span> 界面内的中介物，测得的界面热导率增加了四倍，即从 <span class="arithmatex">\(90 ± 15MW /m^2K\)</span> 至430 $+230/−70 MW m^2/K $。来自其他材料界面和 NML 的附加数据表明，界面热导率随着界面韧性的增强而增加。还发现氧功能化可以增强铝和 <span class="arithmatex">\(SiO_2\)</span> 之间包裹的石墨烯之间的界面热导率[198]，尽管氧等离子体处理可能会对石墨烯的基面电子和热性能产生负面影响。这些发现提出了一种潜在的新方法，即选择工艺兼容的 NML 或其他有机化合物来增强界面粘合并降低电子器件中某些物理界面的热界面电阻。</p>
+<h2 id="_7">结论与展望</h2>
+<p>本次讨论的大部分内容集中在 3D 立方晶体、2D 层状材料、纳米结构网络和复合材料、排列聚合物纤维和分子层的导热性以及对结构、尺寸缩放、物理状态或环境的属性依赖性。讨论了每种材料类别在增强电子热管理方面各自的潜力。然而，为了从实验室工作台跨越到广泛使用，这些新材料必须为电子设备或封装提供封闭式解决方案。这种需求的一个典型例子是结合 3D金属泡沫结构到功能正常的 3D 芯片堆栈中，这可能会很好地进行热管理，但也可能导致短路或对信号完整性造成严重破坏。真正可行性的其他重要考虑因素包括成本、可扩展制造、性能的可重复性、电阻率、介电常数和热膨胀系数，仅举几例。显然，材料科学研究人员在这一领域产生影响的最直接方法是在当前对热传输物理学的理解的指导下识别和合成具有高导热潜力的材料。然而，通过开发现有高度合成或制造方法也可以做出重大贡献。导电材料可降低成本、提高质量、确保均匀性并实现工业规模生产。</p>
+<p>尽管现代电子产品面临的热管理挑战在规模和范围上都相当巨大，但一系列多样化的新型尖端材料正在兴起来应对这些挑战。本综述中描述的工作并不代表对既定支柱的渐进式改进，而是以许多非传统材料或以非传统方式使用的既定材料为特色，这表明(a)热问题正在推动科学家和工程师超越传统方法，并迫使他们快速适应电子冷却中的关键热瓶颈，(b)材料研究界正在以一些非常有创意的方式应对这些挑战。凭借令人信服的技术动机、一组相互关联但又不同的应用领域以及不断增长的工具和流程领域，</p>
+<h2 id="_8">致谢</h2>
+<p>ALM 衷心感谢 IBM 以及 Annie Weathers 和德克萨斯大学奥斯汀分校的 Deji Akinwande 小组为准备本次审查提供的材料和帮助。LS 感谢美国国家科学基金会 ( NSF ) 热传输过程计划（奖项 CBET-1336968）和 NSF 纳米系统工程研究中心：用于移动计算和能源技术的纳米制造系统（奖项 EEC-1160494）、能源部基础能源科学办公室 (DE-FG02-07ER46377) 和海军研究办公室 (N00014-14-1-0258)的资助）。</p>
+<h2 id="_9">参考</h2>
+<p>[1] International Technology Roadmap for Semiconductors: ITRS Reports, http:// www.itrs.net/reports.html.</p>
+<p>[2] I. Ferain, et al. Nature 479 (November (17)) (2011) 310.</p>
+<p>[3] W. Huang, et al. 26th IEEE SEMI–THERM Symposium, Santa Clara, CA, (2010), p. 198.</p>
+<p>[4] W. Huang, et al. IEEE Micro 31 (4) (2011) 16.</p>
+<p>[5] P.K. Schelling, et al. Mater. Today 8 (6) (2005) 30.</p>
+<p>[6] E. Pop, et al. Proc. IEEE 94 (8) (2006) 1587.</p>
+<p>[7] W. Haensch, et al. IBM J. Res. Dev. 50 (4/5) (2006) 339.</p>
+<p>[8] Datacom Equipment Power Trends and Cooling Applications, 2nd ed., ASHRAE, Atlanta, GA, 2012.</p>
+<p>[9] C. Bachmann, A. Bar-Cohen, 11th Intersociety Conference on Thermal and Thermomechanical Phenomena in Electronic Systems, IEEE, Orlando, 2008, p. 238.</p>
+<p>[10] R. Mahajan, et al. Proc. IEEE 94 (8) (2006) 1476.</p>
+<p>[11] H.F. Hamann, et al. IEEE J. Solid State Circ. 42 (1) (2007) 56.</p>
+<p>[12] International Technology Roadmap for Semiconductors 2011 Edition: Assembly &amp; Packaging, http://www.itrs.net/Links/2011ITRS/2011Chapters/2011AP.pdf.</p>
+<p>[13] S.M. Sri-Jayantha, et al. IBM J. Res. Dev. 52 (6) (2008) 623.</p>
+<p>[14] L. Wei, et al. Phys. Rev. Lett. 70 (24) (1993) 3764.</p>
+<p>[15] D.G. Cahill, R.O. Pohl, Phys. Rev. B 35 (8) (1987) 4067.</p>
+<p>[16] D.G. Cahill, et al. J. Heat Transfer 124 (2002) 223.</p>
+<p>[17] A.D. McConnell, K.E. Goodson, Annu. Rev. Heat Transfer 14 (2005) 129.</p>
+<p>[18] G. Chen, Nanoscale Energy Transport and Conversion, Oxford University Press, New York, 2005.</p>
+<p>[19] M. Bohr, The New Era of Scaling in an SoC World, in: IEEE International SolidState Circuits Conference – Digest of Technical Papers, IEEE, San Francisco, 2009, p. 23.</p>
+<p>[20] International Technology Roadmap for Semiconductors 2000 Update: Interconnect, http://www.itrs.net/Links/2000UpdateFinal/Interconnect2000final.pdf.</p>
+<p>[21] H.T. Ng, et al. Nano Lett. 4 (7) (2004) 1247.</p>
+<p>[22] J. Goldberger, et al. Nano Lett. 6 (5) (2006) 973.</p>
+<p>[23] T. Bryllert, et al. IEEE Electron Dev. Lett. 27 (5) (2006) 323.</p>
+<p>[24] A.W. Topol, et al. IBM J. Res. Dev. 50 (4/5) (2006) 491.</p>
+<p>[25] J.U. Knickerbocker, et al. IBM J. Res. Dev. 52 (6) (2008) 553.</p>
+<p>[26] W.S. Lee, J. Yu, Diam. Relat. Mater. 14 (2005) 1647.</p>
+<p>[27] Q. Liang, et al., Epoxy/h-BN composites for thermally conductive underfill .material, in: Electronic Components and Technology, IEEE, San Diego, CA, 2009</p>
+<p>[28] S.S. Sapatnekar, in: Proceedings of the Asia-South Pacific Design Automation Conference, 2009, . p. 423.</p>
+<p>[29] 15 Moore’s Years: 3D Chip Stacking will take Moore’s Law Past 2020, 2010, http:// phys.org/news187454589.html.</p>
+<p>[30] C. Sciacca, Learning From Sandcastles to Build Future Chips, 2012 http:// ibmresearchnews.blogspot.com/2012/09/learning-from-sand-castles-tobuild.html.</p>
+<p>[31] V. Venkatadri, et al. J. Electron. Pack. 133 (2011) 041011.</p>
+<p>[32] 3M and IBM to Develop New Types of Adhesives to Create 3D Semiconductors, 2011, http://www-03.ibm.com/press/us/en/pressrelease/35358.wss.</p>
+<p>[33] A. Bar-Cohen, et al. CS MANTECH Conference, New Orleans, LA, (2013), p. 171.</p>
+<p>[34] A. Kumar, C. Zhou, ACS Nano 4 (1) (2010) 11.</p>
+<p>[35] Z. Wu, et al. Science 305 (2004) 1273.</p>
+<p>[36] G. Gruner, J. Mater. Chem. 16 (2006) 3533.</p>
+<p>[37] R. Ma, et al. Adv. Mater. 25 (18) (2013) 2548.</p>
+<p>[38] K.S. Kim, et al. Nature 457 (2009) 706.</p>
+<p>[39] S.-K. Lee, et al. Nano Lett. 12 (2012) 3472–3476.</p>
+<p>[40] S. Bae, et al. Nat. Nanotechnol. 5 (2010) 574.</p>
+<p>[41] J.P. Rojas, et al. IEEE 25th International Conference on Micro Electro Mechanical Systems, IEEE, Paris, 2012, p. 281.</p>
+<p>[42] L. Hu, et al. ACS Nano 4 (5) (2010) 2955.</p>
+<p>[43] S. De, et al. ACS Nano 3 (7) (2009) 1767.</p>
+<p>[44] J.-Y. Lee, et al. Nano Lett. 8 (2) (2008) 689.</p>
+<p>[45] J. Lee, et al. International Electron Devices Meeting, IEEE, Washington, DC, 2013 .</p>
+<p>[46] C.J. Glassbrenner, G.A. Slack, Phys. Rev. 134 (4A) (1964) A1058.</p>
+<p>[47] H.R. Shanks, et al. Phys. Rev. 130 (5) (1963) 1743.</p>
+<p>[48] Q. Liang, et al. J. Superhard Mater. 35 (4) (2013) 195.</p>
+<p>[49] L. Lindsay, et al. Phys. Rev. Lett. 111 (2013) 025901.</p>
+<p>[50] G.A. Slack, et al. J. Phys. Chem. Solids 48 (7) (1987) 641.</p>
+<p>[51] A. Jezowski, et al. Solid State Commun. 128 (2/3) (2003) 69.</p>
+<p>[52] L. Lindsay, et al. Phys. Rev. B 87 (2013) 165201.</p>
+<p>[53] Y. Xiong, et al. J. Mater. Sci. 41 (2006) 2537.</p>
+<p>[54] F. Kawamura, et al. Jpn. J. Appl. Phys. 42 (7A) (2003) 729.</p>
+<p>[55] G.A. Slack, J. Phys. Chem. Solids 34 (2) (1973) 321.</p>
+<p>[56] W. Werdecker, F. Aldinger, IEEE Trans. Comp. Pack. Manuf. Technol. 7 (4) (1984)</p>
+<p>399.</p>
+<p>[57] F. Miyashiro, et al. IEEE Trans. Comp. Pack. Manuf. Technol. 13 (2) (1990) 313.</p>
+<p>[58] K.A. Khor, et al. Mater. Sci. Technol. A 347 (1/2) (2003) 300.</p>
+<p>[59] S.L. Chung, et al. Int. J. Self-Propagating High Temp. Synth. 21 (1) (2012) 45.</p>
+<p>[60] R.R. Tummala, et al., Microelectronics Packaging Handbook, Van Nostrand</p>
+<p>Reinhold, New York, 1989.</p>
+<p>[61] A.T. Wieg, et al. Appl. Phys. Lett. 101 (2012) 111903.</p>
+<p>[62] C. Dames, G. Chen, Thermal conductivity of nanostructured thermoelectric</p>
+<p>materials, in: D.M. Rowe (Ed.), Thermoelectrics Handbook: Macro to Nano,</p>
+<p>CRC Press, Boca Raton, 2006.</p>
+<p>[63] F. Yang, C. Dames, Phys. Rev. B 87 (2013) 035437.</p>
+<p>[64] A.S. Henry, G. Chen, J. Comput. Theor. Nanosci. 5 (2008) 1.</p>
+<p>[65] K. Esfarjani, et al. Phys. Rev. B 84 (2011) 085204.</p>
+<p>[66] W. Li, et al. Phys. Rev. B 85 (2012) 195436.</p>
+<p>[67] K.T. Regner, et al. Nat. Commun. 4 (2013) 1640.</p>
+<p>[68] W. Liu, M. Asheghi, J. Appl. Phys. 98 (2005) 123523.</p>
+<p>[69] W. Liu, M. Asheghi, J. Heat Transfer 128 (2006) 75.</p>
+<p>[70] Y.S. Ju, K.E. Goodson, Appl. Phys. Lett. 74 (20) (1999) 3005.</p>
+<p>[71] M. Asheghi, et al. J. Heat Transfer 120 (1998) 30.</p>
+<p>[72] M. Asheghi, et al. J. Appl. Phys. 91 (8) (2002) 5079.</p>
+<p>[73] D. Li, et al. Appl. Phys. Lett. 83 (2003) 2934.</p>
+<p>[74] K. Hippalgaonkar, et al. Nano Lett. 10 (2010) 4341.</p>
+<p>[75] F. Zhou, et al. Phys. Rev. B 83 (2011) 205416.</p>
+<p>[76] F. Zhou, et al. J. Phys. D: Appl. Phys. 43 (2010) 025406.</p>
+<p>[77] Y. Yang, et al. Appl. Phys. Lett. 84 (2004) 3121.</p>
+<p>[78] H.B.G. Casimir, Physica 5 (6) (1938) 495.</p>
+<p>[79] J.M. Ziman, Electrons and Phonons, New York, Oxford University, 1960.</p>
+<p>[80] J. Lim, et al. Nano Lett. 12 (2012) 2475.</p>
+<p>[81] M.G. Ghossoub, et al. Nano Lett. 13 (4) (2013) 1564.</p>
+<p>[82] J.P. Feser, et al. J. Appl. Phys. 112 (2012) 114306.</p>
+<p>[83] Y. He, G. Galli, Phys. Rev. Lett. 108 (2012) 215901.</p>
+<p>[84] J. Sadhu, S. Sinha, Phys. Rev. B 84 (2011) 115450.</p>
+<p>[85] A.K. Geim, K.S. Novoselov, Nat. Mater. 6 (2007) 183.</p>
+<p>[86] M.J. Allen, et al. Chem. Rev. 110 (2010) 132.</p>
+<p>[87] A.K. Geim, Science 324 (2009) 1530.</p>
+<p>[88] A.H.C. Neto, et al. Rev. Mod. Phys. 81 (2009) 109.</p>
+<p>[89] Y. Zhu, et al. Adv. Mater. 22 (2010) 3906.</p>
+<p>[90] W. Choi, et al. Crit. Rev. Solid State Mater. Sci. 35 (1) (2010) 52.</p>
+<p>[91] E. Pop, et al. MRS Bull. 37 (2012) 1273.</p>
+<p>[92] Y.-M. Lin, et al. Science 332 (2011) 1294.</p>
+<p>[93] M. Freitag, et al. Nano Lett. 9 (5) (2009) 1883.</p>
+<p>[94] F. Schedin, et al. Nat. Mater. 6 (2007) 652.</p>
+<p>[95] J.D. Fowler, et al. ACS Nano 3 (2) (2009) 301.</p>
+<p>[96] Y. Shao, et al. Electroanalysis 22 (10) (2010) 1027.</p>
+<p>[97] F. Yavari, et al. J. Phys. Chem. C 115 (2011) 8753.</p>
+<p>[98] A. Yu, et al. J. Phys. Chem. C 111 (2007) 7565.</p>
+<p>[99] A. Yu, et al. Adv. Mater. 20 (24) (2008) 4740.</p>
+<p>[100] G.A. Slack, Phys. Rev. 127 (1962) 694–701.</p>
+<p>[101] Y.S. Touloukian, et al., Thermal Conductivity – Metallic Elements and Alloys, IFI/Plenum, New York, 1970.</p>
+<p>[102] C.N. Hooker, et al. Proc. R. Soc. A 284 (1396) (1965) 17.</p>
+<p>[103] R. Taylor, Philos. Mag. 13 (121) (1966) 157.</p>
+<p>[104] W. Cai, et al. Nano Lett. 10 (2010) 1645.</p>
+<p>[105] S. Chen, et al. ACS Nano 5 (1) (2011) 321.</p>
+<p>[106] S. Ghosh, et al. Nat. Mater. 9 (2010) 555.</p>
+<p>[107] L. Lindsay, et al. Phys. Rev. B 82 (2010) 115427.</p>
+<p>[108] L. Lindsay, et al. Phys. Rev. B 83 (2011) 235428.</p>
+<p>[109] Z. Yan, et al. Nat. Commun. 3 (2012) 827.</p>
+<p>[110] C. Nan, et al. J. Appl. Phys. 81 (10) (1997) 6692.</p>
+<p>[111] J.H. Seol, et al. Science 328 (2010) 213.</p>
+<p>[112] M.-H. Bae, et al. Nat. Commun. 4 (2013) 1734.</p>
+<p>[113] W. Jang, et al. Nano Lett. 10 (2010) 3909.</p>
+<p>[114] M.T. Pettes, et al. Nano Lett. 11 (2011) 1195.</p>
+<p>[115] M.M. Sadeghi, I. Jo, L. Shi, Proc. Natl. Acad. Sci. 110 (2013) 16321–16326.</p>
+<p>[116] C.R. Dean, et al. Nat. Nanotechnol. 5 (2010) 722.</p>
+<p>[117] I. Jo, et al. Nano Lett. 13 (2) (2013) 550.</p>
+<p>[118] A. Simpson, A.D. Stuckes, J. Phys. C: Solid State Phys. 4 (1971) 1710.</p>
+<p>[119] B. Aufray, et al. Appl. Phys. Lett. 96 (2010) 183102.</p>
+<p>[120] A. Fleurence, et al. Phys. Rev. Lett. 108 (2012) 245501.</p>
+<p>[121] A. Kara, et al. Surf. Sci. Rep. 67 (1) (2012) 1.</p>
+<p>[122] B. Lalmi, et al. Appl. Phys. Lett. 97 (2010) 223109.</p>
+<p>[123] S.Z. Butler, et al. ACS Nano 7 (4) (2013) 2898.</p>
+<p>[124] E. Bianco, et al. ACS Nano 7 (5) (2013) 4414.</p>
+<p>[125] B. Radisavljevic, et al. Nat. Nanotechnol. 6 (2011) 147.</p>
+<p>[126] C. Chiritescu, et al. Science 315 (2007) 351.</p>
+<p>[127] A. Mavrokefalos, et al. Appl. Phys. Lett. 91 (2007) 171912.</p>
+<p>[128] M. Shen, et al. Phys. Rev. B 88 (2013) 045444.</p>
+<p>[129] Z. Chen, et al. Appl. Phys. Lett. 95 (2009) 161910.</p>
+<p>[130] K.F. Mak, et al. Appl. Phys. Lett. 97 (2010) 221904.</p>
+<p>[131] Y.K. Koh, et al. Nano Lett. 10 (11) (2010) 4363.</p>
+<p>[132] R.J. Stoner, H.J. Maris, Phys. Rev. B 48 (22) (1993) 16373.</p>
+<p>[133] R.J. Stevens, et al. J. Heat Transfer 127 (2005) 315.</p>
+<p>[134] S.P. Koenig, et al. Nat. Nanotechnol. 6 (9) (2011) 543.</p>
+<p>[135] H. Yu, et al. Scr. Mater. 66 (2012) 931.</p>
+<p>[136] Y.-H. Yu, et al. J. Taiwan Inst. Chem. Eng. 44 (4) (2013) 654.</p>
+<p>[137] B. Zhu, et al. J. Appl. Polym. Sci. 118 (5) (2010) 2754.</p>
+<p>[138] K. Pashayi, et al. J. Appl. Phys. 111 (2012) 104310.</p>
+<p>[139] J. Xu, et al. J. Appl. Phys. 106 (2009) 124310.</p>
+<p>[140] R. Prasher, Proc. IEEE 94 (8) (2006) 1571.</p>
+<p>[141] L. Yu, et al. Nanotechnology 24 (2013) 155604.</p>
+<p>[142] S. Kumar, et al. J. Electron. Pack. 133 (2011) 020906.</p>
+<p>[143] C. Lin, D.D.L. Chung, Carbon 47 (2009) 295.</p>
+<p>[144] K.M.F. Shahil, A.A. Balandin, Nano Lett. 23 (2012) 861.</p>
+<p>[145] P. Kim, et al. Phys. Rev. Lett. 87 (2001) 215502.</p>
+<p>[146] C.H. Yu, et al. Nano Lett. 5 (2005) 1842.</p>
+<p>[147] A.M. Marconnet, et al. Rev. Mod. Phys. 85 (2013) 1295.</p>
+<p>[148] A.J. McNamara, et al. Int. J. Therm. Sci. 62 (2012) 2.</p>
+<p>[149] J. Liu, et al. 14th International Workshop on Thermal Investigation of ICs and Systems, Rome, (2008), p. 156.</p>
+<p>[150] J.H. Taphouse, et al. Adv. Funct. Mater. 24 (4) (2013) 465–471.</p>
+<p>[151] K.P. Bloschock, A. Bar-Cohen, Defense Transformation and Net-centric Systems 2012, vol. 8405, SPIE, Baltimore, 2012.</p>
+<p>[152] J.C.M. Garnett, Philos. Trans. R. Soc. A 203 (1904) 385.</p>
+<p>[153] D.P.H. Hasselman, L.F. Johnson, J. Compos. Mater. 21 (6) (1987) 508.</p>
+<p>[154] J.V.Goicochea, et al., Enhancedcentrifugalpercolating thermalunderfills based on neck formation by capillary bridging, in: 13th IEEE Intersociety Conference on Thermal and Thermomechanical Phenomena in Electronics Systems (ITHERM), IEEE, San Diego, 2012.</p>
+<p>[155] H. Li, et al. IEEE Trans. Adv. Pack. 26 (1) (2003) 25.</p>
+<p>[156] J. Zurcher, et al. 7th International Conference on Integrated Power Electronics Systems, Nuremberg, 2012.</p>
+<p>[157] Z. Lin, et al. 63rd IEEE Electronics Components &amp; Technology Conference, IEEE, Las Vegas, 2013, p. 1692.</p>
+<p>[158] K. Suzuki, et al. International Symposium on Advanced Packaging Materials, IEEE, Braselton, GA, 2001, p. 46.</p>
+<p>[159] Q. Liang, et al. IEEE Trans. Comp. Pack. Manuf. Technol. 2 (10) (2012) 1571.</p>
+<p>[160] M.J. Biercuk, et al. Appl. Phys. Lett. 80 (15) (2002) 2767.</p>
+<p>[161] Z. Lin, et al. 62nd Electronics Components and Technology Conference, IEEE, San Diego, 2012, p. 1437.</p>
+<p>[162] X. Huang, et al. IEEE Electr. Insul. Mag. (2011) 8.</p>
+<p>[163] H. Ishida, S. Rimdusit, Thermochim. Acta 320 (1/2) (1998) 177.</p>
+<p>[164] R.S. Prasher, et al. Phys. Rev. Lett. 102 (10) (2009) 105901.</p>
+<p>[165] L. Hu, et al. J. Appl. Phys. 110 (2011) 033517.</p>
+<p>[166] T. Brunschwiler, et al. 45th International Symposium on Microelectronics, San Diego, CA, 2012.</p>
+<p>[167] H.X.Ji Sellan, et al. Energy Environ. Sci. 7 (2014) 1185–1192.</p>
+<p>[168] M.T. Pettes, et al. Nano Lett. 12 (2012) 2959.</p>
+<p>[169] E. Tylianakis, et al. Chem. Commun. 47 (2011) 2303.</p>
+<p>[170] G.K. Dimitrakakis, et al. Nano Lett. 8 (10) (2008) 3166.</p>
+<p>[171] J. Yin, et al. Nano Lett. 13 (2013) 3232.</p>
+<p>[172] S.S. Sundarram, W. Li, Polym. Eng. Sci. 53 (9) (2013) 1901.</p>
+<p>[173] C.L. Choy, et al. J. Polym. Sci. Polym. Phys. Ed. 18 (6) (1980) 1187.</p>
+<p>[174] C.L. Choy, et al. Polymer 19 (2) (1978) 155.</p>
+<p>[175] D. Hansen, G.A. Bernier, Polym. Eng. Sci. 12 (3) (1972) 204.</p>
+<p>[176] C.L. Choy, et al. J. Polym. Sci. B: Polym. Phys. 37 (23) (1999) 3359.</p>
+<p>[177] B.D. Washo, D. Hansen, J. Appl. Phys. 40 (6) (1969) 2423.</p>
+<p>[178] S. Gupta, et al. J. Rheol. 57 (2) (2013) 427.</p>
+<p>[179] C.L. Choy, et al. J. Polym. Sci. B: Polym. Phys. 31 (3) (1993) 365.</p>
+<p>[180] H. Fujishiro, et al. Jpn. J. Appl. Phys. 36 (1997) 5633.</p>
+<p>[181] S. Shen, et al. Nat. Nanotechnol. 5 (2010) 251.</p>
+<p>[182] X. Wang, et al. Macromolecules 46 (2013) 4937.</p>
+<p>[183] E.T. Swartz, R.O. Pohl, Rev. Mod. Phys. 61 (1989) 605.</p>
+<p>[184] M.D. Losego, D.G. Cahill, Nat. Mater. 12 (2013) 382.</p>
+<p>[185] R.B. Wilson, D.G. Cahill, Phys. Rev. Lett. 108 (2012) 255901.</p>
+<p>[186] D.G. Cahill, Microscale Thermophys. Eng. 1 (2) (1997) 85.</p>
+<p>[187] A. Majumdar, P. Reddy, Appl. Phys. Lett. 84 (23) (2004) 4768.</p>
+<p>[188] J.C. Duda, et al. J. Appl. Phys. 108 (7) (2010) 073515.</p>
+<p>[189] P.E. Hopkins, et al. J. Appl. Phys. 105 (2) (2009) 023710.</p>
+<p>[190] Z. Chen, et al. Phys. Rev. B 87 (12) (2013) 125426.</p>
+<p>[191] J.C. Duda, et al. Appl. Phys. Lett. 95 (3) (2009) 031912.</p>
+<p>[192] P.E. Hopkins, et al. Phys. Rev. B 84 (2011) 125408.</p>
+<p>[193] J.A. Malen, et al. Nano Lett. 9 (10) (2009) 3406.</p>
+<p>[194] J.A. Malen, et al. Chem. Phys. Lett. 491 (2010) 109.</p>
+<p>[195] W.-L. Ong, et al. Nat. Mater. 12 (2013) 410.</p>
+<p>[196] M.D. Losego, et al. Nat. Mater. 11 (2012) 502.</p>
+<p>[197] P.J. O’Brien, et al. Nat. Mater. (2012) 118–122.</p>
+<p>[198] P.E. Hopkins, et al. Nano Lett. 12 (2012) 590.</p>
+<p>[199] D.G. Cahill, Rev. Sci. Instrum. 61 (2) (1990) 802.</p>
+<p>[200] D.L. Rule, et al. Cryogenics 36 (4) (1996) 283.</p>
+<p>[201] L. Shi, Nanoscale Microscale Thermophys. Eng. 16 (2) (2012) 79.</p>
+<p>[202] J. Lee, et al. High-performance flexible nanoelectronics: 2D atomic channel materials for low-power digital and high-frequency analog devices, in 2013 IEEE International Electron Devices Meeting (IEDM) Technical Digest, 2013, pp. 19.2.1–19.2.4.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2020-2021 mekesim.com <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">浙ICP备10045952号-5</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

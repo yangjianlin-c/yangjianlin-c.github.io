@@ -1,0 +1,5187 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="米克网文档">
+      
+      
+        <meta name="author" content="Colin Yang">
+      
+      
+        <link rel="canonical" href="http://www.mekesim.com/doc/%E5%85%AC%E4%BC%97%E5%8F%B7/%E7%94%B5%E5%8A%A8%E6%B1%BD%E8%BD%A6%E7%94%B5%E6%B1%A0%E6%B3%A2%E6%B5%AA%E9%80%9A%E9%81%93%E6%B6%B2%E4%BD%93%E5%86%B7%E5%8D%B4%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%83%AD%E6%80%A7%E8%83%BD/">
+      
+      
+        <link rel="prev" href="../%E5%9F%BA%E4%BA%8E%E6%96%B0%E5%9E%8B%E8%9C%98%E8%9B%9B%E7%BD%91%E7%8A%B6%E9%80%9A%E9%81%93%E5%86%B7%E5%8D%B4%E6%9D%BF%E4%BA%A4%E6%8D%A2%E5%99%A8%E7%9A%84%E9%94%82%E7%A6%BB%E5%AD%90%E7%94%B5%E6%B1%A0%E7%83%AD%E7%AE%A1%E7%90%86%E6%95%B0%E5%80%BC%E7%A0%94%E7%A9%B6/">
+      
+      
+        <link rel="next" href="../../%E7%94%B5%E8%B7%AF%E5%8F%82%E8%80%83/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>电动汽车电池波浪通道液体冷却系统的热性能 - 米克网</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","UA-40504642-1"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","UA-40504642-1",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=UA-40504642-1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="米克网" class="md-header__button md-logo" aria-label="米克网" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            米克网
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              电动汽车电池波浪通道液体冷却系统的热性能
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Mekesim Documents
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Arduino/" class="md-tabs__link">
+          
+  
+  Arduino
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ESP32/" class="md-tabs__link">
+          
+  
+  ESP32
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Flotherm/" class="md-tabs__link">
+          
+  
+  Flotherm
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Flotherm%20XT/Flotherm%20XT%20EDA%20Bridge/" class="md-tabs__link">
+          
+  
+  Flotherm XT
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Products/MK2101/" class="md-tabs__link">
+          
+  
+  Products
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ml5/01%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="md-tabs__link">
+          
+  
+  Ml5
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../uploadfiles/image/201304/8.jpg/" class="md-tabs__link">
+          
+  
+  Uploadfiles
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../0725/" class="md-tabs__link">
+          
+  
+  公众号
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E7%94%B5%E8%B7%AF%E5%8F%82%E8%80%83/" class="md-tabs__link">
+          
+  
+  电路参考
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="米克网" class="md-nav__button md-logo" aria-label="米克网" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    米克网
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mekesim Documents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Arduino
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arduino
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Arduino Uno入门
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arduino Uno入门
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目一 初识Arduino
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目二 SOS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目三 神奇的按钮
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目四 简易入侵检测仪
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目五 可调灯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目六 智能灯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目七 创意门铃
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目八 小小作曲家
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目九 噪音计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十 遥控灯
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十一 另类电子琴
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十二 超声波测距仪
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十三 公园人数计数系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Arduino%20Uno%E5%85%A5%E9%97%A8/14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目十四 打地鼠游戏
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ESP32
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            ESP32
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/01%20ESP32%20%E5%BC%80%E5%8F%91%E6%9D%BF%20Devkit%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 ESP32 开发板 Devkit介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/02%20ESP32%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B9%8B%20Arduino%20IDE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 ESP32 开发环境之 Arduino IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/03%20ESP32%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B9%8B%20PlatformIO/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 ESP32开发环境之 PlatformIO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/04%20ESP32%20GPIO%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 ESP32 GPIO介绍及使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 AD输入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ADXL345%E5%8A%A0%E9%80%9F%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    总览
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Ansys%20Fail%20to%20Open/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ANSYS过段时间出现License错误的解决办法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Arduino%20%E4%BD%BF%E7%94%A8Thermal%20Coupler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arduino 使用Thermal Coupler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Arduino%20%E8%B6%85%E5%A3%B0%E6%B3%A2%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    超声波传感器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Arduino/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arduino
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/CDMA%20Demostration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CDMA code spreading demostrate with Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Car-basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arduino控制小车
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP-EYE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP EYE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP-NOW/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP NOW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20CAM%20Face/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 CAM Face
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20Connect%20Wifi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 连接Wifi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20MQTT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 使用MQTT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20use%20MAX31855/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 温度测量仪
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 功能介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 接口
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%20%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32 测试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%E4%BC%91%E7%9C%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32睡眠
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ESP32%E4%BD%BF%E7%94%A8%E5%8F%8C%E6%A0%B8FreeRTOS%E5%92%8CArduino%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ESP32使用双核FreeRTOS和Arduino环境
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/ETS300753%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ETS 300753 解读
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/FFT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/FOTA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FOTA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Facenet%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FaceNet 使用实例介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Gat%20Data%20from%20Picture%20Curve/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Get Data from Picture Curve
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/How%20to%20Add%20High%20Quality%20Matlab%20Graphics%20in%20Latex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Add High Quality Matlab Graphics in Latex
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--public"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Hugo%20on%20VPS%20with%20Git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hugo on VPS with Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/I2C%20Sanner/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I2C Sanner
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Inlation%20Mesh/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    在局部网格上设置通胀有什么好处？
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Insert%20Matlab%20Figure%20into%20Latex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Insert Matlab Figure into Latex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Interesting%20Things/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interesting DIY Things
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/L298N/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    L298N
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/LED%E6%95%A3%E7%83%AD%E6%8A%80%E6%9C%AF%E6%96%B0%E5%8A%A8%E5%90%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LED散热技术新动向
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/MAX31855/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MAX31855开发板使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/MPU6050%E5%8A%A0%E9%80%9F%E5%BA%A6%E8%AE%A1%20%E9%99%80%E8%9E%BA%E4%BB%AA%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MPU6050加速度计 陀螺仪传感器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Mannually%20download%20bin%20file%20to%20ESP32/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mannually download bin file to ESP32
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/OFDM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OFDM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/PA%20%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PA模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Polar%E7%BC%96%E7%A0%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polar编码
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/PowerPAD%20Packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PowerPAD Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Proe%20Layer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips about using Layer in Creo
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--public"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/QFN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QFN Package
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Sverchok%E4%B8%AD%E7%9A%84Bloom%20Spheres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sverchok中的Bloom Spheres
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/TIM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    固态界面材料热特性测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/TensorFlow%20Lite%20on%20Raspberry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorFlow Lite on Raspberry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Tensorflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tensorflow学习笔记1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Thermal%20Impedance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thermal Impedance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/Use%20flogate_cl%20Command%20convert%20xml%20to%20pdml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use flogate_cl Command convert xml to pdml
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/VL6180X%E6%B5%8B%E8%B7%9D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VL6180X测距
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/VS-code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VS Code and PlatformIO IDE for ESP32 and ESP8266 Arudino platform  code introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/edgeimpulse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Edgeimpulse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/flask_socketio_echarts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flask socketio echarts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/git%20proxy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Github Desktop 设置代理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/icepak%20tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Icepak Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/iphone/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iPhone 4 热分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/latextools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latextools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/matplotlib_Chinese/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    python matplotlib 支持中文标题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/meke%E6%9C%9F%E5%88%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    风扇设计与选型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/mkdoc%20github/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mkdoc github
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/rasp_pi_installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rasp pi installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/shadowsocks_pi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    在树莓派上安装 shadowsocks 客户端
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/wemos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wemos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E4%BF%A1%E9%81%93%E7%BC%96%E7%A0%81%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    信道编码的前世今生
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%8A%A8%E7%89%A9%E7%8E%8B%E5%9B%BD%E5%BC%80%E5%A4%A7%E4%BC%9A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    动物王国开大会
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    卡尔曼滤波
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%9B%BA%E6%80%81%E7%95%8C%E9%9D%A2%E6%9D%90%E6%96%99%E7%83%AD%E7%89%B9%E6%80%A7%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    固态界面材料热特性测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%9B%BE%E8%A1%A8highcharts%E8%81%94%E5%90%88jquery%20ajax%20%E5%90%8E%E7%AB%AF%E5%8F%96%E6%95%B0%E6%8D%AE%E5%89%8D%E7%AB%AF%E5%9B%BE%E8%A1%A8%E6%B8%B2%E6%9F%93/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    图表highcharts联合jquery ajax 后端取数据前端图表渲染
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    工具合集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E5%BE%A1%20Air%202%20%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    御 Air 2 新手教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字调制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E6%A0%91%E8%8E%93%E6%B4%BE%20Google%20Assistant/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    树莓派 Google Assistant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E6%A0%91%E8%8E%93%E6%B4%BEAI%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    树莓派AI工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E6%B8%A9%E7%AE%B1%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无线控制温箱
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E7%83%AD%E5%8A%9B%E5%AD%A6%E5%90%8D%E8%AF%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    热力学名词
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E7%94%B5%E8%A7%A3%E8%B4%A8%E7%94%B5%E5%AE%B9%E5%A4%B1%E6%95%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips about using Layer in Creo
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--public"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E7%AC%A6%E5%8F%B7%E9%97%B4%E5%B9%B2%E6%89%B0%E4%B8%8E%E5%BE%AA%E7%8E%AF%E5%89%8D%E7%BC%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    符号间干扰(ISI)与循环前缀(CP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E7%BA%A2%E5%A4%96%E7%83%AD%E5%83%8F%E4%BB%AA%E5%8F%91%E5%B0%84%E7%8E%87%E7%A1%AE%E5%AE%9A%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    红外热像仪发射率确定方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E7%BC%96%E7%A0%81%E5%99%A8%20SIQ-02FVS3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    编码器 SIQ 02FVS3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E8%88%9E%E5%8F%B0%E5%89%A7%E8%8D%B7%E5%8F%B6%E5%9C%86%E5%9C%86%E8%84%9A%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    舞台剧荷叶圆圆脚本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E8%B0%83%E5%88%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    无线通信基础之：调制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/%E9%95%BF%E5%B9%B3%E4%B9%8B%E6%88%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    长平之战
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_86" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_86" id="__nav_3_86_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sensor
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_86_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_86">
+            <span class="md-nav__icon md-icon"></span>
+            Sensor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/sensor/sensor%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sensor滤波
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/sensor/%E6%8C%89%E9%94%AE%E6%B6%88%E6%8A%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按键消抖
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_87" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_87" id="__nav_3_87_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tools
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_87_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_87">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ESP32/tools/01abc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01abc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Flotherm
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Flotherm
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/0311%20%E6%95%A3%E7%83%AD%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    0311 散热基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/0312%20Flotherm%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm基础 (Day 2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/2R%20resister/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to build 2R resistor model in Flotherm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Bn%20and%20Sn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bn and Sn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/DCDC%20Buck-Boost%20Converter%20%E7%83%AD%E8%80%97%E8%AE%A1%E7%AE%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCDC Buck Boost Converter 热耗计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Fan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    关于风扇
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/FloSCRIPT%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FloSCRIPT使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/FloTHERM%E4%B8%AD%E6%A8%A1%E6%8B%9F%E5%A4%AA%E9%98%B3%E8%BE%90%E5%B0%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FloTHERM中模拟太阳辐射
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Floscript%20%E5%92%8C%20Flotherm%20Environment%20Shell%E7%9A%84%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Floscript 和 Flotherm Environment Shell的结合使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Floterm-PCB-Vias-%E6%A8%A1%E6%8B%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Floterm PCB Vias 模拟
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20Export%20Attribute%20Table%20Data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm Export Attribute Table Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20Tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20Workplan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm Workplan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20batch%20mode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    批处理模式运行Flotherm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm 快捷键
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%20%E6%A8%A1%E6%8B%9F%E6%95%A3%E7%83%AD%E5%99%A8%E7%9A%84%E5%BB%BA%E8%AE%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm 模拟散热器的建议
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E4%B8%AD%E5%8A%A0%E5%85%A5%E7%83%AD%E7%AE%A1%E6%A8%A1%E5%9E%8B%E5%90%8E%E6%94%B6%E6%95%9B%E5%9B%B0%E9%9A%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm中加入热管模型后收敛困难
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E4%B8%AD%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm中的坐标系
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E6%9D%82%E9%A1%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm杂项
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Flotherm%E8%BE%90%E5%B0%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm中加入热管模型后收敛困难
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG244816/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FloTHERM 常用的快捷键?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG516365/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best practise for gridding heat sinks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG517829/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modeling a Thermal interface material (TIM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG526524/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding grid constraints to walls of an enclosure smart part
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG531465/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is the advantage of setting inflation on a localized grid?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG541045/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重力方向
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG558355/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MG558355
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG560544/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modeling Thermal Vias in FloTHERM using FloEDA Bridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG601650/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exporting ODB++ files from Mentor Graphics Xpedition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG603968/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Set Solar Radiation in FloTHERM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/MG606137/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Providing thermal keepout areas on PCB to the Electrical Engineers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Notes%20on%20importing%20CSV%20files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes on importing CSV files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/Result/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何有效地分析结果
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/TIM%E5%BB%BA%E6%A8%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIM建模
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E4%BD%BF%E7%94%A8JEDEC%E7%83%AD%E5%BA%A6%E9%87%8F%E8%AE%A1%E7%AE%97%E8%8A%AF%E7%89%87%E6%B8%A9%E5%BA%A6%E6%97%A0%E9%99%84%E5%8A%A0%E6%95%A3%E7%83%AD%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用JEDEC热度量计算芯片温度（无附加散热器）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E5%85%B1%E8%BD%AD%E4%BC%A0%E7%83%AD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    共轭传热
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E5%9B%BA%E4%BD%93%E5%86%85%E9%83%A8%E7%83%AD%E6%B5%81%E5%9B%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 固体内部热流图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E5%B0%81%E8%A3%85%E7%83%AD%E9%98%BB%E8%A7%86%E9%A2%91%E4%B8%AD%E7%9A%84%E8%AE%A1%E7%AE%97%E5%AE%9E%E4%BE%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    封装热阻视频中的计算实例
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm/%E8%87%AA%E5%8A%A8%E5%B1%80%E9%83%A8%E7%BD%91%E6%A0%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自动局部网格
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Flotherm XT
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Flotherm XT
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Flotherm%20XT/Flotherm%20XT%20EDA%20Bridge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flotherm XT EDA Bridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Products
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Products
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Products/MK2101/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MK2101
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Ml5
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ml5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/01%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01图像分类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/02%E4%BA%BA%E4%BD%93%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02人体动作识别
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/03%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03小程序
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml5/Pandas%20%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pandas 笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Uploadfiles
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Uploadfiles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Image
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_1" id="__nav_8_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    201304
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            201304
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../uploadfiles/image/201304/8.jpg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8.jpg
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    公众号
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            公众号
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0725/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    电子产品热管理的新挑战和材料
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IGBT%20%E6%B8%A9%E5%BA%A6%E9%A2%84%E6%B5%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IGBT 温度预测
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BD%BF%E7%94%A8%E7%83%AD%E7%AE%A1%E8%BF%9B%E8%A1%8C%E9%94%82%E7%A6%BB%E5%AD%90%E7%94%B5%E6%B1%A0%E5%9C%A8%E7%94%B5%E5%8A%A8%E6%B1%BD%E8%BD%A6%E9%AB%98%E7%94%B5%E6%B5%81%E6%94%BE%E7%94%B5%E6%97%B6%E7%9A%84%E7%83%AD%E7%AE%A1%E7%90%86%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用热管进行锂离子电池在电动汽车高电流放电时的热管理分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9F%BA%E4%BA%8E%E6%96%B0%E5%9E%8B%E8%9C%98%E8%9B%9B%E7%BD%91%E7%8A%B6%E9%80%9A%E9%81%93%E5%86%B7%E5%8D%B4%E6%9D%BF%E4%BA%A4%E6%8D%A2%E5%99%A8%E7%9A%84%E9%94%82%E7%A6%BB%E5%AD%90%E7%94%B5%E6%B1%A0%E7%83%AD%E7%AE%A1%E7%90%86%E6%95%B0%E5%80%BC%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于新型蜘蛛网状通道冷却板交换器的锂离子电池热管理数值研究
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    电动汽车电池波浪通道液体冷却系统的热性能
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    电动汽车电池波浪通道液体冷却系统的热性能
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      作者
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      摘要
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 介绍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 理论
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 理论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. 电池发热
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. 计算流体动力学
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 波浪通道液冷系统
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 波浪通道液冷系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      A 电池规格
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      B 冷却通道几何形状
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 模拟
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 模拟">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. 放电率
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      B.模组电池数量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. 入口处的冷却剂温度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    <span class="md-ellipsis">
+      D. 仿真设置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e" class="md-nav__link">
+    <span class="md-ellipsis">
+      E. 网格敏感性分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 结果与讨论
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 结果与讨论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. 不同放电率下的热性能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. 电池数量的影响
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. 入口冷却液温度的影响
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      D. 内部温度梯度
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 结论
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      致谢
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考文献
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    电路参考
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            电路参考
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%94%B5%E8%B7%AF%E5%8F%82%E8%80%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%94%B5%E8%B7%AF%E5%8F%82%E8%80%83/%E4%B8%80%E9%94%AE%E5%BC%80%E5%85%B3%E6%9C%BA%E7%94%B5%E8%B7%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一键开关机电路
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      作者
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      摘要
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 介绍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 理论
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 理论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. 电池发热
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. 计算流体动力学
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 波浪通道液冷系统
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 波浪通道液冷系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      A 电池规格
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      B 冷却通道几何形状
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 模拟
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 模拟">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. 放电率
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      B.模组电池数量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. 入口处的冷却剂温度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    <span class="md-ellipsis">
+      D. 仿真设置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e" class="md-nav__link">
+    <span class="md-ellipsis">
+      E. 网格敏感性分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 结果与讨论
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 结果与讨论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. 不同放电率下的热性能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. 电池数量的影响
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. 入口冷却液温度的影响
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      D. 内部温度梯度
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 结论
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      致谢
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考文献
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>电动汽车电池波浪通道液体冷却系统的热性能</h1>
+
+<h2 id="_1">作者</h2>
+<p><strong>Julius Ezra M. Gundran</strong></p>
+<p>Mechanical Engineering Department, De La Salle University, Manila, Philippines</p>
+<p><strong>Aristotle T. Ubando</strong></p>
+<p>Mechanical Engineering Department, De La Salle University, Manila, Philippines</p>
+<p><strong>Alvin B. Culaba</strong></p>
+<p>Mechanical Engineering Department, De La Salle University, Manila, Philippines</p>
+<h2 id="_2">摘要</h2>
+<p>鉴于气候变化的迫在眉睫的威胁，交通部门的碳排放是其中的主要贡献者，电动汽车已成为传统汽车的低排放、高性能替代品。然而，电动汽车的市场渗透率低，这主要是由于电池寿命短，因此电池更换费用高。使用过程中产生的热量导致电池温度过高是导致电池寿命短的主要原因。因此，电池冷却系统是电动汽车的关键部件。本研究使用计算流体动力学研究波浪通道液体冷却系统。它的热性能是在不同的放电速率下确定的，并且确定了每个模块的电池数量和冷却剂入口温度的影响。还研究了电池的内部温度梯度。研究发现，放电率的增加导致温度和最大温差都增加。未发现增加每个模块的电池数量有任何显着影响。发现冷却液温度会影响电池温度，但不会影响最大温差。然而，尽管在某些情况下达到了令人满意的平均温度，但发现电池的内部温度梯度和最高温度过高。因此，建议修改几何形状并探索辅助冷却介质。未发现增加每个模块的电池数量有任何显着影响。发现冷却液温度会影响电池温度，但不会影响最大温差。然而，尽管在某些情况下达到了令人满意的平均温度，但发现电池的内部温度梯度和最高温度过高。因此，建议修改几何形状并探索辅助冷却介质。未发现增加每个模块的电池数量有任何显着影响。发现冷却液温度会影响电池温度，但不会影响最大温差。然而，尽管在某些情况下达到了令人满意的平均温度，但发现电池的内部温度梯度和最高温度过高。因此，建议修改几何形状并探索辅助冷却介质。发现电池内部温度梯度和最高温度过高。因此，建议修改几何形状并探索辅助冷却介质。发现电池内部温度梯度和最高温度过高。因此，建议修改几何形状并探索辅助冷却介质。</p>
+<h2 id="1">1 介绍</h2>
+<p>气候变化对人类构成严重威胁，地表、大气和海洋温度升高、冰川和冰盖融化、海平面上升以及更多极端天气条件就是证明。预计这些影响只会在短期和长期内变得更糟[1]。</p>
+<p>在很大程度上导致气候变化的最严重因素是人类活动产生的二氧化碳 (CO2 ) [1]。仅次于发电，交通部门是全球最大的 CO 2贡献者，占 7.3 Gt，占 2014 年世界总量的五分之一。[2]。道路运输也是最有害的空气污染物——氮氧化物和颗粒物的主要来源，它们会导致或加重肺癌和其他疾病[3]。</p>
+<p>因此，正在开发化石燃料动力车辆的清洁替代品，其中之一是电动汽车 (EV)。它们具有直接排放较低[2]、效率更高、低转速下扭矩高、扭矩响应更快以及通过再生制动回收动能等优点。与燃料电池、混合动力电动汽车和压缩天然气汽车相比，电动汽车的单位能量输入CO 2排放量最低，燃油经济性最高[4]。</p>
+<p>尽管具有这些优势，但电动汽车的市场渗透率不足，这在很大程度上是由于电池寿命短，因此电池更换费用高[5]。高温是电池寿命短的主要原因之一[6]。反过来，这是由于电池在运行期间产生的热量[5]。不受控制的热量产生还可能导致热失控，这是一连串的化学反应和事件，可导致温度高达 500°C 并释放有毒气体[7]。</p>
+<p>鉴于此，电池的最佳温度范围为 15 至 35°C [8]，电池组内的最大可接受温差为 5°C [5]。因此，电池冷却系统是 EV 的必要组件[8]。根据冷却介质，冷却系统可分为三大类：空气、液体和相变材料（PCM）[9]。每种类型都在文献中得到了广泛的探讨。</p>
+<p>对风冷系统的研究主要集中在气流配置或电池间距的修改上。在[10]中，设计了一个带有二次通风口的并联风冷系统。使用计算流体动力学 (CFD)，确定了入口空气温度、热生成率以及二次通风口的不同位置和尺寸的影响。在[11]中研究了使用反向分层气流的设计。CFD 和实验都用于研究添加整流器栅格和调整空气速度和电池之间的距离的影响。</p>
+<p>对于液冷系统，已经探索了广泛的概念——各种几何形状、设备和冷却液。在[12]中，对用水冷却的蛇形通道冷板进行了研究。CFD 用于研究冷却通道的数量和布局以及冷却剂入口温度的影响。[13]中对柔性振荡热管进行了研究。研究了绝热段长度和不同结构形式对热性能的影响。在[14], 研究了一种由冷却液中的氧化铝纳米粒子组成的纳米流体。使用数学模型研究了不同的冷却剂——空气、水、乙烯和乙二醇-水混合物，以及纳米颗粒的数量和冷却通道的数量。</p>
+<p>鉴于石蜡 PCM 的导热系数低，并且在熔化时容易发生泄漏和体积变化，因此已使用多种材料来增强其物理性能。在[15]中研究了纳米二氧化硅作为添加剂。将电池装入一块 PCM 中，除了热性能外，还测试了均匀性、泄漏和体积变化。在[16]中研究了铜网增强型 PCM 。除了提高导热性外，铜网还提高了 PCM 的强度。在[17]中，对膨胀石墨增强的 PCM 进行了研究。CFD 和实验用于比较普通 PCM 和增强 PCM 的性能，并检查膨胀石墨含量的影响。</p>
+<p>从文献中可以看出，CFD 是确定电池冷却系统热性能的常用工具。此外，研究改变某些参数的影响是一种常见的做法。检查整个文献中的结果，可以看出液体冷却系统通常具有最佳性能，尤其是在高充电和放电速率下。</p>
+<p>在[18]中，对特斯拉[19]使用的设计后的波浪通道液体冷却系统进行了研究，发现即使在5 C的高充电和放电率下也具有良好的热性能。电池之间接触角的影响、通道和电池之间的接触角以及冷却剂入口速度在本研究中进行了调查。尽管结果具有积极意义，但可以注意到几个重要参数——每个模块的电池数量和冷却剂入口温度尚未得到研究。此外，在给定系统尺寸的情况下，仅研究了每个电池的集中温度。如[20]所示，电池的内部热梯度也是一个值得关注的指标。因此，本研究考虑了这些因素。</p>
+<h2 id="2">2. 理论</h2>
+<p>本节将解释本研究的基本概念和方程式——关于电池发热和 CFD。</p>
+<h3 id="a">A. 电池发热</h3>
+<p>电池产生的热量可归因于两个主要来源——内阻和极化，由(1)中的第一项表示，以及电池内化学反应引起的熵变，由(1 ) 中的第二项表示) [5]。</p>
+<div class="arithmatex">\[
+\Phi = I\left( {{E_{OC}}-E} \right)-I{T_{bat}}\left( {d{E_{OC}}/d{T_{bat}}} \right) \hskip2em (1)
+\]</div>
+<p>(1)式中，<span class="arithmatex">\(\Phi\)</span>为电池的总发热量。<span class="arithmatex">\(I\)</span>是电池电流，<span class="arithmatex">\(E_{OC}\)</span>是开路电压，<span class="arithmatex">\(E\)</span>是电压，<span class="arithmatex">\(T_{bat}\)</span>是温度。</p>
+<h3 id="b">B. 计算流体动力学</h3>
+<p>CFD 提供系统中流体流动、传热和其他现象的详细预测[18]，其工作量和成本低于实验[21]。它通过在有限的控制体积集上求解守恒方程来实现这一点，CFD 求解器将构成系统的固体和流体域划分为这些体积。质量、动量和能量守恒方程分别由(2)、(3)和(4)给出，如[18]中所示。</p>
+<div class="arithmatex">\[
+\begin{gather*} \frac{{\partial p}}{{\partial t}} + \nabla \cdot(pu) = 0\tag{2} \\ \frac{\partial }{{\partial t}}(\rho u) + \nabla \cdot(\rho uu) = - \nabla P + \nabla \cdot(\mu \nabla u)\tag{3} \\ \frac{\partial }{{\partial t}}\left( {\rho {c_p}T} \right) + \nabla \cdot\left( {\rho {c_p}uT} \right) = \nabla \cdot(k\nabla T) + Q + {S_{{Q_1}}} + {S_{{Q_2}}}\tag{4}\end{gather*}
+\]</div>
+<p>上式中，<span class="arithmatex">\(\rho\)</span> 表示密度，<span class="arithmatex">\(t\)</span> 时间，<span class="arithmatex">\(u\)</span> 表示速度矢量，<span class="arithmatex">\(P\)</span> 压力，<span class="arithmatex">\(μ\)</span> 动态粘度，<span class="arithmatex">\(c_p\)</span> 恒压比热，<span class="arithmatex">\(T\)</span> 温度，<span class="arithmatex">\(k\)</span> 导热系数，<span class="arithmatex">\(Q\)</span> 电池发热，<span class="arithmatex">\(S_{Q1}\)</span>传热至/来自相邻电池和<span class="arithmatex">\(S_{Q2}\)</span> 的热量传递到冷却通道。</p>
+<p>本研究使用的 CFD 软件为 ANSYS CFX。该软件可以提供复杂模型的高速、稳健的解决方案，包括困难的传热和流体流动问题，使其能够高度建模冷却系统[22]。它最大的优势之一是其直观、直接的界面，使用户能够相对轻松地利用软件的强大功能[21]。</p>
+<h2 id="3">3 波浪通道液冷系统</h2>
+<p>本节详细介绍了系统组件（电池和冷却通道）的属性和几何形状。</p>
+<h3 id="a_1">A 电池规格</h3>
+<p>本研究中考虑的电池是圆柱形 18650 电池，具有镍锰钴阴极（图 1）。电池的特性列于表 1中。</p>
+<p>表一 18650 锂离子电池特性
+<img alt="" src="https://mmbiz.qpic.cn/sz_mmbiz_png/0HdjLwlbcGL7OF1DLBsE80EtsPvY7fOepibLNz7cBNhxNDNYDecm8Jgm6iadJxXRbEdvEAUXD6dmw01FE5dxvjVQ/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" /></p>
+<h3 id="b_1">B 冷却通道几何形状</h3>
+<p>使用商业软件 SOLIDWORKS 创建的系统 3D 模型如图1所示。</p>
+<p><img alt="" src="https://files.mdnice.com/user/3571/9c611324-354f-4cd4-a599-f402798d8b09.png" />
+图 1 系统 3D 模型</p>
+<p>冷却通道几何结构的细节如图1所示。通道高 65 mm，覆盖电池的整个高度，宽 3mm。通道的侧壁各厚 0.5mm，顶壁和底壁各厚 1mm。这留下了一个横截面为 63 x 2mm 的路径，供冷却液流过。通道与每个电池的接触角为40°[18]。19 节电池根据它们与冷却通道接触的顺序分配编号（图 1）。</p>
+<p>冷却通道由密度为<span class="arithmatex">\(896 kg/m^3\)</span>，比热容为<span class="arithmatex">\(2719J/kg\cdot K\)</span>，导热系数为<span class="arithmatex">\(201W/m\cdot K\)</span>[18]的铝合金制成。使用的冷却剂是水。</p>
+<h2 id="4">4. 模拟</h2>
+<p>本节将讨论模拟的细节——调查的条件和参数，以及模拟设置。</p>
+<h3 id="a_2">A. 放电率</h3>
+<p>为了确定系统在不同使用强度下的性能，在三种放电率下进行了测试：1C、3C 和 5C。需要注意的是，C 指的是 C-rate，是电池电流的表示法或率。单个电池在每个放电率下相应的发热率由[18]给出：1C 时为 1.2 W，3C 时为 3.4 W，5C 时为 4.2 W。</p>
+<h3 id="b_2">B.模组电池数量</h3>
+<p>通过通道冷却的电池数量会有所不同，以确定其对系统内温度的影响。除了对热性能的预期影响外，该参数还会影响冷却系统的成本、复杂性和尺寸，因为每个模块的电池数量较少会转化为更多的冷却回路以及压力损失。</p>
+<p>为了指示冷却通道长度，每行电池的数量被用作该参数的度量，而不仅仅是电池的总数。从每排 5 个电池的基准值，电池数量变为每排 3 个电池，总共 11 个，每排 7 个电池，总共 27 个。</p>
+<h3 id="c">C. 入口处的冷却剂温度</h3>
+<p>冷却剂的温度预计会影响系统的热性能，这种影响的程度值得研究。较低的冷却剂温度通常会转化为更大的能量消耗，这一事实进一步推动了研究该参数的重要性。除了 25°C 的基准进水温度外，还在 20 和 30°C 的冷却剂温度下研究了系统的性能。</p>
+<h3 id="d">D. 仿真设置</h3>
+<p>鉴于像电池冷却系统这样复杂的系统的瞬态仿真需要大量的计算资源和时间[25]，因此在本研究中进行了稳态仿真。</p>
+<p>使用上述和表 I中的属性，为铝合金通道和电池创建定制固体材料。内置材料水用于模拟冷却剂。总能量源置于每个电池中，具有上述发热率。入口处的冷却剂温度是静态的。</p>
+<p>正如[18]中所建议的，流体网格的元素是六面体的。入口处冷却剂的正常速度固定为0.5m/s，出口处的相对静压固定为零。所有系统边界都是绝热的，冷却通道的内壁设置为无滑移。</p>
+<p>所有模拟均在配备 Intel i7-7500U、2.70 GHz CPU 和 8.00 GB RAM 的计算机上进行。</p>
+<h3 id="e">E. 网格敏感性分析</h3>
+<p>正如在[25]中所做的那样，首先执行网格灵敏度分析以确保结果不受网格元素数量的影响。不同网格的结果之间的百分比差异低于 5% 被认为是足够的。基准案例用于分析，并比较了本研究中的关键指标电池温度。使用了三个级别的网格细度—— 1 有 4,092,552 个网格， 2 有 6,186,285 个网格，3 有 10,945,077 个网格。结果总结在表II中。</p>
+<p>表二 网格敏感性分析结果</p>
+<p><img alt="" src="https://mmbiz.qpic.cn/sz_mmbiz_png/0HdjLwlbcGL7OF1DLBsE80EtsPvY7fOeJFc6fvkaH7ic9E8hFeXwDFet6G3N6HxtIicLh8javhg6zjYP1r6B1uaA/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" /></p>
+<p>从表 II中可以看出，尽管网格 1 和网格 2 之间的平均百分比差异令人满意，但两个网格中单个电池温度之间的最大百分比差异超过 5%。同时，网格 2 和网格 3 之间的平均百分比差异和最大百分比差异都令人满意，这使得网格 3 成为模拟的合适设置。</p>
+<p><img alt="" src="https://mmbiz.qpic.cn/sz_mmbiz_png/0HdjLwlbcGL7OF1DLBsE80EtsPvY7fOekkibgaSJvJjmqXyQrWBRYCmQR9ibic4lnSmzibjXwtjIxC2FrZKCjczsicA/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" /></p>
+<p>图 2 不同放电率下的电池温度</p>
+<p><img alt="" src="https://files.mdnice.com/user/3571/730bb05b-a761-4889-8258-cac4593139bb.png" /></p>
+<p>图 3 基准情况下的电池温度曲线</p>
+<h2 id="5">5 结果与讨论</h2>
+<p>上述电池冷却系统热性能的关键指标是电池温度和最大温差。本节讨论不同条件和参数的调查结果。</p>
+<h3 id="a_3">A. 不同放电率下的热性能</h3>
+<p>图 2显示了在模拟的三种放电速率下每个电池的温度，在其体积上取平均值。在 5 C 放电模拟的基准情况下，可以看到温度超过了 35°C 的最佳限值。电池具有高度均匀的温度，唯一的例外是中间电池，如图 3所示，它位于 U 形转弯处。实际上，该电池是模块内较大温差的原因。基准情况下电池的中间高度温度曲线，如图 3所示。表明温度突然下降的原因是通道的几何形状。该通道在 U 形转弯处与电池的接触角度大得多，导致它比其余部分冷却得多。</p>
+<p>从图 2中还可以看出，最高温度和温差都随着放电率的增加而降低，从 3 C 到 1 C 的降幅更大，反映出 1 C 时的发热量要低得多。可以注意到只有在 3 C 和 1 C 时，温差才会低于 5°C 的可接受限度。</p>
+<p><img alt="" src="https://files.mdnice.com/user/3571/5ff31366-286b-4b67-af34-0ab98e438c58.png" /></p>
+<p>图 4 不同数量电池的电池温度</p>
+<p><img alt="" src="https://files.mdnice.com/user/3571/34ae63f3-6893-4d20-83a1-707fe4ebacf9.png" /></p>
+<p>图 5 基准案例的冷却通道温度曲线</p>
+<h3 id="b_3">B. 电池数量的影响</h3>
+<p>不同数量电池的每个电池的温度如图4所示。可以观察到，每排 5 排和每排 7 排设置的电池温度模式和幅度彼此没有显着差异。由此可见，最高温度和温差也颇为相似。这种类似的行为可以追溯到整个通道中几乎恒定的冷却剂温度，如图5所示，冷却剂的中间高度温度分布。</p>
+<p>这种热性能的一致性主要表明，首先，设计对电池数量的增加是稳健的，至少在本研究调查的规模上是这样。其次，它表明模块中的电池数量可以进一步增加。这显示了该设计的另一个优势，鉴于如上所述，更大的电池模块是更可取的，因为它们减少了所需的冷却回路的数量。</p>
+<h3 id="c_1">C. 入口冷却液温度的影响</h3>
+<p>图 6显示了每个电池在不同入口冷却剂温度下的温度。可以明显看出三种情况下 U 形转弯电池的温度模式和温度下降幅度的高度相似性。这表明该设计在行为和最大温差方面对冷却剂温度的变化具有鲁棒性。从电池温度的大小可以看出改变冷却剂温度的影响。可以看出，只有 20°C 冷却剂外壳的温度低于 35°C 的可接受限度。</p>
+<p><img alt="" src="https://files.mdnice.com/user/3571/ee5f85ef-adc5-4d2b-8921-2eb4a8d8a408.png" /></p>
+<p>图 6 不同冷却液入口温度下的电池温度</p>
+<h3 id="d_1">D. 内部温度梯度</h3>
+<p>虽然电池体积的平均温度用于简单、直接的比较，但电池内的温度梯度也值得检查。从图 3中可以看出，从顶部观察的温度梯度遵循某种模式。与冷却通道接触的部分最冷，远离该部分温度升高，在距离冷却通道最远的区域达到最大值。</p>
+<p>图 7显示了从正面看电池的温度梯度。可以看到类似于顶视图的图案；最冷的部分是与冷却通道接触的部分，温度随着远离通道的方向升高，在离通道最远的一端达到最大值。</p>
+<p>图 3和7显示单个电池内的温差约为 15°C，远高于 5°C 的可接受极限。电池内的最高温度也被视为约 40°C，超出了最佳电池温度的上限。这可归因于电池的低比热容和导热性，这阻碍了将产生的热量排到冷却通道。这一点，连同掉头区域过度冷却导致的显着平均温差，表明需要改进设计。一个可能的改进是重新设计 U 形转弯区域，使 U 形转弯电池获得与其余部分相同的冷却量。还可以探索结合其他冷却介质或几何修改以降低内部温度梯度。</p>
+<h2 id="6">6 结论</h2>
+<p>本研究调查了电动汽车电池的冷却系统，该系统使用流经波浪形通道的水。电池使用[18]中建议的集总特性建模，系统使用稳态 CFD 模拟求解。在不同的放电速率下获得电池温度和最大温差。还针对每个模块的不同电池数量和冷却剂入口温度确定了性能，以确定这些参数的影响。还分析了电池的内部温度梯度。</p>
+<p><img alt="" src="https://files.mdnice.com/user/3571/58e7e911-c83e-4ea8-84c0-2f54a17f9f37.png" /></p>
+<p>图 7 基线情况的前视电池温度梯度</p>
+<p>研究发现，增加放电率会增加温度和温差。电池数量的增加没有显着影响。发现改变冷却液温度对电池温度有相应的影响，但对温差没有影响。在某些情况下获得了令人满意的平均温度和最大温差，但发现电池的内部梯度过高。因此，建议修改几何形状并探索辅助冷却介质。</p>
+<h2 id="_3">致谢</h2>
+<p>Gundran 先生感谢科学技术部 (DOST) 下属的技术工程研究与开发 (ERDT) 财团的支持，该财团为他提供了奖学金和研究补助金。</p>
+<h2 id="_4">参考文献</h2>
+<ol>
+<li>T. F. Stocker et al., "Technical Summary", 2013.</li>
+<li>"Energy and Climate Change", 2015.</li>
+<li>"Explaining road transport emissions", 2016.</li>
+<li>Q. Wang, B. Jiang, B. Li and Y. Yan, "A critical review of thermal management models and solutions of lithium-ion batteries for the development of pure electric vehicles", Renew. Sustain. Energy Rev., vol. 64, pp. 106-128, 2016.</li>
+<li>G. Xia, L. Cao and G. Bi, "A review on battery thermal management in electric vehicle application", J. Power Sources, vol. 367, pp. 90-105, 2017.</li>
+<li>L. Su et al., "Identifying main factors of capacity fading in lithium ion cells using orthogonal design of experiments", Appl. Energy, vol. 163, pp. 201-210, 2016.</li>
+<li>R. Zhao, S. Zhang, J. Liu and J. Gu, "A review of thermal performance improving methods of lithium ion battery: Electrode modification and thermal management system", J. Power Sources, vol. 299, pp. 557-577, 2015.</li>
+<li>H. Liu, Z. Wei, W. He and J. Zhao, "Thermal issues about Li-ion batteries and recent progress in battery thermal management systems: A review", Energy Convers. Manag., vol. 150, pp. 304-330, May 2017.</li>
+<li>Z. Rao and S. Wang, "A review of power battery thermal energy management", Renew. Sustain. Energy Rev., vol. 15, no. 9, pp. 4554-4571, 2011.</li>
+<li>S. Hong, X. Zhang, K. Chen and S. Wang, "Design of flow configuration for parallel air-cooled battery thermal management system with secondary vent", Int. J. Heat Mass Transf., vol. 116, pp. 1204-1212, 2018.</li>
+<li>X. Na, H. Kang, T. Wang and Y. Wang, "Reverse layered air flow for Li-ion battery thermal management", Appl. Therm. Eng., vol. 143, pp. 257-262, July 2018.</li>
+<li>T. Deng, G. Zhang and Y. Ran, "Study on thermal management of rectangular Li-ion battery with serpentine-channel cold plate", Int. J. Heat Mass Transf., vol. 125, pp. 143-152, 2018.</li>
+<li>J. Qu, C. Wang, X. Li and H. Wang, "Heat transfer performance of flexible oscillating heat pipes for electric/hybrid-electric vehicle battery thermal management", Appl. Therm. Eng., vol. 135, pp. 1-9, January 2018.</li>
+<li>B. Mondal, C. F. Lopez and P. P. Mukherjee, "Exploring the efficacy of nanofluids for lithium-ion battery thermal management", Int. J. Heat Mass Transf., vol. 112, pp. 779-794, 2017.</li>
+<li>Y. Lv, W. Situ, X. Yang, G. Zhang and Z. Wang, "A novel nanosilica-enhanced phase change material with anti-leakage and anti-volume-changes properties for battery thermal management", Energy Convers. Manag., vol. 163, pp. 250-259, January 2018.</li>
+<li>W. Wu et al., "An experimental study of thermal management system using copper mesh-enhanced composite phase change materials for power battery pack", Energy, vol. 113, pp. 909-916, 2016.</li>
+<li>G. Jiang, J. Huang, Y. Fu, M. Cao and M. Liu, "Thermal optimization of composite phase change material/expanded graphite for Li-ion battery thermal management", Appl. Therm. Eng., vol. 108, pp. 1119-1125, 2016.</li>
+<li>C. Zhao, W. Cao, T. Dong and F. Jiang, "Thermal behavior study of discharging/charging cylindrical lithium-ion battery module cooled by channeled liquid flow", Int. J. Heat Mass Transf., vol. 120, pp. 751-762, 2018.</li>
+<li>P. T. Tennessen, J. C. Weintraub and W. A. Hermann, "Extruded and Ribbed Thermal Interface for Use with a Battery Cooling System", 2011.</li>
+<li>D. Worwood et al., "A new approach to the internal thermal management of cylindrical battery cells for automotive applications", J. Power Sources, vol. 346, pp. 151-166, 2017.</li>
+<li>"Lecture 03: Overview of the CFD Process and CFX Workflow", 2016.</li>
+<li>"Features of ANSYS CFX", 2018.</li>
+<li>"Lithium Ion Rechargeable Battery Technical Information", pp. 1-9, June 2012.</li>
+<li>H. Maleki, S. Al Hallaj, J. R. Selman, R. B. Dinwiddie and H. Wang, "Thermal Properties of Lithium-Ion Battery and Components", J. Electrochem. Soc., vol. 146, no. 3, pp. 947, 1999.</li>
+<li>L. H. Saw et al., "Novel thermal management system using mist cooling for lithium-ion battery packs", Appl. Energy, vol. 223, pp. 146-158, April 2018.</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2020-2021 mekesim.com <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">浙ICP备10045952号-5</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yangjianlin-c/yangjianlin-c.github.io" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
